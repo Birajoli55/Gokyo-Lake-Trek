@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { MapPin, Camera, Home, Mountain, Info, ArrowRight, CheckCircle2, Coffee, Utensils, Waves } from 'lucide-react';
 
 const HIGHLIGHTS = [
@@ -12,19 +14,19 @@ const HIGHLIGHTS = [
 export default function GokyoVillage() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Gokyo Village" 
+      <Hero
+        title="Gokyo Village"
         subtitle="A Serene Settlement at 4,750m"
-        image="https://picsum.photos/seed/gokyo-village-trek/1920/1080"
+        image="/GokyoVillageh.jpg"
       />
 
       <Section title="Discover Gokyo" subtitle="Places & Stops">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              Gokyo Village is one of the highest settlements in the world, located on the 
-              shores of the third Gokyo Lake (Dudh Pokhari). It's a peaceful alternative to 
-              the busier Everest Base Camp route, offering some of the best mountain 
+              Gokyo Village is one of the highest settlements in the world, located on the
+              shores of the third Gokyo Lake (Dudh Pokhari). It's a peaceful alternative to
+              the busier Everest Base Camp route, offering some of the best mountain
               panoramas in Nepal.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -44,8 +46,8 @@ export default function GokyoVillage() {
                 <h3 className="text-2xl font-bold text-blue-900">The Six Lakes</h3>
               </div>
               <p className="text-blue-800 text-lg leading-relaxed">
-                While the village is at the third lake, you can hike further up the valley 
-                to see the fourth, fifth, and even sixth lakes, which offer even closer 
+                While the village is at the third lake, you can hike further up the valley
+                to see the fourth, fifth, and even sixth lakes, which offer even closer
                 views of Cho Oyu and Everest.
               </p>
             </div>
@@ -68,16 +70,20 @@ export default function GokyoVillage() {
               </div>
             </div>
             <div className="relative aspect-video bg-stone-100 rounded-[32px] overflow-hidden border border-stone-200">
-               <img 
-                 src="https://picsum.photos/seed/gokyo-view/800/600" 
-                 alt="Gokyo View"
-                 className="w-full h-full object-cover"
-                 referrerPolicy="no-referrer"
-               />
+              <img
+                src="/GokyoVillagei.jpg"
+                alt="Gokyo View"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection className="py-24 bg-stone-100" />
+
+      <CustomTripBanner />
     </main>
   );
 }

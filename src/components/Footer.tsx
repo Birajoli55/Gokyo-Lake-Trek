@@ -33,6 +33,7 @@ export default function Footer() {
           <h4 className="text-sm font-bold uppercase tracking-widest text-white">Quick Links</h4>
           <ul className="space-y-3">
             {[
+              { name: 'About Us', path: '/about' },
               { name: 'Ultimate Guide', path: '/gokyo-lake-trek' },
               { name: 'Itineraries', path: '/itineraries' },
               { name: 'Planning Hub', path: '/planning' },

@@ -1,7 +1,73 @@
 import Hero from '../components/Hero';
 import Section from '../components/Section';
-import { Map, Calendar, Shield, DollarSign, Info, ArrowRight, CheckCircle2 } from 'lucide-react';
+import CustomTripBanner from '../components/CustomTripBanner';
+import { Map, Calendar, Shield, ShieldCheck, DollarSign, Info, ArrowRight, CheckCircle2, Backpack, Mountain } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import FAQSection from '../components/FAQSection';
+import { CustomItemVariants } from '../types';
+
+const CATEGORIES = [
+  {
+    id: 'itineraries',
+    title: 'Itineraries',
+    description: 'Explore carefully crafted trekking routes for all timeframes and experience levels.',
+    icon: Calendar,
+    path: '/itineraries',
+    image: '/itineraries.png',
+    color: 'bg-brand-600'
+  },
+  {
+    id: 'places',
+    title: 'Places',
+    description: 'Discover the iconic villages, lakes, and viewpoints along the Gokyo trail.',
+    icon: Map,
+    path: '/places',
+    image: '/places.png',
+    color: 'bg-amber-600'
+  },
+  {
+    id: 'planning',
+    title: 'Planning',
+    description: 'Everything you need to know about permits, flights, budgets, and the best seasons.',
+    icon: Mountain,
+    path: '/planning',
+    image: '/Planning.png',
+    color: 'bg-emerald-600'
+  },
+  {
+    id: 'gear',
+    title: 'Gear',
+    description: 'Comprehensive packing lists to keep you warm, safe, and comfortable at high altitude.',
+    icon: Backpack,
+    path: '/gear',
+    image: '/gear.png',
+    color: 'bg-indigo-600'
+  },
+  {
+    id: 'safety',
+    title: 'Safety',
+    description: 'Crucial information on altitude sickness, insurance, first aid, and emergency contacts.',
+    icon: ShieldCheck,
+    path: '/safety',
+    image: '/safety.png',
+    color: 'bg-rose-600'
+  }
+];
+
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const fadeInUp: CustomItemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
 
 export default function UltimateGuide() {
   return (
@@ -9,7 +75,7 @@ export default function UltimateGuide() {
       <Hero 
         title="The Ultimate Guide to Gokyo Lakes" 
         subtitle="Everything you need to know for the trek of a lifetime"
-        image="https://picsum.photos/seed/gokyo-ultimate/1920/1080"
+        image="/gokyori.png"
       />
 
       <Section title="Route Overview" subtitle="The Journey">
@@ -34,7 +100,7 @@ export default function UltimateGuide() {
               ))}
             </div>
             <Link 
-              to="/routes" 
+              to="/itineraries" 
               className="inline-flex items-center gap-2 text-brand-600 font-bold hover:gap-4 transition-all"
             >
               Explore Detailed Routes <ArrowRight className="w-5 h-5" />
@@ -42,7 +108,7 @@ export default function UltimateGuide() {
           </div>
           <div className="relative">
             <img 
-              src="https://picsum.photos/seed/gokyo-map-preview/800/800" 
+              src="/gikyoremot.png" 
               alt="Gokyo Route Map" 
               className="rounded-[40px] shadow-2xl w-full aspect-square object-cover"
               referrerPolicy="no-referrer"
@@ -51,60 +117,67 @@ export default function UltimateGuide() {
         </div>
       </Section>
 
-      <Section title="Key Planning Modules" subtitle="Preparation" dark>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { 
-              title: 'Costs & Budgeting', 
-              icon: DollarSign, 
-              desc: 'Detailed breakdown of permits, flights, food, and accommodation.',
-              link: '/planning/cost-breakdown'
-            },
-            { 
-              title: 'Permits & Fees', 
-              icon: Info, 
-              desc: 'What you need and where to get them (Municipality & National Park).',
-              link: '/planning/permits-fees'
-            },
-            { 
-              title: 'Best Time to Visit', 
-              icon: Calendar, 
-              desc: 'Monthly weather snapshots, crowd levels, and visibility guides.',
-              link: '/planning/best-time-to-visit'
-            },
-            { 
-              title: 'Safety & Altitude', 
-              icon: Shield, 
-              desc: 'Acclimatization schedules, AMS symptoms, and emergency protocols.',
-              link: '/safety'
-            },
-            { 
-              title: 'Gear & Packing', 
-              icon: Map, 
-              desc: 'Comprehensive list of essential equipment and layering systems.',
-              link: '/gear'
-            },
-            { 
-              title: 'Interactive Map', 
-              icon: Map, 
-              desc: 'Interactive trail map with altitude profiles and checkpoints.',
-              link: '/map'
-            },
-          ].map((item) => (
-            <Link 
-              key={item.title} 
-              to={item.link}
-              className="glass-dark p-10 rounded-[32px] hover:bg-white/10 transition-all group"
-            >
-              <item.icon className="w-10 h-10 text-brand-300 mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-              <p className="text-stone-400 leading-relaxed mb-6">{item.desc}</p>
-              <span className="text-brand-300 font-bold flex items-center gap-2">
-                Learn More <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
+      {/* Replaced old small grids with the new Trek Directory category cards */}
+      <Section className="py-24 bg-stone-100">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="max-w-3xl mx-auto text-center space-y-6 mb-16"
+        >
+          <motion.span variants={fadeInUp} className="text-brand-600 font-bold uppercase tracking-widest text-sm">
+            Preparation Directory
+          </motion.span>
+          <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold tracking-tight text-stone-900">
+            Everything You Need
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-stone-600 text-lg leading-relaxed">
+            From picking the perfect itinerary to packing the right gear, explore our detailed hubs to prepare for the adventure of a lifetime.
+          </motion.p>
+        </motion.div>
+
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          {CATEGORIES.map((category, index) => (
+            <motion.div variants={fadeInUp} key={category.id} className={index === 0 || index === 1 ? 'md:col-span-2 lg:col-span-1' : ''}>
+              <Link 
+                to={category.path} 
+                className="group relative block h-full overflow-hidden rounded-[32px] bg-white shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-stone-900/20 group-hover:bg-stone-900/10 transition-colors" />
+                  <div className={`absolute top-6 left-6 w-12 h-12 rounded-2xl ${category.color} flex items-center justify-center shadow-lg`}>
+                    <category.icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-stone-900 mb-3 group-hover:text-brand-600 transition-colors">
+                    {category.title}
+                  </h3>
+                  <p className="text-stone-600 leading-relaxed">
+                    {category.description}
+                  </p>
+                  
+                  <div className="mt-8 flex items-center text-sm font-bold uppercase tracking-widest text-brand-600">
+                    Explore Hub <span className="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Section>
 
       <Section title="Day-by-Day Options" subtitle="Itineraries">
@@ -161,14 +234,18 @@ export default function UltimateGuide() {
                 <Shield className="w-16 h-16 text-brand-400 mx-auto" />
                 <h4 className="text-xl font-bold text-white">Emergency Support</h4>
                 <p className="text-stone-400 text-sm">24/7 Ground support and helicopter rescue coordination.</p>
-                <button className="w-full py-4 bg-brand-500 text-white rounded-2xl font-bold hover:bg-brand-400 transition-colors">
+                <Link to="/safety" className="block w-full py-4 bg-brand-500 text-white rounded-2xl font-bold hover:bg-brand-400 transition-colors">
                   Safety Protocols
-                </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection className="py-24" />
+
+      <CustomTripBanner />
     </main>
   );
 }

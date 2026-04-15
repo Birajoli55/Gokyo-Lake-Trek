@@ -1,109 +1,246 @@
-import Hero from '../components/Hero';
-import Section from '../components/Section';
-import { BLOG_POSTS, FAQS } from '../constants';
-import { Link } from 'react-router-dom';
-import { ChevronDown, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { Calendar, User, ArrowRight, Tag, Search, Clock, ChevronRight, Sparkles } from 'lucide-react';
+import Section from '../components/Section';
+import FAQSection from '../components/FAQSection';
+import CustomTripBanner from '../components/CustomTripBanner';
+import { BLOG_POSTS } from '../constants';
+import { CustomItemVariants } from '../types';
+
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants: CustomItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.21, 0.45, 0.32, 0.9] } }
+};
+
+const CATEGORY_COLORS: Record<string, string> = {
+  Comparison: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+  Safety: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+  Gear: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+  Guide: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+};
 
 export default function Blog() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 200]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.4]);
+
+  const categories = ['All', ...new Set(BLOG_POSTS.map(post => post.category).filter(Boolean) as string[])];
+
+  const filteredPosts = BLOG_POSTS.filter(post => {
+    const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const featuredPost = filteredPosts[0];
+  const restPosts = filteredPosts.slice(1);
 
   return (
-    <main className="bg-stone-50">
-      <Hero 
-        title="Travel Tips & Blog" 
-        subtitle="The Trail Journal"
-        image="https://picsum.photos/seed/blog/1920/1080"
-      />
+    <main className="bg-stone-50 min-h-screen">
+      {/* Premium Remade Hero */}
+      <section className="relative h-[80vh] flex flex-col justify-center overflow-hidden bg-stone-950">
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ y: heroY, opacity: heroOpacity }}
+        >
+          <img
+            src="/gblog.jpg"
+            alt="Gokyo Lakes Background"
+            className="w-full h-full object-cover scale-110 blur-[2px]"
+          />
+          <div className="absolute inset-0 bg-stone-950/40" />
+        </motion.div>
 
-      <Section title="Latest Stories" subtitle="Journal">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post) => (
-            <Link key={post.id} to={`/tips/${post.slug}`} className="group block space-y-6">
-              <div className="overflow-hidden rounded-[32px] aspect-video shadow-lg">
-                <img 
-                  src={post.image} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="space-y-2">
-                <span className="text-stone-500 text-xs font-bold uppercase tracking-widest">{post.date}</span>
-                <h3 className="text-2xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">{post.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed">{post.excerpt}</p>
-              </div>
-            </Link>
-          ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent z-10" />
+
+        <div className="container mx-auto px-6 relative z-20 text-center max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark border border-white/10 text-brand-400 text-xs font-bold uppercase tracking-[0.25em] mb-8"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            The Gokyo Journal
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-8 leading-[0.9]"
+          >
+            Stories from <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-500">the Peak.</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-stone-300 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed opacity-80"
+          >
+            Insights, guides, and firsthand accounts from the heart of the Khumbu region. Your journey begins with knowledge.
+          </motion.p>
         </div>
-      </Section>
+      </section>
 
-      <Section title="Frequently Asked Questions" subtitle="FAQ" dark>
-        <div className="max-w-3xl mx-auto space-y-4">
-          {FAQS.map((faq, index) => (
-            <div key={index} className="glass-dark rounded-3xl overflow-hidden">
-              <button 
-                className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                onClick={() => setOpenFaq(openFaq === index ? null : index)}
+      {/* Modern Sticky Filter Bar */}
+      <section className="top-16 z-40 py-6 glass border-b border-stone-200/50">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`flex-shrink-0 px-6 py-2.5 rounded-2xl text-[11px] font-bold uppercase tracking-[0.1em] transition-all duration-300 ${activeCategory === category
+                  ? 'bg-stone-900 text-white shadow-xl shadow-stone-900/10'
+                  : 'bg-white text-stone-500 hover:bg-stone-100 border border-stone-100'
+                  }`}
               >
-                <span className="text-lg font-bold text-white">{faq.question}</span>
-                {openFaq === index ? <Minus className="w-5 h-5 text-brand-300" /> : <Plus className="w-5 h-5 text-brand-300" />}
+                {category}
               </button>
-              <AnimatePresence>
-                {openFaq === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="px-8 pb-6 text-stone-400 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="relative w-full md:w-80">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+            <input
+              type="text"
+              placeholder="Search the journal..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-6 py-3 bg-white border border-stone-200 rounded-[20px] text-sm focus:outline-none focus:ring-4 focus:ring-brand-500/5 focus:border-brand-500 transition-all placeholder:text-stone-300"
+            />
+          </div>
         </div>
+      </section>
+
+      <Section className="py-20">
+        <AnimatePresence mode="wait">
+          {filteredPosts.length > 0 ? (
+            <div className="space-y-24">
+              {featuredPost && (
+                <motion.div
+                  key={`featured-${featuredPost?.id || 'none'}`}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.7 }}
+                >
+                  <Link
+                    to={`/blog/${featuredPost.slug}`}
+                    className="group relative grid grid-cols-1 lg:grid-cols-12 gap-0 bg-white rounded-[48px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 border border-stone-100"
+                  >
+                    <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden relative">
+                      <img
+                        src={featuredPost.image}
+                        alt={featuredPost.title}
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-stone-900/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <div className="lg:col-span-5 p-10 lg:p-16 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-8">
+                        <span className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest border ${CATEGORY_COLORS[featuredPost.category ?? ''] ?? 'bg-stone-100 text-stone-600'}`}>
+                          {featuredPost.category}
+                        </span>
+                        <span className="text-stone-300 font-bold text-[10px] uppercase tracking-widest">Featured Post</span>
+                      </div>
+                      <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-[1.1] mb-6 group-hover:text-brand-600 transition-colors">
+                        {featuredPost.title}
+                      </h2>
+                      <p className="text-stone-500 text-lg leading-relaxed mb-8">{featuredPost.excerpt}</p>
+                      <div className="mt-auto flex items-center gap-4">
+                        <div className="flex items-center gap-2 text-stone-400 text-xs">
+                          <Clock className="w-4 h-4" /> 5 min read
+                        </div>
+                        <div className="w-8 h-px bg-stone-200" />
+                        <div className="flex items-center gap-2 text-brand-600 font-bold text-sm tracking-tight group-hover:gap-6 transition-all">
+                          Read Full Journal <ArrowRight className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              )}
+
+              {/* Grid of Articles */}
+              {restPosts.length > 0 && (
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={listVariants}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+                >
+                  {restPosts.map((post) => (
+                    <motion.div key={post.id} variants={itemVariants} className="h-full">
+                      <Link
+                        to={`/blog/${post.slug}`}
+                        className="group flex flex-col bg-white rounded-[40px] overflow-hidden hover:shadow-xl transition-all duration-500 border border-stone-100 h-full pb-8"
+                      >
+                        <div className="aspect-[4/3] overflow-hidden relative mb-6">
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <span className={`absolute top-6 left-6 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest glass-white border border-white/20 text-stone-900`}>
+                            {post.category}
+                          </span>
+                        </div>
+                        <div className="px-8 space-y-4 flex-grow flex flex-col">
+                          <div className="flex items-center gap-4 text-stone-400 text-[11px] font-bold uppercase tracking-widest">
+                            <span>{post.date}</span>
+                            <span className="w-1 h-1 bg-stone-300 rounded-full" />
+                            <span>5 min read</span>
+                          </div>
+                          <h3 className="text-2xl font-bold text-stone-900 leading-tight group-hover:text-brand-600 transition-colors flex-grow">
+                            {post.title}
+                          </h3>
+                          <p className="text-stone-500/80 text-sm leading-relaxed line-clamp-3 mb-6">
+                            {post.excerpt}
+                          </p>
+                          <div className="flex items-center gap-2 text-brand-600 text-sm font-bold opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all mt-auto">
+                            Read Article <ChevronRight className="w-5 h-5" />
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="py-32 text-center"
+            >
+              <div className="w-24 h-24 bg-stone-100 rounded-[32px] flex items-center justify-center mx-auto mb-8 animate-pulse">
+                <Search className="w-10 h-10 text-stone-300" />
+              </div>
+              <h3 className="text-3xl font-bold text-stone-900 mb-3">No trail reports found.</h3>
+              <p className="text-stone-500 text-lg max-w-md mx-auto">Try adjusting your category or searching for the Gokyo lakes.</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Section>
 
-      <Section title="Trekking Tips" subtitle="Advice">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div className="space-y-12">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-stone-900">Acclimatization</h3>
-              <p className="text-stone-600 leading-relaxed">
-                Walk slowly, drink at least 4 liters of water a day, and never skip an acclimatization day. 
-                If you feel symptoms of AMS, inform your guide immediately.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-stone-900">Hydration</h3>
-              <p className="text-stone-600 leading-relaxed">
-                Dehydration can mimic altitude sickness. 
-                Carry a reusable water bottle and use purification tablets or a portable filter.
-              </p>
-            </div>
-          </div>
-          <div className="space-y-12">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-stone-900">Photography</h3>
-              <p className="text-stone-600 leading-relaxed">
-                Batteries drain quickly in the cold. 
-                Keep your camera batteries in your sleeping bag at night and bring a high-capacity power bank.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-stone-900">Cultural Respect</h3>
-              <p className="text-stone-600 leading-relaxed">
-                Always walk to the left of Mani stones and prayer wheels. 
-                Ask for permission before taking photos of people or religious sites.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
+      <FAQSection className="bg-stone-50 py-24" />
+
+      <div className="bg-stone-100 py-12 md:py-20">
+        <CustomTripBanner />
+      </div>
+
     </main>
   );
 }

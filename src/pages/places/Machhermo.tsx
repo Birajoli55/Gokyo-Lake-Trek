@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Mountain, Info, ArrowRight, CheckCircle2, Home, Camera, Heart, Activity } from 'lucide-react';
 
 const HIGHLIGHTS = [
@@ -12,18 +14,18 @@ const HIGHLIGHTS = [
 export default function Machhermo() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Machhermo" 
+      <Hero
+        title="Machhermo"
         subtitle="A Key Acclimatization Stop at 4,470m"
-        image="https://picsum.photos/seed/machhermo-village/1920/1080"
+        image="/Machhermoh.jpg"
       />
 
       <Section title="Discover Machhermo" subtitle="Places & Stops">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              Machhermo (4,470m) is a small settlement in the Gokyo valley, located 
-              between Dole and Gokyo village. It is a crucial stop for trekkers to 
+              Machhermo (4,470m) is a small settlement in the Gokyo valley, located
+              between Dole and Gokyo village. It is a crucial stop for trekkers to
               acclimatize before reaching the higher altitudes of the Gokyo Lakes.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -43,8 +45,8 @@ export default function Machhermo() {
                 <h3 className="text-2xl font-bold text-red-900">Medical Post</h3>
               </div>
               <p className="text-red-800 text-lg leading-relaxed">
-                The Himalayan Rescue Association (HRA) operates a medical post in 
-                Machhermo during the peak trekking seasons. They offer daily talks on 
+                The Himalayan Rescue Association (HRA) operates a medical post in
+                Machhermo during the peak trekking seasons. They offer daily talks on
                 altitude sickness and can provide emergency medical assistance.
               </p>
             </div>
@@ -67,16 +69,20 @@ export default function Machhermo() {
               </div>
             </div>
             <div className="relative aspect-video bg-stone-100 rounded-[32px] overflow-hidden border border-stone-200">
-               <img 
-                 src="https://picsum.photos/seed/machhermo-view/800/600" 
-                 alt="Machhermo View"
-                 className="w-full h-full object-cover"
-                 referrerPolicy="no-referrer"
-               />
+              <img
+                src="/Machhermoi.jpg"
+                alt="Machhermo View"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection className="py-24 bg-stone-100" />
+
+      <CustomTripBanner />
     </main>
   );
 }

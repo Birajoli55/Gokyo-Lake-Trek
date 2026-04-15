@@ -1,6 +1,8 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Activity, AlertTriangle, Shield, Thermometer, Info, ArrowRight, CheckCircle2 } from 'lucide-react';
+import FAQSection from '../../components/FAQSection';
 
 const SYMPTOMS = [
   { title: 'Mild Symptoms', items: ['Headache', 'Nausea & Vomiting', 'Dizziness', 'Fatigue', 'Loss of Appetite', 'Shortness of Breath'] },
@@ -10,18 +12,18 @@ const SYMPTOMS = [
 export default function AltitudeSickness() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Altitude Sickness (AMS)" 
+      <Hero
+        title="Altitude Sickness (AMS)"
         subtitle="Understanding and Preventing AMS"
-        image="https://picsum.photos/seed/altitude-safety/1920/1080"
+        image="/ams.png"
       />
 
       <Section title="What is AMS?" subtitle="Safety & Health">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              Acute Mountain Sickness (AMS) is a condition that can affect trekkers at high 
-              altitudes, typically above 2,500 meters. It occurs when your body doesn't have 
+              Acute Mountain Sickness (AMS) is a condition that can affect trekkers at high
+              altitudes, typically above 2,500 meters. It occurs when your body doesn't have
               enough time to adjust to the lower oxygen levels in the air.
             </p>
             <div className="p-10 bg-red-50 rounded-[40px] border border-red-100 space-y-8">
@@ -30,7 +32,7 @@ export default function AltitudeSickness() {
                 <h3 className="text-2xl font-bold text-red-900">The Golden Rule</h3>
               </div>
               <p className="text-red-800 text-lg leading-relaxed font-medium">
-                "If you feel unwell at altitude, it is altitude sickness until proven otherwise. 
+                "If you feel unwell at altitude, it is altitude sickness until proven otherwise.
                 Never ascend with symptoms."
               </p>
             </div>
@@ -72,13 +74,17 @@ export default function AltitudeSickness() {
             <div className="p-8 bg-stone-100 rounded-[32px] border border-stone-200 flex items-start gap-4">
               <Shield className="w-6 h-6 text-stone-400 shrink-0" />
               <p className="text-stone-500 text-sm leading-relaxed">
-                Always trek with a guide who is trained in wilderness first aid and can 
+                Always trek with a guide who is trained in wilderness first aid and can
                 recognize the early signs of AMS.
               </p>
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Safety" className="py-24 bg-stone-100" />
+
+      <CustomTripBanner />
     </main>
   );
 }

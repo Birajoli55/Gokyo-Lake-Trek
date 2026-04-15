@@ -1,7 +1,9 @@
 import Hero from '../components/Hero';
 import Section from '../components/Section';
+import CustomTripBanner from '../components/CustomTripBanner';
 import { Sun, Cloud, Snowflake, CloudRain, CheckCircle2, Calendar, Thermometer, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import FAQSection from '../components/FAQSection';
 
 const MONTHS = [
   { name: 'January', season: 'Winter', temp: '-15°C to -5°C', status: 'Challenging', link: '/best-time/january' },
@@ -24,7 +26,7 @@ export default function BestTime() {
       <Hero 
         title="Best Time to Visit" 
         subtitle="Monthly Guide to Gokyo Lakes"
-        image="https://picsum.photos/seed/season/1920/1080"
+        image="/besttime.jpg"
       />
 
       <Section title="The Four Seasons" subtitle="Weather">
@@ -139,6 +141,10 @@ export default function BestTime() {
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Preparation" className="py-24" />
+
+      <CustomTripBanner />
     </main>
   );
 }

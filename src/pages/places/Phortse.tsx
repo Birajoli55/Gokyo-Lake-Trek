@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Mountain, Info, ArrowRight, CheckCircle2, Home, Camera } from 'lucide-react';
 
 const HIGHLIGHTS = [
@@ -12,19 +14,19 @@ const HIGHLIGHTS = [
 export default function Phortse() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Phortse" 
+      <Hero
+        title="Phortse"
         subtitle="The Heart of Sherpa Climbing Culture"
-        image="https://picsum.photos/seed/phortse-village/1920/1080"
+        image="/Phortseh.jpg"
       />
 
       <Section title="Discover Phortse" subtitle="Places & Stops">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              Phortse (3,810m) is a traditional Sherpa village located on a plateau 
-              overlooking the Dudh Koshi river. It is often visited by trekkers on the 
-              Gokyo Lakes route who want to experience a more authentic side of the 
+              Phortse (3,810m) is a traditional Sherpa village located on a plateau
+              overlooking the Dudh Koshi river. It is often visited by trekkers on the
+              Gokyo Lakes route who want to experience a more authentic side of the
               Khumbu region, away from the main Everest Base Camp trail.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -41,9 +43,9 @@ export default function Phortse() {
             <div className="p-10 bg-brand-50 rounded-[40px] border border-brand-100 space-y-8">
               <h3 className="text-2xl font-bold text-brand-900">Why Visit Phortse?</h3>
               <p className="text-brand-800 text-lg leading-relaxed">
-                Phortse is known for its high concentration of Everest summiters. Almost 
-                every household has at least one member who has reached the top of the 
-                world. The village offers a unique glimpse into the lives of these 
+                Phortse is known for its high concentration of Everest summiters. Almost
+                every household has at least one member who has reached the top of the
+                world. The village offers a unique glimpse into the lives of these
                 extraordinary people.
               </p>
             </div>
@@ -66,16 +68,20 @@ export default function Phortse() {
               </div>
             </div>
             <div className="relative aspect-video bg-stone-100 rounded-[32px] overflow-hidden border border-stone-200">
-               <img 
-                 src="https://picsum.photos/seed/phortse-view/800/600" 
-                 alt="Phortse View"
-                 className="w-full h-full object-cover"
-                 referrerPolicy="no-referrer"
-               />
+              <img
+                src="/Phortsei.jpg"
+                alt="Phortse View"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection className="py-24 bg-stone-100" />
+
+      <CustomTripBanner />
     </main>
   );
 }

@@ -1,6 +1,8 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
-import { Shield, AlertTriangle, Info, ArrowRight, CheckCircle2, Heart, Plane } from 'lucide-react';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
+import { Shield, ShieldAlert, ArrowRight, CheckCircle2, Plane, Activity, AlertTriangle, FileText, Heart } from 'lucide-react';
 
 export default function Insurance() {
   return (
@@ -8,7 +10,7 @@ export default function Insurance() {
       <Hero 
         title="Travel Insurance" 
         subtitle="Essential Coverage for High-Altitude Trekking"
-        image="https://picsum.photos/seed/insurance-trek/1920/1080"
+        image="/Insurance.png"
       />
 
       <Section title="Why You Need Insurance" subtitle="Safety & Planning">
@@ -79,6 +81,10 @@ export default function Insurance() {
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Preparation" className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

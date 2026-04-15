@@ -1,5 +1,6 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Utensils, Droplets, Info, ArrowRight, CheckCircle2, AlertTriangle, Coffee, Soup } from 'lucide-react';
 
 const FOOD_ITEMS = [
@@ -15,7 +16,7 @@ export default function FoodWater() {
       <Hero 
         title="Food & Water" 
         subtitle="Fueling Your Himalayan Adventure"
-        image="https://picsum.photos/seed/nepal-food/1920/1080"
+        image="/food.png"
       />
 
       <Section title="Trekking Nutrition" subtitle="Planning Your Meals">
@@ -76,6 +77,7 @@ export default function FoodWater() {
           </div>
         </div>
       </Section>
+      <CustomTripBanner />
     </main>
   );
 }

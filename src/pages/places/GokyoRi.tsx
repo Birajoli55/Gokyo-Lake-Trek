@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Mountain, Info, ArrowRight, CheckCircle2, Camera, Sun, Wind } from 'lucide-react';
 
 const HIGHLIGHTS = [
@@ -12,19 +14,19 @@ const HIGHLIGHTS = [
 export default function GokyoRi() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Gokyo Ri" 
+      <Hero
+        title="Gokyo Ri"
         subtitle="The Ultimate Viewpoint of the Everest Region"
-        image="https://picsum.photos/seed/gokyo-ri-view/1920/1080"
+        image="/gokyori.png"
       />
 
       <Section title="Conquer Gokyo Ri" subtitle="Places & Stops">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              Gokyo Ri (5,357m) is a peak located on the west side of the Ngozumpa 
-              Glacier, overlooking Gokyo village. It is widely considered to offer 
-              one of the best panoramic views in the entire Everest region, even 
+              Gokyo Ri (5,357m) is a peak located on the west side of the Ngozumpa
+              Glacier, overlooking Gokyo village. It is widely considered to offer
+              one of the best panoramic views in the entire Everest region, even
               surpassing the famous Kala Patthar.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -41,8 +43,8 @@ export default function GokyoRi() {
             <div className="p-10 bg-brand-50 rounded-[40px] border border-brand-100 space-y-8">
               <h3 className="text-2xl font-bold text-brand-900">The Climb</h3>
               <p className="text-brand-800 text-lg leading-relaxed">
-                The ascent from Gokyo village takes about 2-3 hours. It's a steep 
-                climb but technically straightforward. The reward at the top is a 
+                The ascent from Gokyo village takes about 2-3 hours. It's a steep
+                climb but technically straightforward. The reward at the top is a
                 360-degree view of some of the highest mountains on Earth.
               </p>
             </div>
@@ -67,13 +69,25 @@ export default function GokyoRi() {
             <div className="p-8 bg-stone-100 rounded-[32px] border border-stone-200 flex items-start gap-4">
               <Wind className="w-6 h-6 text-stone-400 shrink-0" />
               <p className="text-stone-500 text-sm leading-relaxed">
-                It can be extremely windy and cold at the summit. Bring extra layers 
+                It can be extremely windy and cold at the summit. Bring extra layers
                 even if it feels warm in the village.
               </p>
+            </div>
+            <div className="relative aspect-video bg-stone-100 rounded-[32px] overflow-hidden border border-stone-200">
+              <img
+                src="/GokyoRii.jpg"
+                alt="Gokyo Ri View"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

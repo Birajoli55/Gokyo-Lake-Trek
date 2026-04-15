@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { DollarSign, PieChart, Wallet, CreditCard, Info, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -48,7 +50,7 @@ export default function CostBreakdown() {
       <Hero 
         title="Cost Breakdown" 
         subtitle="Budgeting for Your Adventure"
-        image="https://picsum.photos/seed/cost-breakdown/1920/1080"
+        image="/HimalayanPanorama.jpg"
       />
 
       <Section title="Estimated Trekking Costs" subtitle="Financial Planning">
@@ -114,6 +116,10 @@ export default function CostBreakdown() {
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Preparation" className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

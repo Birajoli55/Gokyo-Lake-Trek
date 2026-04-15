@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Calendar, Thermometer, Cloud, Sun, ArrowRight, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +26,7 @@ export default function MonthlyHub() {
       <Hero 
         title="Best Time to Visit" 
         subtitle="Monthly Guide to Gokyo Lakes"
-        image="https://picsum.photos/seed/seasons/1920/1080"
+        image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
       />
 
       <Section title="Seasonal Overview" subtitle="Weather & Conditions">
@@ -77,6 +79,10 @@ export default function MonthlyHub() {
           ))}
         </div>
       </Section>
+
+      <FAQSection className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

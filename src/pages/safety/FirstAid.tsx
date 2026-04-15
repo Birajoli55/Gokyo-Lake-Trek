@@ -1,5 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Heart, Activity, Shield, Info, ArrowRight, CheckCircle2, AlertTriangle, Thermometer, Pill } from 'lucide-react';
 
 const MEDICAL_KIT = [
@@ -10,19 +12,19 @@ const MEDICAL_KIT = [
 export default function FirstAid() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="First Aid & Health" 
+      <Hero
+        title="First Aid & Health"
         subtitle="Staying Healthy on the Gokyo Lakes Trail"
-        image="https://picsum.photos/seed/first-aid-trek/1920/1080"
+        image="/fah.png"
       />
 
       <Section title="Health & Well-being" subtitle="Safety & Health">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              Staying healthy is the most important factor in a successful trek. 
-              The combination of high altitude, physical exertion, and a different 
-              diet can be challenging for your body. Proper preparation and a 
+              Staying healthy is the most important factor in a successful trek.
+              The combination of high altitude, physical exertion, and a different
+              diet can be challenging for your body. Proper preparation and a
               well-stocked first aid kit are essential.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -49,8 +51,8 @@ export default function FirstAid() {
                 <h3 className="text-2xl font-bold text-brand-900">Personal Hygiene</h3>
               </div>
               <p className="text-brand-800 text-lg leading-relaxed">
-                Most illnesses on the trail are related to poor hygiene. Always wash 
-                your hands or use sanitizer before every meal. Avoid tap water and 
+                Most illnesses on the trail are related to poor hygiene. Always wash
+                your hands or use sanitizer before every meal. Avoid tap water and
                 stick to purified or boiled water.
               </p>
             </div>
@@ -75,14 +77,18 @@ export default function FirstAid() {
             <div className="p-8 bg-amber-50 rounded-[32px] border border-amber-100 flex items-start gap-4">
               <AlertTriangle className="w-6 h-6 text-amber-500 shrink-0" />
               <p className="text-amber-800 text-sm leading-relaxed">
-                <strong>Disclaimer:</strong> This information is for educational 
-                purposes only. Consult your doctor before your trip for personalized 
+                <strong>Disclaimer:</strong> This information is for educational
+                purposes only. Consult your doctor before your trip for personalized
                 medical advice.
               </p>
             </div>
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Safety" className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

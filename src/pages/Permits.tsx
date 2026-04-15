@@ -1,6 +1,8 @@
 import Hero from '../components/Hero';
 import Section from '../components/Section';
+import CustomTripBanner from '../components/CustomTripBanner';
 import { FileText, DollarSign, Info, AlertCircle, CheckCircle2 } from 'lucide-react';
+import FAQSection from '../components/FAQSection';
 
 export default function Permits() {
   return (
@@ -8,11 +10,11 @@ export default function Permits() {
       <Hero 
         title="Permits & Costs" 
         subtitle="The Logistics"
-        image="https://picsum.photos/seed/permits/1920/1080"
+        image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
       />
 
       <Section title="Required Permits" subtitle="Documentation">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
               Trekking in the Everest region requires specific permits to enter the Khumbu Pasang Lhamu Rural Municipality 
@@ -49,13 +51,15 @@ export default function Permits() {
               ))}
             </div>
           </div>
-          <div className="relative">
-            <img 
-              src="https://picsum.photos/seed/permit-doc/800/1000" 
-              alt="Permit Documentation" 
-              className="rounded-[40px] w-full aspect-[4/5] object-cover shadow-xl"
-              referrerPolicy="no-referrer"
-            />
+          <div className="sticky top-32">
+            <div className="relative bg-white rounded-[40px] overflow-hidden shadow-xl border border-stone-100">
+              <img 
+                src="/RequiredPermits.png" 
+                alt="Gokyo Trek Route Map" 
+                className="w-full h-auto block transition-transform duration-700 hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+            </div>
           </div>
         </div>
       </Section>
@@ -116,6 +120,10 @@ export default function Permits() {
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Permits" className="py-24 bg-stone-100" />
+
+      <CustomTripBanner />
     </main>
   );
 }

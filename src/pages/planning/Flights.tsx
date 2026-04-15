@@ -1,6 +1,8 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Plane, AlertTriangle, Clock, Info, ArrowRight, CheckCircle2, MapPin } from 'lucide-react';
+import FAQSection from '../../components/FAQSection';
 
 export default function Flights() {
   return (
@@ -8,7 +10,7 @@ export default function Flights() {
       <Hero 
         title="Flights to Lukla" 
         subtitle="The Most Scenic (and Nervous) Flight of Your Life"
-        image="https://picsum.photos/seed/lukla-flight/1920/1080"
+        image="/luklaairport.jpg"
       />
 
       <Section title="Lukla Flight Logistics" subtitle="Planning Your Journey">
@@ -78,6 +80,10 @@ export default function Flights() {
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Booking" className="py-24 bg-stone-100" />
+
+      <CustomTripBanner />
     </main>
   );
 }

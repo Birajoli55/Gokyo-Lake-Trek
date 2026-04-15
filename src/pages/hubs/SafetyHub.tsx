@@ -1,38 +1,10 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
-import { Shield, Activity, Heart, Info, ArrowRight, AlertTriangle, Thermometer, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const SAFETY_TOPICS = [
-  {
-    title: 'Altitude Sickness (AMS)',
-    description: 'Learn about Acute Mountain Sickness, symptoms, prevention, and treatment protocols.',
-    icon: Activity,
-    link: '/safety/altitude-sickness',
-    color: 'bg-red-50 text-red-600'
-  },
-  {
-    title: 'Travel Insurance',
-    description: 'Essential requirements for trekking insurance, including helicopter evacuation coverage.',
-    icon: Shield,
-    link: '/safety/travel-insurance',
-    color: 'bg-blue-50 text-blue-600'
-  },
-  {
-    title: 'First Aid & Health',
-    description: 'Recommended medical kit, common ailments, and health precautions for the trail.',
-    icon: Heart,
-    link: '/safety/first-aid',
-    color: 'bg-green-50 text-green-600'
-  },
-  {
-    title: 'Emergency Contacts',
-    description: 'Crucial contact numbers for rescue services, hospitals, and local authorities.',
-    icon: Info,
-    link: '/safety/emergency-contacts',
-    color: 'bg-stone-50 text-stone-600'
-  }
-];
+import CustomTripBanner from '../../components/CustomTripBanner';
+import { AlertTriangle, Thermometer, MapPin } from 'lucide-react';
+import SafetySection from '../../components/SafetySection';
+import FAQSection from '../../components/FAQSection';
+import MainCTA from '../../components/MainCTA';
 
 export default function SafetyHub() {
   return (
@@ -40,35 +12,10 @@ export default function SafetyHub() {
       <Hero 
         title="Safety & Health" 
         subtitle="Your Well-being is Our Priority"
-        image="https://picsum.photos/seed/safety-trek/1920/1080"
+        image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
       />
 
-      <Section title="Stay Safe on the Trail" subtitle="Essential Safety Information">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SAFETY_TOPICS.map((topic) => (
-            <Link 
-              key={topic.title}
-              to={topic.link}
-              className="group p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-start gap-6"
-            >
-              <div className={`p-4 rounded-2xl ${topic.color}`}>
-                <topic.icon className="w-8 h-8" />
-              </div>
-              <div className="space-y-3">
-                <h3 className="text-2xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors">
-                  {topic.title}
-                </h3>
-                <p className="text-stone-500 leading-relaxed">
-                  {topic.description}
-                </p>
-              </div>
-              <div className="mt-auto flex items-center gap-2 text-brand-600 font-bold">
-                Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
+      <SafetySection />
 
       <Section title="Quick Safety Tips" subtitle="Best Practices" className="bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -98,6 +45,10 @@ export default function SafetyHub() {
           </div>
         </div>
       </Section>
+
+      <FAQSection category="Safety" className="py-24 bg-stone-100" />
+
+      <MainCTA />
     </main>
   );
 }

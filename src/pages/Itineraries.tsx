@@ -1,5 +1,7 @@
 import Hero from '../components/Hero';
 import Section from '../components/Section';
+import FAQSection from '../components/FAQSection';
+import CustomTripBanner from '../components/CustomTripBanner';
 import { ITINERARIES } from '../constants';
 import { MapPin, Clock, Mountain, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -12,7 +14,7 @@ export default function Itineraries() {
       <Hero 
         title="Trek Itineraries" 
         subtitle="The Path Ahead"
-        image="https://picsum.photos/seed/itinerary/1920/1080"
+        image="/itineraries.png"
       />
 
       <Section title={itinerary.name} subtitle="Classic Route">
@@ -105,13 +107,13 @@ export default function Itineraries() {
               title: 'Gokyo & Everest Base Camp', 
               duration: '18 Days', 
               desc: 'The ultimate Everest experience, crossing the challenging Cho La Pass (5,420m).',
-              image: 'https://picsum.photos/seed/ebc/800/600'
+              image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop'
             },
             { 
               title: 'Renjo La Pass Loop', 
               duration: '14 Days', 
               desc: 'A stunning loop that adds the Renjo La Pass (5,360m) for even more spectacular views.',
-              image: 'https://picsum.photos/seed/renjo/800/600'
+              image: 'https://images.unsplash.com/photo-1505410603994-c3ac6269711f?q=80&w=800&auto=format&fit=crop'
             }
           ].map((route) => (
             <div key={route.title} className="group glass-dark overflow-hidden rounded-[40px] flex flex-col md:flex-row">
@@ -134,6 +136,10 @@ export default function Itineraries() {
           ))}
         </div>
       </Section>
+
+      <FAQSection category="Booking" className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

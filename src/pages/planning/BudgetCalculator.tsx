@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
+import FAQSection from '../../components/FAQSection';
+import CustomTripBanner from '../../components/CustomTripBanner';
 import { Calculator, Users, Calendar, Star, DollarSign, Info, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -37,7 +39,7 @@ export default function BudgetCalculator() {
       <Hero 
         title="Budget Calculator" 
         subtitle="Estimate Your Gokyo Lakes Trek Expenses"
-        image="https://picsum.photos/seed/budget-calc/1920/1080"
+        image="/phortse.jpg"
       />
 
       <Section title="Plan Your Expenses" subtitle="Interactive Tool">
@@ -221,6 +223,10 @@ export default function BudgetCalculator() {
           ))}
         </div>
       </Section>
+
+      <FAQSection category="Preparation" className="py-24 bg-stone-50" />
+
+      <CustomTripBanner />
     </main>
   );
 }

@@ -1,124 +1,125 @@
-import Hero from '../../components/Hero';
+import { motion, useScroll, useTransform } from 'motion/react';
 import Section from '../../components/Section';
-import { Clock, Activity, Map, ArrowRight, CheckCircle2 } from 'lucide-react';
+import CustomTripBanner from '../../components/CustomTripBanner';
+import { Zap, Mountain, Shield, Users, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ItinerariesSection from '../../components/ItinerariesSection';
+import FAQSection from '../../components/FAQSection';
+import { CustomItemVariants } from '../../types';
 
-const ITINERARY_CARDS = [
-  { 
-    days: 7, 
-    title: 'Shortest Gokyo Trek', 
-    desc: 'Fast-paced route for experienced trekkers with limited time.',
-    difficulty: 'Challenging',
-    link: '/itineraries/7-days'
-  },
-  { 
-    days: 9, 
-    title: 'Efficient Gokyo Loop', 
-    desc: 'Balanced route for those with moderate fitness levels.',
-    difficulty: 'Moderate',
-    link: '/itineraries/9-days'
-  },
-  { 
-    days: 12, 
-    title: 'Classic Gokyo Lakes', 
-    desc: 'The standard route with optimal acclimatization.',
-    difficulty: 'Moderate',
-    link: '/itineraries/12-days'
-  },
-  { 
-    days: 15, 
-    title: 'Comfortable Gokyo', 
-    desc: 'Extra rest days and comfortable teahouse stops.',
-    difficulty: 'Easy-Moderate',
-    link: '/itineraries/15-days'
-  },
-  { 
-    days: 18, 
-    title: 'Gokyo + EBC via Cho La', 
-    desc: 'The ultimate Everest region adventure.',
-    difficulty: 'Strenuous',
-    link: '/itineraries/gokyo-cho-la-ebc'
-  },
-  { 
-    days: 14, 
-    title: 'Gokyo via Renjo La', 
-    desc: 'A quieter route with stunning pass views.',
-    difficulty: 'Challenging',
-    link: '/itineraries/gokyo-renjo-la'
-  },
+const WHY_MATTERS = [
+  { icon: Mountain, title: 'Built-in rest days', desc: 'Acclimatization stops in Namche and Gokyo prevent altitude sickness.' },
+  { icon: Shield, title: 'Gradual gain', desc: 'Max 500m elevation gain per day to keep your body adapting safely.' },
+  { icon: Zap, title: 'Flexible pace', desc: 'Add extra rest days if your body needs more time to adjust.' },
+  { icon: Users, title: 'Expert monitoring', desc: 'Certified guides tracking altitude symptoms at every checkpoint.' },
 ];
 
+const fadeInUp: CustomItemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
 export default function ItinerariesHub() {
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 160]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.25]);
+
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Trek Itineraries" 
-        subtitle="Choose Your Path"
-        image="https://picsum.photos/seed/itineraries-hub/1920/1080"
-      />
+      {/* Parallax Hero */}
+      <section className="relative h-[72vh] flex flex-col justify-center overflow-hidden">
+        <motion.div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/bento-view.png)', y: heroY, opacity: heroOpacity }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-stone-900/20" />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center"
+        >
+          <span className="inline-block px-4 py-1.5 glass-dark rounded-full text-emerald-300 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+            Choose Your Path
+          </span>
+          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-4 leading-[0.95]">Trek Itineraries</h1>
+          <p className="text-stone-300 text-lg max-w-xl mx-auto">From 7-day sprints to 20-day epics — we have a route perfectly matched to your fitness level and schedule.</p>
+        </motion.div>
+      </section>
 
-      <Section title="Find Your Itinerary" subtitle="Options for Every Trekker">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ITINERARY_CARDS.map((item) => (
-            <Link 
-              key={item.title} 
-              to={item.link}
-              className="p-10 bg-white rounded-[32px] border border-stone-100 shadow-sm hover:shadow-xl transition-all group"
-            >
-              <div className="flex items-center justify-between mb-8">
-                <div className="p-4 bg-stone-50 rounded-2xl group-hover:bg-brand-50 transition-colors">
-                  <Clock className="w-8 h-8 text-brand-600" />
-                </div>
-                <span className="px-4 py-1 bg-stone-100 text-stone-900 text-[10px] font-bold uppercase tracking-widest rounded-full">
-                  {item.difficulty}
-                </span>
-              </div>
-              <h3 className="text-3xl font-bold text-stone-900 mb-4">{item.days} Days</h3>
-              <h4 className="text-xl font-bold text-stone-700 mb-4">{item.title}</h4>
-              <p className="text-stone-500 leading-relaxed mb-8">{item.desc}</p>
-              <span className="text-brand-600 font-bold flex items-center gap-2">
-                View Full Plan <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-          ))}
-        </div>
-      </Section>
+      {/* Itinerary Section (Full Grid) */}
+      <ItinerariesSection />
 
-      <Section title="Acclimatization First" subtitle="Safety" dark>
-        <div className="bg-white/5 p-12 rounded-[48px] border border-white/10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h3 className="text-3xl font-bold text-white">Why Itinerary Matters</h3>
-              <p className="text-stone-400 text-lg leading-relaxed">
-                The secret to a successful trek isn't speed, it's how well your body adapts 
-                to the thinning air. Our itineraries are designed with optimal 
-                acclimatization stops.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  'Built-in rest days in Namche and Gokyo',
-                  'Gradual elevation gain (max 500m per day)',
-                  'Flexible schedules for extra rest if needed',
-                  'Expert monitoring of altitude symptoms'
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-stone-300">
-                    <CheckCircle2 className="w-5 h-5 text-brand-400" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="relative">
-              <img 
-                src="https://picsum.photos/seed/itinerary-safety/800/600" 
-                alt="Acclimatization" 
-                className="rounded-[40px] shadow-2xl w-full aspect-video object-cover"
-                referrerPolicy="no-referrer"
+      {/* Why Itinerary Planning Matters */}
+      <Section title="Why Planning Matters" subtitle="Acclimatization First" dark className="py-24 rounded-t-[48px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="space-y-6"
+          >
+            <motion.h3 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-white">Why Your Itinerary Decides Everything</motion.h3>
+            <motion.p variants={fadeInUp} className="text-stone-400 text-lg leading-relaxed">
+              The secret to a successful trek is not speed — it's how well your body adapts to thinning air. Our itineraries are carefully engineered with optimal acclimatization stops.
+            </motion.p>
+            <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              {WHY_MATTERS.map(({ icon: Icon, title, desc }) => (
+                <motion.div key={title} variants={fadeInUp} className="p-6 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
+                  <div className="w-10 h-10 bg-brand-500/20 rounded-xl flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-brand-400" />
+                  </div>
+                  <h5 className="text-white font-bold mb-1">{title}</h5>
+                  <p className="text-stone-400 text-sm leading-relaxed">{desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative group"
+          >
+            <div className="overflow-hidden rounded-[40px] shadow-2xl bg-stone-900/50">
+              <img
+                src="/gokyoroute.png"
+                alt="Gokyo Trek Route Map"
+                className="w-full aspect-[4/3] object-contain transition-transform duration-700 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/20 to-transparent rounded-[40px] pointer-events-none" />
             </div>
-          </div>
+            {/* Floating badge */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="absolute -bottom-6 -right-6 bg-brand-600 p-6 rounded-3xl shadow-2xl hidden sm:block"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <Mountain className="text-white w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Max Elevation</div>
+                  <div className="text-white text-xl font-bold">5,357m</div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </Section>
+
+      <CustomTripBanner />
+      <FAQSection category="Preparation" className="py-24 bg-stone-100" />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
-import { Phone, Info, ArrowRight, CheckCircle2, AlertTriangle, Shield, MapPin, Heart } from 'lucide-react';
+import CustomTripBanner from '../../components/CustomTripBanner';
+import { Phone, PhoneCall, AlertTriangle, ShieldAlert, Building, Navigation, ArrowRight, AlertCircle, Copy, Check, Info, CheckCircle2, Shield, MapPin, Heart } from 'lucide-react';
 
 const CONTACTS = [
   { category: 'Rescue Services', items: ['Himalayan Rescue Association (HRA): +977-1-4440292', 'Nepal Police (Emergency): 100', 'Tourist Police (Kathmandu): +977-1-4247041'] },
@@ -11,19 +12,19 @@ const CONTACTS = [
 export default function EmergencyContacts() {
   return (
     <main className="bg-stone-50">
-      <Hero 
-        title="Emergency Contacts" 
+      <Hero
+        title="Emergency Contacts"
         subtitle="Crucial Information for Your Safety"
-        image="https://picsum.photos/seed/emergency-trek/1920/1080"
+        image="/emcall.png"
       />
 
       <Section title="Stay Connected" subtitle="Safety & Health">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">
-              While the Gokyo Lakes trail is generally safe, it's important to have 
-              access to emergency contact information in case of accidents, 
-              altitude sickness, or other unforeseen events. Keep a physical copy 
+              While the Gokyo Lakes trail is generally safe, it's important to have
+              access to emergency contact information in case of accidents,
+              altitude sickness, or other unforeseen events. Keep a physical copy
               of these numbers with you at all times.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -50,8 +51,8 @@ export default function EmergencyContacts() {
                 <h3 className="text-2xl font-bold text-red-900">Rescue Protocol</h3>
               </div>
               <p className="text-red-800 text-lg leading-relaxed">
-                In case of a medical emergency requiring helicopter evacuation, 
-                contact your insurance provider's 24/7 emergency hotline 
+                In case of a medical emergency requiring helicopter evacuation,
+                contact your insurance provider's 24/7 emergency hotline
                 immediately. They will coordinate with local rescue services.
               </p>
             </div>
@@ -76,13 +77,15 @@ export default function EmergencyContacts() {
             <div className="p-8 bg-stone-100 rounded-[32px] border border-stone-200 flex items-start gap-4">
               <Info className="w-6 h-6 text-stone-400 shrink-0" />
               <p className="text-stone-500 text-sm leading-relaxed">
-                Most teahouses have basic Wi-Fi, but it can be unreliable. Do not 
+                Most teahouses have basic Wi-Fi, but it can be unreliable. Do not
                 depend on it for emergency communication.
               </p>
             </div>
           </div>
         </div>
       </Section>
+
+      <CustomTripBanner />
     </main>
   );
 }

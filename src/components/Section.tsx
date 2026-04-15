@@ -14,11 +14,11 @@ export default function Section({ id, className = '', title, subtitle, children,
   return (
     <section 
       id={id} 
-      className={`py-24 md:py-32 ${dark ? 'section-dark' : 'section-light'} ${className}`}
+      className={`${dark ? 'section-dark' : 'section-light'} ${className || 'py-24 md:py-32'}`}
     >
       <div className="container mx-auto px-6">
         {(title || subtitle) && (
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-12 text-center">
             {subtitle && (
               <span className={`text-xs font-bold uppercase tracking-[0.2em] mb-4 block ${dark ? 'text-brand-300' : 'text-brand-600'}`}>
                 {subtitle}
