@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Mountain, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useBooking } from '../context/BookingContext';
 
 const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { 
-    name: 'Guide', 
-    path: '/gokyo-lake-trek',
+  {
+    name: 'Guide',
+    path: '/ultimate-guide',
     subLinks: [
       { name: 'Itineraries', path: '/itineraries' },
       { name: 'Planning', path: '/planning' },
@@ -40,6 +40,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsOpen(false);
+
     setActiveDropdown(null);
     setMobileTrekOpen(false);
   }, [location]);
@@ -54,22 +55,17 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        scrolled ? 'py-4' : 'py-6'
-      }`}
+      className={`fixed top-[-10px] left-0 right-0 z-50 transition-all duration-500 ease-out py-0 ${scrolled ? 'h-14' : 'h-20'}`}
     >
       <div className={`mx-auto transition-all duration-500 ${scrolled ? 'container max-w-6xl px-4' : 'container px-6'}`}>
-        <div className={`flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'glass rounded-full px-6 py-3 shadow-lg border border-brand-200/20' : 'bg-transparent'
-        }`}>
-          <Link to="/" className="flex items-center gap-2 group z-50 relative">
-            <div className="relative">
-              <Mountain className={`w-8 h-8 transition-colors ${scrolled ? 'text-brand-600' : 'text-white'}`} />
-              <motion.div 
-                className="absolute inset-0 bg-brand-400 rounded-full blur-md -z-10 opacity-0 group-hover:opacity-40 transition-opacity"
-              />
-            </div>
-            <span className={`text-xl font-bold tracking-tighter uppercase ${scrolled ? 'text-stone-900' : 'text-white'}`}>Gokyo Explorer</span>
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'glass rounded-full px-6 py-1 shadow-lg border border-brand-200/20' : 'bg-transparent'
+          }`}>
+          <Link to="/" className="flex items-center group z-50 relative">
+            <img 
+              src="/logo.png" 
+              alt="Gokyo Explorer Logo" 
+              className={`transition-all duration-300 ${scrolled ? 'h-14 lg:h-20 my-[-6px]' : 'h-32 lg:h-44 my-[-20px] lg:my-[-28px]'} w-auto object-contain drop-shadow-md brightness-110`}
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -77,10 +73,10 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => {
               const hasSubLinks = !!link.subLinks;
               const isActive = link.path ? location.pathname === link.path : link.subLinks?.some(sub => location.pathname === sub.path);
-              
+
               if (hasSubLinks) {
                 return (
-                  <div 
+                  <div
                     key={link.name}
                     className="relative"
                     onMouseEnter={() => setActiveDropdown(link.name)}
@@ -88,29 +84,27 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.path || '#'}
-                      className={`flex items-center gap-1 relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors group ${
-                        scrolled 
-                          ? (isActive ? 'text-brand-600' : 'text-stone-600 hover:text-brand-600')
-                          : (isActive ? 'text-white' : 'text-white/80 hover:text-white')
-                      }`}
+                      className={`flex items-center gap-1 relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors group ${scrolled
+                        ? (isActive ? 'text-brand-600' : 'text-stone-600 hover:text-brand-600')
+                        : (isActive ? 'text-white' : 'text-white/80 hover:text-white')
+                        }`}
                     >
                       {link.name}
                       <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
-                      
+
                       {isActive && (
-                        <motion.div 
+                        <motion.div
                           layoutId="navbar-indicator"
                           className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full ${scrolled ? 'bg-brand-600' : 'bg-white'}`}
                           transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                         />
                       )}
                       {!isActive && (
-                        <div className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full ${
-                          scrolled ? 'bg-brand-200' : 'bg-white/40'
-                        }`} />
+                        <div className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full ${scrolled ? 'bg-brand-200' : 'bg-white/40'
+                          }`} />
                       )}
                     </Link>
-                    
+
                     {/* Dropdown Menu */}
                     <AnimatePresence>
                       {activeDropdown === link.name && (
@@ -125,11 +119,10 @@ export default function Navbar() {
                             <Link
                               key={subLink.path}
                               to={subLink.path}
-                              className={`block px-4 py-3 text-sm font-bold uppercase tracking-widest transition-colors ${
-                                location.pathname === subLink.path 
-                                  ? 'text-brand-600 bg-brand-50/50' 
-                                  : 'text-stone-600 hover:text-brand-600 hover:bg-stone-50/80'
-                              }`}
+                              className={`block px-4 py-3 text-sm font-bold uppercase tracking-widest transition-colors ${location.pathname === subLink.path
+                                ? 'text-brand-600 bg-brand-50/50'
+                                : 'text-stone-600 hover:text-brand-600 hover:bg-stone-50/80'
+                                }`}
                             >
                               {subLink.name}
                             </Link>
@@ -145,33 +138,30 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path!}
-                  className={`relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors group ${
-                    scrolled 
-                      ? (isActive ? 'text-brand-600' : 'text-stone-600 hover:text-brand-600')
-                      : (isActive ? 'text-white' : 'text-white/80 hover:text-white')
-                  }`}
+                  className={`relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors group ${scrolled
+                    ? (isActive ? 'text-brand-600' : 'text-stone-600 hover:text-brand-600')
+                    : (isActive ? 'text-white' : 'text-white/80 hover:text-white')
+                    }`}
                 >
                   {link.name}
                   {isActive && (
-                    <motion.div 
+                    <motion.div
                       layoutId="navbar-indicator"
                       className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full ${scrolled ? 'bg-brand-600' : 'bg-white'}`}
                       transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                     />
                   )}
                   {!isActive && (
-                    <div className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full ${
-                      scrolled ? 'bg-brand-200' : 'bg-white/40'
-                    }`} />
+                    <div className={`absolute bottom-0 left-0 w-full h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full ${scrolled ? 'bg-brand-200' : 'bg-white/40'
+                      }`} />
                   )}
                 </Link>
               );
             })}
             <button
               onClick={() => openBooking()}
-              className={`ml-4 px-6 py-2.5 text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-105 ${
-                scrolled ? 'bg-brand-600 text-white hover:bg-brand-700 shadow-md shadow-brand-600/20' : 'bg-white text-stone-900 hover:bg-brand-50'
-              }`}
+              className={`ml-4 px-6 py-2.5 text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-105 ${scrolled ? 'bg-brand-600 text-white hover:bg-brand-700 shadow-md shadow-brand-600/20' : 'bg-white text-stone-900 hover:bg-brand-50'
+                }`}
             >
               Book Now
             </button>
@@ -205,9 +195,12 @@ export default function Navbar() {
           >
             {/* Header bar inside mobile menu */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/10">
-              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-                <Mountain className="w-7 h-7 text-brand-400" />
-                <span className="text-lg font-bold text-white tracking-tight uppercase">Gokyo Explorer</span>
+              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
+                <img
+                  src="/logo.png"
+                  alt="Gokyo Explorer Logo"
+                  className="h-16 w-auto object-contain"
+                />
               </Link>
               <button
                 onClick={() => setIsOpen(false)}
@@ -231,11 +224,10 @@ export default function Navbar() {
                     <div className="w-full">
                       <button
                         onClick={() => setMobileTrekOpen(!mobileTrekOpen)}
-                        className={`w-full flex items-center justify-between px-4 py-4 rounded-2xl text-lg font-bold uppercase tracking-widest transition-colors ${
-                          location.pathname.startsWith('/itineraries') || location.pathname.startsWith('/planning') || location.pathname.startsWith('/safety') || location.pathname.startsWith('/places') || location.pathname.startsWith('/gear')
-                            ? 'text-brand-300 bg-brand-500/10'
-                            : 'text-white hover:bg-white/5'
-                        }`}
+                        className={`w-full flex items-center justify-between px-4 py-4 rounded-2xl text-lg font-bold uppercase tracking-widest transition-colors ${location.pathname.startsWith('/itineraries') || location.pathname.startsWith('/planning') || location.pathname.startsWith('/safety') || location.pathname.startsWith('/places') || location.pathname.startsWith('/gear')
+                          ? 'text-brand-300 bg-brand-500/10'
+                          : 'text-white hover:bg-white/5'
+                          }`}
                       >
                         <span>{link.name}</span>
                         <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileTrekOpen ? 'rotate-180 text-brand-400' : 'text-stone-500'}`} />
@@ -255,11 +247,10 @@ export default function Navbar() {
                                   key={subLink.path}
                                   to={subLink.path}
                                   onClick={() => setIsOpen(false)}
-                                  className={`px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-colors ${
-                                    location.pathname === subLink.path
-                                      ? 'bg-brand-600 text-white'
-                                      : 'bg-white/10 text-stone-300 hover:bg-white/20'
-                                  }`}
+                                  className={`px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-colors ${location.pathname === subLink.path
+                                    ? 'bg-brand-600 text-white'
+                                    : 'bg-white/10 text-stone-300 hover:bg-white/20'
+                                    }`}
                                 >
                                   {subLink.name}
                                 </Link>
@@ -273,11 +264,10 @@ export default function Navbar() {
                     <Link
                       to={link.path!}
                       onClick={() => setIsOpen(false)}
-                      className={`block px-4 py-4 rounded-2xl text-lg font-bold uppercase tracking-widest transition-colors ${
-                        location.pathname === link.path
-                          ? 'text-brand-300 bg-brand-500/10'
-                          : 'text-white hover:bg-white/5'
-                      }`}
+                      className={`block px-4 py-4 rounded-2xl text-lg font-bold uppercase tracking-widest transition-colors ${location.pathname === link.path
+                        ? 'text-brand-300 bg-brand-500/10'
+                        : 'text-white hover:bg-white/5'
+                        }`}
                     >
                       {link.name}
                     </Link>

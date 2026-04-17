@@ -5,8 +5,12 @@ import { Calendar, User, ArrowRight, Tag, Search, Clock, ChevronRight, Sparkles 
 import Section from '../components/Section';
 import FAQSection from '../components/FAQSection';
 import CustomTripBanner from '../components/CustomTripBanner';
+import Hero from '../components/Hero';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
 import { BLOG_POSTS } from '../constants';
 import { CustomItemVariants } from '../types';
+import { Mountain } from 'lucide-react';
 
 const listVariants = {
   hidden: { opacity: 0 },
@@ -31,9 +35,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], [0, 200]);
-  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.4]);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const categories = ['All', ...new Set(BLOG_POSTS.map(post => post.category).filter(Boolean) as string[])];
 
@@ -49,50 +51,45 @@ export default function Blog() {
 
   return (
     <main className="bg-stone-50 min-h-screen">
-      {/* Premium Remade Hero */}
-      <section className="relative h-[80vh] flex flex-col justify-center overflow-hidden bg-stone-950">
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ y: heroY, opacity: heroOpacity }}
-        >
-          <img
-            src="/gblog.jpg"
-            alt="Gokyo Lakes Background"
-            className="w-full h-full object-cover scale-110 blur-[2px]"
-          />
-          <div className="absolute inset-0 bg-stone-950/40" />
-        </motion.div>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent z-10" />
-
-        <div className="container mx-auto px-6 relative z-20 text-center max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark border border-white/10 text-brand-400 text-xs font-bold uppercase tracking-[0.25em] mb-8"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            The Gokyo Journal
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-8 leading-[0.9]"
-          >
-            Stories from <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-500">the Peak.</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-stone-300 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed opacity-80"
-          >
+      <Hero
+        title="Stories from the Peak."
+        subtitle="The Gokyo Journal"
+        image="/gblog.jpg"
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
             Insights, guides, and firsthand accounts from the heart of the Khumbu region. Your journey begins with knowledge.
-          </motion.p>
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Discover expert advice on altitude safety, packing essentials, and cultural etiquette to make your Himalayan adventure truly unforgettable.
+            </span>
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
         </div>
-      </section>
+
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#journal"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Start Reading
+          </a>
+          <Link
+            to="/trek"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Find a Trek
+          </Link>
+        </div>
+      </Hero>
 
       {/* Modern Sticky Filter Bar */}
       <section className="top-16 z-40 py-6 glass border-b border-stone-200/50">
@@ -124,7 +121,7 @@ export default function Blog() {
         </div>
       </section>
 
-      <Section className="py-20">
+      <Section id="journal" className="py-20">
         <AnimatePresence mode="wait">
           {filteredPosts.length > 0 ? (
             <div className="space-y-24">

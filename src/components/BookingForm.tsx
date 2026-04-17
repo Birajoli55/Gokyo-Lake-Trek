@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle2, Calendar, Users, Mountain, ArrowRight } from 'lucide-react';
 import { ITINERARY_CARDS } from '../constants';
 import { apiClient } from '../utils/apiClient';
+import { mailService } from '../utils/mailService';
 
 
 type FormStep = 'details' | 'success';
@@ -63,7 +64,21 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
         message: formData.message
       };
 
-      await apiClient.bookings.create(payload);
+
+      // Send Email Notification
+      await mailService.sendEmail({
+        subject: `New Booking: ${formData.trek}`,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        data: {
+          Trek: formData.trek,
+          Date: formData.date,
+          GroupSize: formData.people
+        }
+      });
+
       setStep('success');
     } catch (error) {
       console.error('Booking failed:', error);

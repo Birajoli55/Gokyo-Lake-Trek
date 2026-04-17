@@ -133,7 +133,7 @@ export const ITINERARY_CARDS = [
     desc: 'Fast-paced route for experienced trekkers with limited time who are already well-acclimatized.',
     difficulty: 'Challenging',
     difficultyColor: 'bg-rose-100 text-rose-700',
-    link: '/itineraries/7-days',
+    link: '/trek/7-days',
     highlights: ['Express route', 'No rest days', 'Flight contingency'],
   },
   {
@@ -142,7 +142,7 @@ export const ITINERARY_CARDS = [
     desc: 'Balanced route for those with moderate fitness levels and a tight schedule.',
     difficulty: 'Moderate',
     difficultyColor: 'bg-amber-100 text-amber-700',
-    link: '/itineraries/9-days',
+    link: '/trek/9-days',
     highlights: ['1 acclimatization day', 'Gokyo Ri summit', 'Ideal for fit beginners'],
     popular: false,
   },
@@ -152,7 +152,7 @@ export const ITINERARY_CARDS = [
     desc: 'The most recommended route with optimal acclimatization and lake exploration.',
     difficulty: 'Moderate',
     difficultyColor: 'bg-emerald-100 text-emerald-700',
-    link: '/itineraries/12-days',
+    link: '/trek/12-days',
     highlights: ['2 acclimatization days', 'Visit all 5 lakes', 'Gokyo Ri sunrise'],
     popular: true,
   },
@@ -162,7 +162,7 @@ export const ITINERARY_CARDS = [
     desc: 'Extra rest days, comfortable teahouse stops, and time to soak in every view.',
     difficulty: 'Easy-Moderate',
     difficultyColor: 'bg-sky-100 text-sky-700',
-    link: '/itineraries/15-days',
+    link: '/trek/15-days',
     highlights: ['3 rest days', 'Cultural village visits', 'Beginner-friendly'],
   },
   {
@@ -171,7 +171,7 @@ export const ITINERARY_CARDS = [
     desc: 'The ultimate Everest region double-summit adventure crossing the legendary Cho La Pass.',
     difficulty: 'Strenuous',
     difficultyColor: 'bg-orange-100 text-orange-700',
-    link: '/itineraries/gokyo-cho-la-ebc',
+    link: '/trek/18-days',
     highlights: ['Cho La Pass crossing', 'EBC visit', 'Two iconic summits'],
   },
   {
@@ -180,7 +180,7 @@ export const ITINERARY_CARDS = [
     desc: 'A quieter, scenic high-pass route with stunning panoramas over the Gokyo Valley.',
     difficulty: 'Challenging',
     difficultyColor: 'bg-purple-100 text-purple-700',
-    link: '/itineraries/gokyo-renjo-la',
+    link: '/trek/20-days',
     highlights: ['Renjo La Pass 5360m', 'Remote trail', 'Fewest crowds'],
   },
 ];

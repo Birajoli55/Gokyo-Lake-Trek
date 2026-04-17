@@ -50,13 +50,6 @@ export const apiClient = {
         getById: async (token: string, id: string) => {
             return apiClient.request(`/bookings/${id}`, { token });
         },
-        create: async (data: any, token?: string) => {
-            return apiClient.request('/bookings', {
-                token,
-                method: 'POST',
-                body: JSON.stringify(data),
-            });
-        },
         update: async (token: string, id: string, data: any) => {
             return apiClient.request(`/bookings/${id}`, {
                 token,

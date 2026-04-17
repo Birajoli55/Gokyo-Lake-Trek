@@ -73,7 +73,7 @@ export default function Hero({ title, subtitle, image, height = 'min-h-[90vh]', 
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
           }}
-          className="max-w-5xl mx-auto space-y-6 flex flex-col items-center"
+          className="max-w-5xl mx-auto space-y-10 flex flex-col items-center"
         >
           {topContent && (
             <motion.div variants={letterVariants}>

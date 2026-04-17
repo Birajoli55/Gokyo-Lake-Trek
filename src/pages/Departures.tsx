@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, Users, Clock, Mountain, CheckCircle2, ArrowRight, AlertCircle, Star } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
@@ -6,6 +7,8 @@ import Hero from '../components/Hero';
 import Section from '../components/Section';
 import FAQSection from '../components/FAQSection';
 import CustomTripBanner from '../components/CustomTripBanner';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
 import { CustomItemVariants } from '../types';
 
 const fadeInUp: CustomItemVariants = {
@@ -225,6 +228,7 @@ const difficultyColors: Record<string, string> = {
 
 export default function Departures() {
   const { openBooking } = useBooking();
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <main className="bg-stone-50 overflow-hidden">
@@ -233,9 +237,27 @@ export default function Departures() {
         title="Trek Departures"
         subtitle="Scheduled Group Departures for 2026"
         image="/GokyoThirdLake.jpg"
-        height="h-[65vh]"
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
       >
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 pb-16">
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Join a community of like-minded adventurers. Our fixed departures offer the perfect opportunity to witness the turquoise lakes of Gokyo with a supportive team and expert Sherpa guides.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Choose from our carefully curated dates designed to align with the best weather windows for clear views of Everest and the surrounding peaks. Every departure is 100% guaranteed to run, ensuring your travel plans remain secure and your Himalayan dreams become reality.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
+
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#schedule"
             className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
@@ -244,7 +266,7 @@ export default function Departures() {
           </a>
           <Link
             to="/contact"
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white/20 transition-colors"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
           >
             Custom Date
           </Link>
@@ -314,9 +336,8 @@ export default function Departures() {
                     <motion.div
                       key={dep.id}
                       variants={fadeInUp}
-                      className={`bg-white rounded-[28px] border shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ${
-                        dep.status === 'Full' ? 'opacity-60 border-stone-200' : 'border-stone-200 hover:border-brand-300'
-                      }`}
+                      className={`bg-white rounded-[28px] border shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ${dep.status === 'Full' ? 'opacity-60 border-stone-200' : 'border-stone-200 hover:border-brand-300'
+                        }`}
                     >
                       <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center">
                         {/* Left: Details */}

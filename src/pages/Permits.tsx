@@ -1,19 +1,59 @@
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import CustomTripBanner from '../components/CustomTripBanner';
-import { FileText, DollarSign, Info, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { FileText, DollarSign, Info, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 import FAQSection from '../components/FAQSection';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Permits() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <main className="bg-stone-50">
       <Hero 
         title="Permits & Costs" 
         subtitle="The Logistics"
         image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Transparency is key to a stress-free adventure. We break down every required permit, entry fee, and estimated daily expense so you can budget with confidence.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Our team handles all the heavy lifting of permit applications and government coordination, ensuring you have the legal right to trek through the world's most stunning protected landscapes.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
 
-      <Section title="Required Permits" subtitle="Documentation">
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#required-permits"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            See Permit Details
+          </a>
+          <Link
+            to="/contact"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Ask a Question
+          </Link>
+        </div>
+      </Hero>
+
+      <Section id="required-permits" title="Required Permits" subtitle="Documentation">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <p className="text-stone-600 text-lg leading-relaxed">

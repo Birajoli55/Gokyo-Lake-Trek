@@ -1,8 +1,16 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Mountain, ShieldCheck, Heart, Award, Users, Leaf, Sparkles, MapPin, Globe, History } from 'lucide-react';
+import { Mountain, ShieldCheck, Heart, Award, Users, Leaf, Sparkles, MapPin, Globe, History, ArrowRight, Star } from 'lucide-react';
 import Section from '../components/Section';
 import FAQSection from '../components/FAQSection';
 import CustomTripBanner from '../components/CustomTripBanner';
+import Hero from '../components/Hero';
+import ReviewBadge from '../components/ReviewBadge';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import TrustBar from '../components/TrustBar';
+import PressAwardsBanner from '../components/PressAwardsBanner';
+import UserProofBadge from '../components/UserProofBadge';
+
 
 const team = [
   {
@@ -36,57 +44,49 @@ const stats = [
 ];
 
 export default function About() {
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], [0, 200]);
-  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.4]);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <main className="bg-stone-50 min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] flex flex-col justify-center overflow-hidden bg-stone-950">
-        <motion.div 
-          className="absolute inset-0 z-0"
-          style={{ y: heroY, opacity: heroOpacity }}
-        >
-          <img 
-            src="/gokyori.png" 
-            alt="Gokyo Lakes Heritage" 
-            className="w-full h-full object-cover scale-110 blur-[1px]"
-          />
-          <div className="absolute inset-0 bg-stone-950/50" />
-        </motion.div>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent z-10" />
-
-        <div className="container mx-auto px-6 relative z-20 text-center max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark border border-white/10 text-brand-400 text-xs font-bold uppercase tracking-[0.25em] mb-8"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            Our Legacy
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-8 leading-[0.9]"
-          >
-            Deep Roots. <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-500">High Peaks.</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-stone-300 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed opacity-80"
-          >
+      <Hero
+        title="Deep Roots. High Peaks."
+        subtitle="Our Legacy"
+        image="/gokyori.png"
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
             Born in the heart of the Khumbu, we are more than a trekking company. We are the stewards of the Gokyo trail.
-          </motion.p>
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Our journey began with a simple passion for the mountains and has grown into a lifelong commitment to preserving the beauty and culture of the Himalayas.
+            </span>
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
         </div>
-      </section>
+        <UserProofBadge />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <Link
+            to="/trek"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Explore Trek
+          </Link>
+          <Link
+            to="/contact"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Talk to an Expert
+          </Link>
+        </div>
 
+      </Hero>
+      <TrustBar />
       {/* Our Story Section */}
       <Section className="py-24 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -134,15 +134,15 @@ export default function About() {
               className="relative"
             >
               <div className="aspect-[4/5] rounded-[48px] overflow-hidden shadow-2xl relative z-10">
-                <img 
-                  src="/tuphanSherpa.png" 
-                  alt="Tuphan Sherpa in the mountains" 
+                <img
+                  src="/tuphanSherpa.png"
+                  alt="Tuphan Sherpa in the mountains"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 to-transparent" />
                 <div className="absolute bottom-10 left-10 text-white">
                   <div className="text-sm font-bold uppercase tracking-widest opacity-80 mb-2">The Founder</div>
-                  <div className="text-2xl font-bold">Tuphan Sherpa</div>   
+                  <div className="text-2xl font-bold">Tuphan Sherpa</div>
                 </div>
               </div>
               {/* Decorative elements */}
@@ -224,9 +224,9 @@ export default function About() {
                 className="group"
               >
                 <div className="aspect-[3/4] rounded-[40px] overflow-hidden mb-8 relative">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
+                  <img
+                    src={member.image}
+                    alt={member.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-6 left-6 px-4 py-1.5 glass rounded-full text-[10px] font-bold uppercase tracking-widest text-stone-900">
@@ -245,7 +245,67 @@ export default function About() {
       <FAQSection className="bg-stone-50 py-24" />
 
       <section className="bg-stone-100 py-20">
+
         <CustomTripBanner />
+        <Section title="Voices from the Trail" subtitle="Testimonials" className="py-24 bg-stone-50">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                name: "Sarah Jenkins",
+                role: "Photographer",
+                image: "/avatar-marcus.png",
+                text: "The sheer color of the Gokyo lakes defies imagination. Waking up to see the reflection of Cho Oyu on the water was the highlight of my trekking life. The guides were simply phenomenal."
+              },
+              {
+                name: "Marcus V.",
+                role: "Adventure Enthusiast",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
+                text: "I did EBC three years ago, but Gokyo felt much more intimate and wild. The ascent to Gokyo Ri was tough, but standing at the top alone with my group was an unmatched feeling."
+              },
+              {
+                name: "Elena Rodriguez",
+                role: "First-time Trekker",
+                image: "/avatar-sarah.png",
+                text: "I was extremely nervous about the altitude, but the acclimatization schedule built into our itinerary was perfect. I felt strong the entire time thanks to the incredible support team."
+              }
+            ].map((review, i) => (
+              <motion.div
+                key={review.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                className="group bg-white p-10 rounded-[40px] shadow-2xl shadow-stone-900/5 border border-stone-100 flex flex-col items-start text-left hover:-translate-y-2 transition-all duration-500 hover:shadow-brand-600/5 relative overflow-hidden"
+              >
+                {/* Verified Badge Header */}
+                <div className="flex items-center gap-2 mb-8 w-full justify-between">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />)}
+                  </div>
+                  <div className="flex items-center gap-1.5 px-3 py-1 bg-emerald-50 rounded-full">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-[10px] font-black text-emerald-700 uppercase tracking-widest">Verified Guest</span>
+                  </div>
+                </div>
+
+                <div className="flex-grow mb-8">
+                  <p className="text-stone-800 text-[17px] leading-[1.6] font-medium italic">"{review.text}"</p>
+                </div>
+
+                <div className="flex items-center gap-4 pt-6 border-t border-stone-100 w-full">
+                  <img src={review.image} className="w-16 h-16 rounded-full object-cover ring-4 ring-stone-50" alt={review.name} />
+                  <div>
+                    <h4 className="text-stone-900 font-black text-base tracking-tight">{review.name}</h4>
+                    <span className="text-stone-400 text-xs font-bold uppercase tracking-widest">{review.role}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+
+
+        <PressAwardsBanner />
       </section>
     </main>
   );

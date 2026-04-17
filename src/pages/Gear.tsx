@@ -1,20 +1,62 @@
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import CustomTripBanner from '../components/CustomTripBanner';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import GearSection from '../components/GearSection';
 import FAQSection from '../components/FAQSection';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Gear() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <main className="bg-stone-50">
       <Hero
         title="Gear Guide"
         subtitle="Packing for Success"
         image="/gear.png"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            The right equipment is the foundation of a safe and comfortable trek. From technical layering to broken-in boots, our comprehensive guide ensures you are prepared for every Himalayan condition.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}We provide detailed checklists for every season, along with expert advice on what to buy, what to rent in Kathmandu, and how to pack efficiently for the high-altitude environment.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
 
-      <GearSection />
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#gear-section"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            See Checklist
+          </a>
+          <Link
+            to="/contact"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Gear Questions
+          </Link>
+        </div>
+      </Hero>
+
+      <div id="gear-section">
+        <GearSection />
+      </div>
 
       <Section title="Key Gear Insights" subtitle="Expert Tips" dark>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

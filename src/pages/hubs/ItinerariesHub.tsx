@@ -33,7 +33,7 @@ export default function ItinerariesHub() {
     <main className="bg-stone-50">
       {/* Parallax Hero */}
       <section className="relative h-[72vh] flex flex-col justify-center overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/bento-view.png)', y: heroY, opacity: heroOpacity }}
         />

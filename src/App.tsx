@@ -29,13 +29,13 @@ import FirstAid from './pages/safety/FirstAid';
 import EmergencyContacts from './pages/safety/EmergencyContacts';
 import SafetyHub from './pages/hubs/SafetyHub';
 import PlacesHub from './pages/hubs/PlacesHub';
-import Itinerary12Days from './pages/itineraries/Itinerary12Days';
-import Itinerary7Days from './pages/itineraries/Itinerary7Days';
-import Itinerary9Days from './pages/itineraries/Itinerary9Days';
-import Itinerary15Days from './pages/itineraries/Itinerary15Days';
-import ItineraryGokyoChoLaEBC from './pages/itineraries/ItineraryGokyoChoLaEBC';
-import ItineraryGokyoRenjoLa from './pages/itineraries/ItineraryGokyoRenjoLa';
-import ItineraryEBC14Days from './pages/itineraries/ItineraryEBC14Days';
+import Trek12Days from './pages/trek-days/Trek12Days';
+import Trek7Days from './pages/trek-days/Trek7Days';
+import Trek9Days from './pages/trek-days/Trek9Days';
+import Trek15Days from './pages/trek-days/Trek15Days';
+import Trek18Days from './pages/trek-days/Trek18Days';
+import Trek20Days from './pages/trek-days/Trek20Days';
+
 import AltitudeSickness from './pages/safety/AltitudeSickness';
 import NamcheBazaar from './pages/places/NamcheBazaar';
 import GokyoVillage from './pages/places/GokyoVillage';
@@ -72,8 +72,8 @@ export default function App() {
               <Routes>
                 {/* Admin Routes */}
                 <Route path="/admin/login" element={<AdminLogin />} />
-                <Route 
-                  path="/admin/*" 
+                <Route
+                  path="/admin/*"
                   element={
                     <ProtectedAdminRoute>
                       <Routes>
@@ -86,54 +86,53 @@ export default function App() {
                         </Route>
                       </Routes>
                     </ProtectedAdminRoute>
-                  } 
+                  }
                 />
 
                 {/* Main Routes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/trek" element={<Trek />} />
-              <Route path="/departures" element={<Departures />} />
-              <Route path="/gokyo-lake-trek" element={<UltimateGuide />} />
-              <Route path="/itineraries" element={<ItinerariesHub />} />
-              <Route path="/itineraries/12-days" element={<Itinerary12Days />} />
-              <Route path="/itineraries/7-days" element={<Itinerary7Days />} />
-              <Route path="/itineraries/9-days" element={<Itinerary9Days />} />
-              <Route path="/itineraries/15-days" element={<Itinerary15Days />} />
-              <Route path="/itineraries/ebc-14-days" element={<ItineraryEBC14Days />} />
-              <Route path="/itineraries/gokyo-cho-la-ebc" element={<ItineraryGokyoChoLaEBC />} />
-              <Route path="/itineraries/gokyo-renjo-la" element={<ItineraryGokyoRenjoLa />} />
-              <Route path="/planning" element={<PlanningHub />} />
-              <Route path="/planning/permits-fees" element={<Permits />} />
-              <Route path="/planning/cost-breakdown" element={<CostBreakdown />} />
-              <Route path="/planning/budget-calculator" element={<BudgetCalculator />} />
-              <Route path="/planning/best-time-to-visit" element={<BestTime />} />
-              <Route path="/planning/flights" element={<Flights />} />
-              <Route path="/planning/food-water" element={<FoodWater />} />
-              <Route path="/safety" element={<SafetyHub />} />
-              <Route path="/safety/altitude-sickness" element={<AltitudeSickness />} />
-              <Route path="/safety/travel-insurance" element={<Insurance />} />
-              <Route path="/safety/first-aid" element={<FirstAid />} />
-              <Route path="/safety/emergency-contacts" element={<EmergencyContacts />} />
-              <Route path="/places" element={<PlacesHub />} />
-              <Route path="/places/namche-bazaar" element={<NamcheBazaar />} />
-              <Route path="/places/gokyo-village" element={<GokyoVillage />} />
-              <Route path="/places/lukla" element={<Lukla />} />
-              <Route path="/places/phortse" element={<Phortse />} />
-              <Route path="/places/machhermo" element={<Machhermo />} />
-              <Route path="/places/gokyo-ri" element={<GokyoRi />} />
-              <Route path="/gear" element={<Gear />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<ArticleDetail />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<div className="flex-grow flex items-center justify-center p-24 text-center"><h1 className="text-4xl font-bold text-stone-900">404 - Route Not Found. If you just saw a white screen, try refreshing the page!</h1></div>} />
-            </Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/trek" element={<Trek />} />
+                <Route path="/departures" element={<Departures />} />
+                <Route path="/ultimate-guide" element={<UltimateGuide />} />
+                <Route path="/itineraries" element={<ItinerariesHub />} />
+                <Route path="/trek/12-days" element={<Trek12Days />} />
+                <Route path="/trek/7-days" element={<Trek7Days />} />
+                <Route path="/trek/9-days" element={<Trek9Days />} />
+                <Route path="/trek/15-days" element={<Trek15Days />} />
+                <Route path="/trek/18-days" element={<Trek18Days />} />
+                <Route path="/trek/20-days" element={<Trek20Days />} />
+                <Route path="/planning" element={<PlanningHub />} />
+                <Route path="/planning/permits-fees" element={<Permits />} />
+                <Route path="/planning/cost-breakdown" element={<CostBreakdown />} />
+                <Route path="/planning/budget-calculator" element={<BudgetCalculator />} />
+                <Route path="/planning/best-time-to-visit" element={<BestTime />} />
+                <Route path="/planning/flights" element={<Flights />} />
+                <Route path="/planning/food-water" element={<FoodWater />} />
+                <Route path="/safety" element={<SafetyHub />} />
+                <Route path="/safety/altitude-sickness" element={<AltitudeSickness />} />
+                <Route path="/safety/travel-insurance" element={<Insurance />} />
+                <Route path="/safety/first-aid" element={<FirstAid />} />
+                <Route path="/safety/emergency-contacts" element={<EmergencyContacts />} />
+                <Route path="/places" element={<PlacesHub />} />
+                <Route path="/places/namche-bazaar" element={<NamcheBazaar />} />
+                <Route path="/places/gokyo-village" element={<GokyoVillage />} />
+                <Route path="/places/lukla" element={<Lukla />} />
+                <Route path="/places/phortse" element={<Phortse />} />
+                <Route path="/places/machhermo" element={<Machhermo />} />
+                <Route path="/places/gokyo-ri" element={<GokyoRi />} />
+                <Route path="/gear" element={<Gear />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<ArticleDetail />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<div className="flex-grow flex items-center justify-center p-24 text-center"><h1 className="text-4xl font-bold text-stone-900">404 - Route Not Found. If you just saw a white screen, try refreshing the page!</h1></div>} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-        <BookingModal />
-      </Router>
-    </BookingProvider>
+          <BookingModal />
+        </Router>
+      </BookingProvider>
     </AdminProvider>
   );
 }

@@ -3,11 +3,16 @@ import Section from '../components/Section';
 import FAQSection from '../components/FAQSection';
 import CustomTripBanner from '../components/CustomTripBanner';
 import { ITINERARIES } from '../constants';
-import { MapPin, Clock, Mountain, ChevronRight } from 'lucide-react';
+import { MapPin, Clock, Mountain, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
+import { useState } from 'react';
 
 export default function Itineraries() {
   const itinerary = ITINERARIES[0];
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <main className="bg-stone-50">
@@ -15,9 +20,44 @@ export default function Itineraries() {
         title="Trek Itineraries" 
         subtitle="The Path Ahead"
         image="/itineraries.png"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            The journey to Gokyo is more than just a walk; it's a carefully crafted adventure through some of the most dramatic landscapes on Earth.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}From the gentle riverside trails of the lower valley to the lung-busting ascent of Gokyo Ri, our itineraries are optimized for safety, scenery, and soul-stirring cultural immersion.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
 
-      <Section title={itinerary.name} subtitle="Classic Route">
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#classic-route"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Classic Itinerary
+          </a>
+          <Link
+            to="/itineraries/gokyo-cho-la-ebc"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Alternative Routes
+          </Link>
+        </div>
+      </Hero>
+
+      <div id="classic-route">
+        <Section title={itinerary.name} subtitle="Classic Route">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           {/* Sidebar Info */}
           <div className="lg:col-span-1 space-y-8">
@@ -98,6 +138,7 @@ export default function Itineraries() {
           </div>
         </div>
       </Section>
+      </div>
 
       {/* Alternative Routes */}
       <Section title="Alternative Routes" subtitle="Variations" dark>

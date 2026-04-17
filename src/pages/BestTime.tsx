@@ -4,6 +4,9 @@ import CustomTripBanner from '../components/CustomTripBanner';
 import { Sun, Cloud, Snowflake, CloudRain, CheckCircle2, Calendar, Thermometer, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
+import { useState } from 'react';
 
 const MONTHS = [
   { name: 'January', season: 'Winter', temp: '-15°C to -5°C', status: 'Challenging', link: '/best-time/january' },
@@ -21,15 +24,52 @@ const MONTHS = [
 ];
 
 export default function BestTime() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <main className="bg-stone-50">
       <Hero 
         title="Best Time to Visit" 
         subtitle="Monthly Guide to Gokyo Lakes"
         image="/besttime.jpg"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Timing is everything when it comes to the Himalayas. Choosing the right month can mean the difference between crystal clear views and cloud-covered peaks.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Whether you're looking for the blooming rhododendrons of spring or the sharp visibility and quiet trails of autumn, our seasonal guide helps you pick the perfect window for your adventure.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
 
-      <Section title="The Four Seasons" subtitle="Weather">
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#seasons"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Seasonal Overview
+          </a>
+          <Link
+            to="/itineraries"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg flex items-center gap-2"
+          >
+            Explore Routes <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </Hero>
+
+      <div id="seasons">
+        <Section title="The Four Seasons" subtitle="Weather">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             { 
@@ -70,6 +110,7 @@ export default function BestTime() {
           ))}
         </div>
       </Section>
+      </div>
 
       <Section title="Monthly Breakdown" subtitle="Detailed Guides" className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

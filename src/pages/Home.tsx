@@ -202,8 +202,8 @@ export default function Home() {
             <img src="gokyori.png" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Epic views" />
             <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/20 to-transparent" />
             <div className="absolute bottom-10 left-10 right-10">
-              <div className="glass-dark inline-flex p-3 rounded-2xl mb-4 backdrop-blur-md">
-                <Mountain className="w-6 h-6 text-brand-400" />
+              <div className="glass-dark inline-flex p-2 rounded-2xl mb-4 backdrop-blur-md">
+                <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
               </div>
               <h3 className="text-3xl font-black text-white mb-2 tracking-tight">Epic Panoramas</h3>
               <p className="text-stone-300 text-lg max-w-lg leading-relaxed">See four of the world's highest peaks in one incredible 360-degree sweep from Gokyo Ri.</p>

@@ -5,6 +5,9 @@ import Hero from '../components/Hero';
 import Section from '../components/Section';
 import FAQSection from '../components/FAQSection';
 import CustomTripBanner from '../components/CustomTripBanner';
+import ReviewBadge from '../components/ReviewBadge';
+import UserProofBadge from '../components/UserProofBadge';
+import { useState } from 'react';
 import { CustomItemVariants } from '../types';
 
 const fadeInUp: CustomItemVariants = {
@@ -30,7 +33,7 @@ const PACKAGES = [
     highlights: ['Lukla to Gokyo direct route', 'Gokyo Ri summit (5,357m)', 'Minimal acclimatization days'],
     icon: Zap,
     image: '/machhermo.jpg',
-    link: '/itineraries/7-days',
+    link: '/trek/7-days',
     featured: false,
   },
   {
@@ -45,7 +48,7 @@ const PACKAGES = [
     highlights: ['Extra acclimatization in Namche', 'Gokyo Ri & Ngozumpa Glacier', 'Five Sacred Lakes visit'],
     icon: TrendingUp,
     image: '/bento-view.png',
-    link: '/itineraries/9-days',
+    link: '/trek/9-days',
     featured: false,
   },
   {
@@ -65,7 +68,7 @@ const PACKAGES = [
     ],
     icon: Star,
     image: '/besttime.jpg',
-    link: '/itineraries/12-days',
+    link: '/trek/12-days',
     featured: true,
   },
   {
@@ -84,7 +87,7 @@ const PACKAGES = [
     ],
     icon: Shield,
     image: 'Gokyo-Lake-1726987182.jpg',
-    link: '/itineraries/15-days',
+    link: '/trek/15-days',
     featured: false,
   },
   {
@@ -104,7 +107,7 @@ const PACKAGES = [
     ],
     icon: Flame,
     image: '/18day.png',
-    link: '/itineraries/gokyo-cho-la-ebc',
+    link: '/trek/18-days',
     featured: false,
   },
   {
@@ -124,7 +127,7 @@ const PACKAGES = [
     ],
     icon: Map,
     image: '/RenjoLaPass.jpg',
-    link: '/itineraries/gokyo-renjo-la',
+    link: '/trek/20-days',
     featured: false,
   },
 ];
@@ -139,6 +142,8 @@ const COMPARISON = [
 ];
 
 export default function Trek() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <main className="bg-stone-50 overflow-hidden">
       {/* Hero */}
@@ -146,8 +151,26 @@ export default function Trek() {
         title="Gokyo Lake Trek"
         subtitle="Choose Your Adventure"
         image="/trek.jpg"
-        height="h-[75vh]"
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
       >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Discover the perfect itinerary for your Himalayan journey. From rapid express treks to comprehensive grand circuits, we have a route tailored to your experience and timeline.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Whether you are looking for the classic 12-day experience or the ultimate challenge of crossing the Cho La Pass, our Sherpa-led teams ensure your safety and comfort at every step.
+            </span>
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
+
+        <UserProofBadge />
+
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#packages"
@@ -157,7 +180,7 @@ export default function Trek() {
           </a>
           <Link
             to="/contact"
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white/20 transition-colors"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
           >
             Talk to an Expert
           </Link>
@@ -203,11 +226,10 @@ export default function Trek() {
               <motion.div
                 key={pkg.days}
                 variants={fadeInUp}
-                className={`relative group rounded-[32px] overflow-hidden shadow-lg border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
-                  pkg.featured
-                    ? 'border-brand-500 shadow-brand-500/20'
-                    : 'border-stone-200 hover:border-brand-300'
-                }`}
+                className={`relative group rounded-[32px] overflow-hidden shadow-lg border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${pkg.featured
+                  ? 'border-brand-500 shadow-brand-500/20'
+                  : 'border-stone-200 hover:border-brand-300'
+                  }`}
               >
                 {/* Featured Badge */}
                 {pkg.featured && (
@@ -264,11 +286,10 @@ export default function Trek() {
 
                   <Link
                     to={pkg.link}
-                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${
-                      pkg.featured
-                        ? 'bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-600/30'
-                        : 'bg-stone-100 text-stone-900 hover:bg-brand-600 hover:text-white'
-                    }`}
+                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${pkg.featured
+                      ? 'bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-600/30'
+                      : 'bg-stone-100 text-stone-900 hover:bg-brand-600 hover:text-white'
+                      }`}
                   >
                     View Plan <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -309,9 +330,8 @@ export default function Trek() {
                   {row.values.map((val, j) => (
                     <td
                       key={j}
-                      className={`py-4 px-4 text-center text-sm font-bold ${
-                        PACKAGES[j].featured ? 'text-brand-600' : 'text-stone-700'
-                      }`}
+                      className={`py-4 px-4 text-center text-sm font-bold ${PACKAGES[j].featured ? 'text-brand-600' : 'text-stone-700'
+                        }`}
                     >
                       {val}
                     </td>

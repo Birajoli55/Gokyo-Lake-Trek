@@ -5,6 +5,8 @@ import FAQSection from '../../components/FAQSection';
 import CustomTripBanner from '../../components/CustomTripBanner';
 import { Calculator, Users, Calendar, Star, DollarSign, Info, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import ReviewBadge from '../../components/ReviewBadge';
+import UserProofBadge from '../../components/UserProofBadge';
 
 const PERMIT_COST = 50; // Total for both permits approx
 const FLIGHT_COST = 360; // Round trip KTM-LUK-KTM approx
@@ -16,6 +18,7 @@ const LUXURY_LEVELS = [
 ];
 
 export default function BudgetCalculator() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [days, setDays] = useState(12);
   const [people, setPeople] = useState(1);
   const [luxury, setLuxury] = useState('standard');
@@ -40,7 +43,42 @@ export default function BudgetCalculator() {
         title="Budget Calculator" 
         subtitle="Estimate Your Gokyo Lakes Trek Expenses"
         image="/phortse.jpg"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Planning your Himalayan budget shouldn't be a mountain of a task. Our interactive calculator puts precise financial planning at your fingertips.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}Adjust your duration, group size, and comfort level to instantly see a comprehensive estimate of your total expedition costs, from mountain flights to daily teahouse expenses.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
+
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#calculator"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Start Calculating
+          </a>
+          <button
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Cost Breakdown
+          </button>
+        </div>
+      </Hero>
+
+      <div id="calculator" className="scroll-mt-20">
 
       <Section title="Plan Your Expenses" subtitle="Interactive Tool">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
@@ -226,6 +264,7 @@ export default function BudgetCalculator() {
 
       <FAQSection category="Preparation" className="py-24 bg-stone-50" />
 
+      </div>
       <CustomTripBanner />
     </main>
   );

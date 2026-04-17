@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import FAQSection from '../../components/FAQSection';
 import CustomTripBanner from '../../components/CustomTripBanner';
 import { Heart, Activity, Shield, Info, ArrowRight, CheckCircle2, AlertTriangle, Thermometer, Pill } from 'lucide-react';
+import ReviewBadge from '../../components/ReviewBadge';
+import UserProofBadge from '../../components/UserProofBadge';
 
 const MEDICAL_KIT = [
   { category: 'Medication', items: ['Diamox (Acetazolamide)', 'Ibuprofen/Paracetamol', 'Imodium (Anti-diarrheal)', 'Ciprofloxacin (Antibiotic)', 'Oral Rehydration Salts'] },
@@ -10,13 +13,50 @@ const MEDICAL_KIT = [
 ];
 
 export default function FirstAid() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <main className="bg-stone-50">
       <Hero
         title="First Aid & Health"
         subtitle="Staying Healthy on the Gokyo Lakes Trail"
         image="/fah.png"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Maintaining your health is the single most important factor for a successful Himalayan journey.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}From assembling a specialized medical kit to mastering high-altitude hygiene, our comprehensive health guide provides the essential knowledge and preparation strategies needed to stay energized and resilient on the Gokyo trail.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
+
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#health"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Medical Kit Essentials
+          </a>
+          <button
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Health Tips
+          </button>
+        </div>
+      </Hero>
+
+      <div id="health" className="scroll-mt-20">
 
       <Section title="Health & Well-being" subtitle="Safety & Health">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -86,6 +126,7 @@ export default function FirstAid() {
         </div>
       </Section>
 
+      </div>
       <FAQSection category="Safety" className="py-24 bg-stone-50" />
 
       <CustomTripBanner />

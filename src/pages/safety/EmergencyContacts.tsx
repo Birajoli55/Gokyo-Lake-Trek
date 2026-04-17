@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import CustomTripBanner from '../../components/CustomTripBanner';
 import { Phone, PhoneCall, AlertTriangle, ShieldAlert, Building, Navigation, ArrowRight, AlertCircle, Copy, Check, Info, CheckCircle2, Shield, MapPin, Heart } from 'lucide-react';
+import ReviewBadge from '../../components/ReviewBadge';
+import UserProofBadge from '../../components/UserProofBadge';
 
 const CONTACTS = [
   { category: 'Rescue Services', items: ['Himalayan Rescue Association (HRA): +977-1-4440292', 'Nepal Police (Emergency): 100', 'Tourist Police (Kathmandu): +977-1-4247041'] },
@@ -10,13 +13,50 @@ const CONTACTS = [
 ];
 
 export default function EmergencyContacts() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <main className="bg-stone-50">
       <Hero
         title="Emergency Contacts"
         subtitle="Crucial Information for Your Safety"
         image="/emcall.png"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Safety in the Himalayas begins with preparation. Carrying a definitive list of emergency contacts is a non-negotiable requirement for every trekker.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}From the Himalayan Rescue Association to specialized mountain hospitals, having immediate access to these lifelines ensures that help is always within reach, even in the most remote corners of the Khumbu.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
+
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <a
+            href="#contacts"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Emergency Numbers
+          </a>
+          <button
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Rescue Protocol
+          </button>
+        </div>
+      </Hero>
+
+      <div id="contacts" className="scroll-mt-20">
 
       <Section title="Stay Connected" subtitle="Safety & Health">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -85,6 +125,7 @@ export default function EmergencyContacts() {
         </div>
       </Section>
 
+      </div>
       <CustomTripBanner />
     </main>
   );

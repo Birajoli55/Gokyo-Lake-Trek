@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mountain, Instagram, Twitter, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -7,9 +7,12 @@ export default function Footer() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* Brand */}
         <div className="space-y-6">
-          <Link to="/" className="flex items-center gap-2 group">
-            <Mountain className="w-8 h-8 text-brand-400" />
-            <span className="text-xl font-bold tracking-tighter uppercase text-white">Gokyo Explorer</span>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src="/logo.png" 
+              alt="Gokyo Explorer Logo" 
+              className="h-32 lg:h-48 w-auto object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 drop-shadow-md" 
+            />
           </Link>
           <p className="text-sm leading-relaxed max-w-xs">
             Experience the majesty of the Himalayas with our expert-led treks to the pristine Gokyo Lakes. 
@@ -35,7 +38,7 @@ export default function Footer() {
             {[
               { name: 'About Us', path: '/about' },
               { name: 'Ultimate Guide', path: '/gokyo-lake-trek' },
-              { name: 'Itineraries', path: '/itineraries' },
+              { name: 'Trek Days', path: '/itineraries' },
               { name: 'Planning Hub', path: '/planning' },
               { name: 'Places & Stops', path: '/places' },
               { name: 'Gear Guide', path: '/gear' },
@@ -64,11 +67,11 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3 text-sm">
               <Phone className="w-5 h-5 text-brand-500 shrink-0" />
-              <span>+977 1 4412345</span>
+              <a href="tel:+9779748343015" className="hover:text-brand-400 transition-colors">+977-9748343015</a>
             </li>
             <li className="flex items-center gap-3 text-sm">
               <Mail className="w-5 h-5 text-brand-500 shrink-0" />
-              <span>info@gokyoexplorer.com</span>
+              <a href="mailto:msm47374@gmail.com" className="hover:text-brand-400 transition-colors">msm47374@gmail.com</a>
             </li>
           </ul>
         </div>

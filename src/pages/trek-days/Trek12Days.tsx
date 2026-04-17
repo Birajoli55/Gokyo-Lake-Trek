@@ -9,8 +9,13 @@ import {
 } from 'lucide-react';
 import { useBooking } from '../../context/BookingContext';
 import ItineraryDayCard from '../../components/ItineraryDayCard';
+import AltitudeGraph, { AltitudeDataPoint } from '../../components/AltitudeGraph';
+import ReviewBadge from '../../components/ReviewBadge';
+import UserProofBadge from '../../components/UserProofBadge';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import InteractiveTrekMap from '../../components/InteractiveTrekMap';
 
 const ITINERARY_DAYS = [
   {
@@ -182,9 +187,16 @@ const PACKING_LIST = [
   }
 ];
 
-export default function Itinerary12Days() {
+export default function Trek12Days() {
   const { openBooking } = useBooking();
+
+  const altitudeData: AltitudeDataPoint[] = ITINERARY_DAYS.map(day => ({
+    day: day.day,
+    title: day.title,
+    altitude: parseInt(day.altitude.replace(/,/g, ''), 10) || 1300
+  }));
   const [activeDay, setActiveDay] = useState<number | null>(1);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <main className="bg-stone-50 overflow-x-clip">
@@ -192,7 +204,41 @@ export default function Itinerary12Days() {
         title="12-Day Gokyo Lakes Trek"
         subtitle="The Classic Route for Optimal Acclimatization"
         image="/12day.jpg"
-      />
+        height="h-[100vh]"
+        topContent={<ReviewBadge />}
+      >
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
+            Our most popular and recommended itinerary. Carefully paced over 12 days to ensure maximum safety through optimal acclimatization while soaking in every turquoise wonder of the Gokyo valley.
+            <span className={`transition-all duration-700 ${isExpanded ? 'opacity-100' : 'opacity-0 h-0 w-0 pointer-events-none inline-block overflow-hidden'}`}>
+              {" "}From the legendary Lukla flight to the spiritual heights of Gokyo Ri, this journey is the definitive Himalayan experience for those who want to see it all without rushing.
+            </span>
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-brand-400 font-bold hover:text-white transition-colors underline decoration-brand-400/30 underline-offset-4 text-base inline-flex items-center gap-1 group/more focus:outline-none"
+            >
+              {isExpanded ? 'See Less' : 'See More'} <ArrowRight className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-[-90deg]' : ''}`} />
+            </button>
+          </p>
+        </div>
+
+        <UserProofBadge />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <button
+            onClick={() => openBooking('Classic Gokyo Lakes (12 Days)')}
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            Book This Trek
+          </button>
+          <Link
+            to="/contact"
+            className="px-8 py-4 bg-transparent border-2 border-white/60 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-stone-900 transition-all shadow-lg"
+          >
+            Ask a Question
+          </Link>
+        </div>
+      </Hero>
 
       {/* Introduction */}
       <Section className="pt-24 pb-12">
@@ -281,6 +327,17 @@ export default function Itinerary12Days() {
         </div>
       </Section>
 
+      {/* Interactive Trek Map */}
+      <Section title="Trek Route Map" subtitle="Visualize Your Himalayan Journey" className="py-24">
+        <InteractiveTrekMap 
+          trekName="Classic Gokyo Lakes"
+          duration="12 Days"
+          price="$1,450"
+          startPoint="Kathmandu"
+          endPoint="Kathmandu"
+        />
+      </Section>
+
       {/* Why Book With Us */}
       <Section title="Why Book With Us?" subtitle="Trust & Expertise" className="py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -303,9 +360,10 @@ export default function Itinerary12Days() {
         </div>
       </Section>
 
-      <Section title="Day-by-Day Itinerary" subtitle="Your Journey Details">
+      <Section title="Day-by-Day Trek Plan" subtitle="Your Journey Details">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           <div className="lg:col-span-2 space-y-6">
+            <AltitudeGraph data={altitudeData} />
             {ITINERARY_DAYS.map((day, idx) => (
               <ItineraryDayCard key={day.day} day={day} isFirst={idx === 0} />
             ))}
@@ -341,6 +399,62 @@ export default function Itinerary12Days() {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Service Details" subtitle="Included & Excluded" className="bg-stone-100 py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* Included */}
+          <div className="bg-white p-10 rounded-[40px] border border-stone-200 shadow-sm space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+              </div>
+              <h4 className="text-2xl font-black text-stone-900">What's Included</h4>
+            </div>
+            <ul className="space-y-4">
+              {[
+                'Licensed Professional Trekking Guide',
+                'Shared Porter Service (2 trekkers : 1 porter)',
+                'All Teahouse / Lodge Accommodation',
+                'Khumbu & Sagarmatha National Park Permits',
+                'Kathmandu to Lukla Round-trip Flights',
+                'Airport Transfers in Kathmandu',
+                'Comprehensive First Aid Medical Kit'
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-stone-600 text-sm font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Excluded */}
+          <div className="bg-white p-10 rounded-[40px] border border-stone-200 shadow-sm space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-rose-50 rounded-2xl flex items-center justify-center">
+                <XCircle className="w-6 h-6 text-rose-600" />
+              </div>
+              <h4 className="text-2xl font-black text-stone-900">What's Excluded</h4>
+            </div>
+            <ul className="space-y-4">
+              {[
+                'International Airfare & Airport Taxes',
+                'Nepal Entry Visa Fees',
+                'Comprehensive Travel & Rescue Insurance',
+                'Personal Trekking Equipment (Boots, Poles, etc.)',
+                'Hot Showers, WiFi & Battery Charging Fees',
+                'Alcoholic & Soft Drinks / Bottled Water',
+                'Tips and Gratuities for Guide & Porters'
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-stone-600 text-sm font-medium">
+                  <XCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Section>
@@ -389,3 +503,5 @@ export default function Itinerary12Days() {
     </main>
   );
 }
+
+
