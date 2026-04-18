@@ -96,8 +96,8 @@ export default function Footer() {
       <div className="container mx-auto px-6 mt-24 pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-stone-500 text-xs">© 2026 Gokyo Explorer. All rights reserved.</p>
         <div className="flex gap-8">
-          <a href="#" className="text-stone-500 text-xs hover:text-stone-300 transition-colors">Privacy Policy</a>
-          <a href="#" className="text-stone-500 text-xs hover:text-stone-300 transition-colors">Terms of Service</a>
+          <Link to="/privacy-policy" className="text-stone-500 text-xs hover:text-stone-300 transition-colors">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="text-stone-500 text-xs hover:text-stone-300 transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>

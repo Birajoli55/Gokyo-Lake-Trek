@@ -81,7 +81,7 @@ export default function UltimateGuide() {
         title="The Ultimate Guide to Gokyo Lakes"
         subtitle="Everything you need to know for the trek of a lifetime"
         image="/gokyori.png"
-        height="h-[100vh]"
+        height="h-[120vh]"
         topContent={<ReviewBadge />}
       >
         <div className="max-w-2xl mx-auto mb-8 text-center">

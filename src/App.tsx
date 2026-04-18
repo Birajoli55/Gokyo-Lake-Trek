@@ -49,6 +49,8 @@ import BestTime from './pages/BestTime';
 import Blog from './pages/Blog';
 import ArticleDetail from './pages/ArticleDetail';
 import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -125,6 +127,8 @@ export default function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<ArticleDetail />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="*" element={<div className="flex-grow flex items-center justify-center p-24 text-center"><h1 className="text-4xl font-bold text-stone-900">404 - Route Not Found. If you just saw a white screen, try refreshing the page!</h1></div>} />
               </Routes>
             </div>
