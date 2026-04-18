@@ -132,7 +132,7 @@ export default function Home() {
               
               <div className="space-y-1 relative z-10">
                 <span className="text-brand-800 text-[10px] font-black uppercase tracking-[0.2em] block">{stat.label}</span>
-                <p className="text-2xl md:text-3xl font-black text-stone-900 leading-none tracking-tight">{stat.value}</p>
+                <p className="text-xl md:text-2xl font-black text-stone-900 leading-tight tracking-tight">{stat.value}</p>
                 <p className="text-stone-600 text-xs font-bold">{stat.sub}</p>
               </div>
             </motion.div>
