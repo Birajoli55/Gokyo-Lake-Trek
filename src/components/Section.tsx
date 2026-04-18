@@ -20,7 +20,7 @@ export default function Section({ id, className = '', title, subtitle, children,
         {(title || subtitle) && (
           <div className="mb-12 text-center">
             {subtitle && (
-              <span className={`text-xs font-bold uppercase tracking-[0.2em] mb-4 block ${dark ? 'text-brand-300' : 'text-brand-600'}`}>
+              <span className={`text-xs font-bold uppercase tracking-[0.2em] mb-4 block ${dark ? 'text-brand-300' : 'text-brand-800'}`}>
                 {subtitle}
               </span>
             )}
@@ -31,14 +31,7 @@ export default function Section({ id, className = '', title, subtitle, children,
             )}
           </div>
         )}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {children}
-        </motion.div>
+        {children}
       </div>
     </section>
   );

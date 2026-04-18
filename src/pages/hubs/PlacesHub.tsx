@@ -11,7 +11,7 @@ export default function PlacesHub() {
       <Hero
         title="Places & Stops"
         subtitle="Explore the Heart of the Himalayas"
-        image="/p&s.png"
+        image="/p&s.webp"
       />
 
       <PlacesSection />
@@ -39,14 +39,14 @@ export default function PlacesHub() {
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center justify-between p-6 bg-white rounded-2xl border border-stone-100 shadow-sm">
                   <span className="text-stone-500 font-medium">{stat.label}</span>
-                  <span className="text-brand-600 font-bold">{stat.value}</span>
+                  <span className="text-brand-800 font-bold">{stat.value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="relative aspect-video lg:aspect-square bg-stone-100 rounded-[48px] overflow-hidden border border-stone-200">
             <img
-              src="trilmap.png"
+              src="trilmap.webp"
               alt="Trail Map View"
               className="w-full h-full object-center"
               referrerPolicy="no-referrer"

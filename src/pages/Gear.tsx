@@ -17,7 +17,7 @@ export default function Gear() {
       <Hero
         title="Gear Guide"
         subtitle="Packing for Success"
-        image="/gear.png"
+        image="/gear.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -41,7 +41,7 @@ export default function Gear() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#gear-section"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             See Checklist
           </a>

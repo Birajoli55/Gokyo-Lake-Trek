@@ -25,7 +25,7 @@ function Section({ id, icon, title, children }: SectionProps) {
         aria-expanded={open}
       >
         <div className="flex items-center gap-4">
-          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-50 text-brand-600 shrink-0">
+          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-50 text-brand-800 shrink-0">
             {icon}
           </span>
           <h2 className="text-lg font-bold text-stone-900 group-hover:text-brand-700 transition-colors">
@@ -129,7 +129,7 @@ export default function TermsOfService() {
                     <li key={item.id}>
                       <a
                         href={`#${item.id}`}
-                        className="flex items-center gap-2 text-sm text-stone-600 hover:text-brand-600 transition-colors group"
+                        className="flex items-center gap-2 text-sm text-stone-600 hover:text-brand-800 transition-colors group"
                       >
                         <span className="text-xs text-stone-400 group-hover:text-brand-400 font-mono w-5">
                           {String(idx + 1).padStart(2, '0')}
@@ -170,7 +170,7 @@ export default function TermsOfService() {
               ]} />
               <p className="mt-2">
                 These Terms apply in addition to our{' '}
-                <Link to="/privacy-policy" className="text-brand-600 underline underline-offset-2 hover:text-brand-800">
+                <Link to="/privacy-policy" className="text-brand-800 underline underline-offset-2 hover:text-brand-800">
                   Privacy Policy
                 </Link>
                 , which is incorporated herein by reference.

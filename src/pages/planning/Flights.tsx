@@ -15,7 +15,7 @@ export default function Flights() {
       <Hero 
         title="Flights to Lukla" 
         subtitle="The Most Scenic (and Nervous) Flight of Your Life"
-        image="/luklaairport.jpg"
+        image="/luklaairport.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -39,7 +39,7 @@ export default function Flights() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#logistics"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Flight Logistics
           </a>
@@ -79,7 +79,7 @@ export default function Flights() {
               ].map((group) => (
                 <div key={group.title} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-6">
                   <div className="p-3 bg-stone-50 rounded-xl w-fit">
-                    <group.icon className="w-6 h-6 text-brand-600" />
+                    <group.icon className="w-6 h-6 text-brand-800" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-900">{group.title}</h4>
                   <ul className="space-y-4">

@@ -54,7 +54,7 @@ export default function Blog() {
       <Hero
         title="Stories from the Peak."
         subtitle="The Gokyo Journal"
-        image="/gblog.jpg"
+        image="/gblog.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -78,7 +78,7 @@ export default function Blog() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#journal"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Start Reading
           </a>
@@ -112,6 +112,8 @@ export default function Blog() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
             <input
               type="text"
+              id="blog-search"
+              name="search"
               placeholder="Search the journal..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -152,7 +154,7 @@ export default function Blog() {
                         </span>
                         <span className="text-stone-300 font-bold text-[10px] uppercase tracking-widest">Featured Post</span>
                       </div>
-                      <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-[1.1] mb-6 group-hover:text-brand-600 transition-colors">
+                      <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-[1.1] mb-6 group-hover:text-brand-800 transition-colors">
                         {featuredPost.title}
                       </h2>
                       <p className="text-stone-500 text-lg leading-relaxed mb-8">{featuredPost.excerpt}</p>
@@ -161,7 +163,7 @@ export default function Blog() {
                           <Clock className="w-4 h-4" /> 5 min read
                         </div>
                         <div className="w-8 h-px bg-stone-200" />
-                        <div className="flex items-center gap-2 text-brand-600 font-bold text-sm tracking-tight group-hover:gap-6 transition-all">
+                        <div className="flex items-center gap-2 text-brand-800 font-bold text-sm tracking-tight group-hover:gap-6 transition-all">
                           Read Full Journal <ArrowRight className="w-5 h-5" />
                         </div>
                       </div>
@@ -200,13 +202,13 @@ export default function Blog() {
                             <span className="w-1 h-1 bg-stone-300 rounded-full" />
                             <span>5 min read</span>
                           </div>
-                          <h3 className="text-2xl font-bold text-stone-900 leading-tight group-hover:text-brand-600 transition-colors flex-grow">
+                          <h3 className="text-2xl font-bold text-stone-900 leading-tight group-hover:text-brand-800 transition-colors flex-grow">
                             {post.title}
                           </h3>
                           <p className="text-stone-500/80 text-sm leading-relaxed line-clamp-3 mb-6">
                             {post.excerpt}
                           </p>
-                          <div className="flex items-center gap-2 text-brand-600 text-sm font-bold opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all mt-auto">
+                          <div className="flex items-center gap-2 text-brand-800 text-sm font-bold opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all mt-auto">
                             Read Article <ChevronRight className="w-5 h-5" />
                           </div>
                         </div>

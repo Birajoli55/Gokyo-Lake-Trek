@@ -33,8 +33,19 @@ export default function Navbar() {
   const { openBooking } = useBooking();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -62,7 +73,7 @@ export default function Navbar() {
           }`}>
           <Link to="/" className="flex items-center group z-50 relative">
             <img 
-              src="/logo.png" 
+              src="/logo-opt.webp" 
               alt="Gokyo Explorer Logo" 
               className={`transition-all duration-300 ${scrolled ? 'h-14 lg:h-20 my-[-6px]' : 'h-32 lg:h-44 my-[-20px] lg:my-[-28px]'} w-auto object-contain drop-shadow-md brightness-110`}
             />
@@ -85,7 +96,7 @@ export default function Navbar() {
                     <Link
                       to={link.path || '#'}
                       className={`flex items-center gap-1 relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors group ${scrolled
-                        ? (isActive ? 'text-brand-600' : 'text-stone-600 hover:text-brand-600')
+                        ? (isActive ? 'text-brand-800' : 'text-stone-600 hover:text-brand-800')
                         : (isActive ? 'text-white' : 'text-white/80 hover:text-white')
                         }`}
                     >
@@ -120,8 +131,8 @@ export default function Navbar() {
                               key={subLink.path}
                               to={subLink.path}
                               className={`block px-4 py-3 text-sm font-bold uppercase tracking-widest transition-colors ${location.pathname === subLink.path
-                                ? 'text-brand-600 bg-brand-50/50'
-                                : 'text-stone-600 hover:text-brand-600 hover:bg-stone-50/80'
+                                ? 'text-brand-800 bg-brand-50/50'
+                                : 'text-stone-600 hover:text-brand-800 hover:bg-stone-50/80'
                                 }`}
                             >
                               {subLink.name}
@@ -139,7 +150,7 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path!}
                   className={`relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors group ${scrolled
-                    ? (isActive ? 'text-brand-600' : 'text-stone-600 hover:text-brand-600')
+                    ? (isActive ? 'text-brand-800' : 'text-stone-600 hover:text-brand-800')
                     : (isActive ? 'text-white' : 'text-white/80 hover:text-white')
                     }`}
                 >
@@ -197,7 +208,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/10">
               <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center">
                 <img
-                  src="/logo.png"
+                  src="/logo-opt.webp"
                   alt="Gokyo Explorer Logo"
                   className="h-16 w-auto object-contain"
                 />
@@ -205,7 +216,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-              >
+               aria-label="Close menu">
                 <X className="w-5 h-5" />
               </button>
             </div>

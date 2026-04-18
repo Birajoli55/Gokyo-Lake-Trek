@@ -9,6 +9,7 @@ import ReviewBadge from '../components/ReviewBadge';
 import UserProofBadge from '../components/UserProofBadge';
 import { CustomItemVariants } from '../types';
 import { useState } from 'react';
+import SEO from '../components/SEO';
 
 const CATEGORIES = [
   {
@@ -17,7 +18,7 @@ const CATEGORIES = [
     description: 'Explore carefully crafted trekking routes for all timeframes and experience levels.',
     icon: Calendar,
     path: '/itineraries',
-    image: '/itineraries.png',
+    image: '/itineraries.webp',
     color: 'bg-brand-600'
   },
   {
@@ -26,7 +27,7 @@ const CATEGORIES = [
     description: 'Discover the iconic villages, lakes, and viewpoints along the Gokyo trail.',
     icon: Map,
     path: '/places',
-    image: '/places.png',
+    image: '/places.webp',
     color: 'bg-amber-600'
   },
   {
@@ -35,7 +36,7 @@ const CATEGORIES = [
     description: 'Everything you need to know about permits, flights, budgets, and the best seasons.',
     icon: Mountain,
     path: '/planning',
-    image: '/Planning.png',
+    image: '/Planning.webp',
     color: 'bg-emerald-600'
   },
   {
@@ -44,7 +45,7 @@ const CATEGORIES = [
     description: 'Comprehensive packing lists to keep you warm, safe, and comfortable at high altitude.',
     icon: Backpack,
     path: '/gear',
-    image: '/gear.png',
+    image: '/gear.webp',
     color: 'bg-indigo-600'
   },
   {
@@ -53,7 +54,7 @@ const CATEGORIES = [
     description: 'Crucial information on altitude sickness, insurance, first aid, and emergency contacts.',
     icon: ShieldCheck,
     path: '/safety',
-    image: '/safety.png',
+    image: '/safety.webp',
     color: 'bg-rose-600'
   }
 ];
@@ -77,10 +78,14 @@ export default function UltimateGuide() {
 
   return (
     <main className="bg-stone-50">
+      <SEO 
+        title="The Ultimate Guide to Gokyo Lakes Trek | 2024 Edition" 
+        description="Everything you need to know about the Gokyo Lake Trek: Best time to visit, gear lists, training guides, and essential safety tips for high-altitude trekking." 
+      />
       <Hero
         title="The Ultimate Guide to Gokyo Lakes"
         subtitle="Everything you need to know for the trek of a lifetime"
-        image="/gokyori.png"
+        image="/gokyori.webp"
         height="h-[120vh]"
         topContent={<ReviewBadge />}
       >
@@ -104,7 +109,7 @@ export default function UltimateGuide() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <Link
             to="/trek"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Explore Routes
           </Link>
@@ -140,14 +145,14 @@ export default function UltimateGuide() {
             </div>
             <Link
               to="/itineraries"
-              className="inline-flex items-center gap-2 text-brand-600 font-bold hover:gap-4 transition-all"
+              className="inline-flex items-center gap-2 text-brand-800 font-bold hover:gap-4 transition-all"
             >
               Explore Detailed Routes <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
           <div className="relative">
             <img
-              src="/gikyoremot.png"
+              src="/gikyoremot.webp"
               alt="Gokyo Route Map"
               className="rounded-[40px] shadow-2xl w-full aspect-square object-cover"
               referrerPolicy="no-referrer"
@@ -165,7 +170,7 @@ export default function UltimateGuide() {
           variants={staggerContainer}
           className="max-w-3xl mx-auto text-center space-y-6 mb-16"
         >
-          <motion.span variants={fadeInUp} className="text-brand-600 font-bold uppercase tracking-widest text-sm">
+          <motion.span variants={fadeInUp} className="text-brand-800 font-bold uppercase tracking-widest text-sm">
             Preparation Directory
           </motion.span>
           <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold tracking-tight text-stone-900">
@@ -202,14 +207,14 @@ export default function UltimateGuide() {
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-stone-900 mb-3 group-hover:text-brand-600 transition-colors">
+                  <h3 className="text-2xl font-bold text-stone-900 mb-3 group-hover:text-brand-800 transition-colors">
                     {category.title}
                   </h3>
                   <p className="text-stone-600 leading-relaxed">
                     {category.description}
                   </p>
 
-                  <div className="mt-8 flex items-center text-sm font-bold uppercase tracking-widest text-brand-600">
+                  <div className="mt-8 flex items-center text-sm font-bold uppercase tracking-widest text-brand-800">
                     Explore Hub <span className="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                   </div>
                 </div>

@@ -13,7 +13,7 @@ export default function PlanningHub() {
       <Hero 
         title="Plan Your Trek" 
         subtitle="The Logistics of Adventure"
-        image="/hero-lakes.png"
+        image="/hero-lakes.webp"
       />
 
       <PlanningSection />

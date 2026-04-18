@@ -86,42 +86,42 @@ export const PLACES = [
     name: 'Lukla',
     altitude: '2,860m',
     description: 'The gateway to the Everest region, home to Tenzing-Hillary Airport.',
-    image: '/lukla.jpg',
+    image: '/lukla.webp',
     link: '/places/lukla'
   },
   {
     name: 'Namche Bazaar',
     altitude: '3,440m',
     description: 'The Sherpa capital, a vibrant hub with markets, cafes, and museums.',
-    image: '/namchebazaar.jpg',
+    image: '/namchebazaar.webp',
     link: '/places/namche-bazaar'
   },
   {
     name: 'Phortse',
     altitude: '3,810m',
     description: 'A traditional Sherpa village known for its climbing culture and views.',
-    image: '/phortse.jpg',
+    image: '/phortse.webp',
     link: '/places/phortse'
   },
   {
     name: 'Machhermo',
     altitude: '4,470m',
     description: 'A key acclimatization stop on the way to Gokyo, offering stunning views.',
-    image: '/machhermo.jpg',
+    image: '/machhermo-opt.webp',
     link: '/places/machhermo'
   },
   {
     name: 'Gokyo Village',
     altitude: '4,750m',
     description: 'A serene lakeside settlement at the foot of Gokyo Ri.',
-    image: '/gokyovillage.jpg',
+    image: '/gokyovillage.webp',
     link: '/places/gokyo-village'
   },
   {
     name: 'Gokyo Ri',
     altitude: '5,357m',
     description: 'The ultimate viewpoint for Everest, Lhotse, Makalu, and Cho Oyu.',
-    image: '/gokyori.jpg',
+    image: '/gokyori.webp',
     link: '/places/gokyo-ri'
   }
 ];
@@ -332,7 +332,7 @@ export const BLOG_POSTS = [
       <p>The Gokyo route allows for a more gradual ascent in some sections, and the option to cross the Cho La Pass into the Everest valley provides a fantastic loop that is better for your body than a simple out-and-back trek.</p>
     `,
     date: 'March 15, 2026',
-    image: '/gokyovsebc.png',
+    image: '/gokyovsebc.webp',
     author: 'Tenzing Sherpa',
     category: 'Comparison'
   },
@@ -360,7 +360,7 @@ export const BLOG_POSTS = [
       <p>Headaches, nausea, dizziness, and loss of appetite are early signs of AMS. If you experience these, do not go any higher. If symptoms persist or worsen, you must descend immediately.</p>
     `,
     date: 'April 2, 2026',
-    image: '/AcclimatizationTipsforHighAltitude.png',
+    image: '/AcclimatizationTipsforHighAltitude.webp',
     author: 'Ang Rita',
     category: 'Safety'
   },
@@ -388,50 +388,50 @@ export const BLOG_POSTS = [
       <p>Batteries drain fast in the cold. Bring a high-capacity power bank and keep your electronics inside your sleeping bag at night to preserve their charge.</p>
     `,
     date: 'April 5, 2026',
-    image: '/TheUltimatePackingGuideforGokyo.png',
+    image: '/TheUltimatePackingGuideforGokyo.webp',
     author: 'Ang Rita',
     category: 'Gear'
   }
 ];
 export const GALLERY_IMAGES = [
   {
-    url: '/GokyoThirdLake.jpg',
+    url: '/GokyoThirdLake.webp',
     alt: 'The pristine turquoise waters of Gokyo Lake',
     caption: 'Gokyo Third Lake',
     className: 'md:col-span-2 md:row-span-2'
   },
   {
-    url: '/RenjoLaTrail.jpg',
+    url: '/RenjoLaTrail.webp',
     alt: 'Trekkers heading towards the high passes',
     caption: 'Renjo La Trail',
     className: 'md:col-span-1 md:row-span-1'
   },
   {
-    url: '/HimalayanPanorama.jpg',
+    url: '/HimalayanPanorama-opt.webp',
     alt: 'Panoramic view from Gokyo Ri',
     caption: 'Himalayan Panorama',
     className: 'md:col-span-1 md:row-span-2'
   },
   {
-    url: '/HighAltitudePeaks.jpg',
+    url: '/HighAltitudePeaks.webp',
     alt: 'Mountain textures and peaks',
     caption: 'High Altitude Peaks',
     className: 'md:col-span-1 md:row-span-1'
   },
   {
-    url: '/GreatestHeights.jpg',
+    url: '/GreatestHeights.webp',
     alt: 'Everest and Lhotse from a distance',
     caption: 'Greatest Heights',
     className: 'md:col-span-1 md:row-span-1'
   },
   {
-    url: '/NamcheBazaarr.jpg',
+    url: '/NamcheBazaarr.webp',
     alt: 'Sunset over prayer flags',
     caption: 'Namche Bazaar',
     className: 'md:col-span-1 md:row-span-1'
   },
   {
-    url: '/hero-lukla.jpg',
+    url: '/hero-lukla.webp',
     alt: 'lukla airport view',
     caption: 'Lukla Airport',
     className: 'md:col-span-1 md:row-span-1'

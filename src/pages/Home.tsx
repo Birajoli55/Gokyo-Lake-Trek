@@ -1,22 +1,26 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Calendar, Mountain, ShieldCheck, Star, Frown, Award, Camera, ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
-import CustomTripBanner from '../components/CustomTripBanner';
-import ItinerariesSection from '../components/ItinerariesSection';
-import PlacesSection from '../components/PlacesSection';
-import PlanningSection from '../components/PlanningSection';
-import SafetySection from '../components/SafetySection';
-import GearSection from '../components/GearSection';
-import GallerySection from '../components/GallerySection';
-import FAQSection from '../components/FAQSection';
-import TrustBar from '../components/TrustBar';
-import PressAwardsBanner from '../components/PressAwardsBanner';
-import ReviewBadge from '../components/ReviewBadge';
-import UserProofBadge from '../components/UserProofBadge';
-import MainCTA from '../components/MainCTA';
+import SEO from '../components/SEO';
+
+// Lazy load below-the-fold sections
+const CustomTripBanner = lazy(() => import('../components/CustomTripBanner'));
+const ItinerariesSection = lazy(() => import('../components/ItinerariesSection'));
+const PlacesSection = lazy(() => import('../components/PlacesSection'));
+const PlanningSection = lazy(() => import('../components/PlanningSection'));
+const SafetySection = lazy(() => import('../components/SafetySection'));
+const GearSection = lazy(() => import('../components/GearSection'));
+const GallerySection = lazy(() => import('../components/GallerySection'));
+const FAQSection = lazy(() => import('../components/FAQSection'));
+const TrustBar = lazy(() => import('../components/TrustBar'));
+const PressAwardsBanner = lazy(() => import('../components/PressAwardsBanner'));
+const ReviewBadge = lazy(() => import('../components/ReviewBadge'));
+const UserProofBadge = lazy(() => import('../components/UserProofBadge'));
+const MainCTA = lazy(() => import('../components/MainCTA'));
+
 import { useBooking } from '../context/BookingContext';
 import { TREK_STATS, BLOG_POSTS } from '../constants';
 import { CustomItemVariants } from '../types';
@@ -36,21 +40,34 @@ const staggerContainer = {
   }
 };
 
-export default function Home() {
-  const [isExpanded, setIsExpanded] = useState(false);
+function IntroParallax({ children }: { children: React.ReactNode }) {
   const { scrollY } = useScroll();
   const introY = useTransform(scrollY, [300, 900], [30, 0]);
+  
+  return (
+    <motion.div style={{ y: introY }} className="text-center lg:text-left space-y-6 self-center">
+      {children}
+    </motion.div>
+  );
+}
+
+export default function Home() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const { openBooking } = useBooking();
 
   return (
     <main className="bg-stone-50 overflow-hidden">
+      <SEO 
+        title="Experience the Ultimate Himalayan Adventure" 
+        description="Join Gokyo Explorer for an expert-led trek to the turquoise Gokyo Lakes. Discover Sherpa culture, climb Gokyo Ri, and witness Everest panoramas." 
+      />
       {/* Hero Section */}
       <Hero
         title="Gokyo Lake Trek"
         subtitle="The Ultimate Himalayan Adventure"
-        image="gokyo-lakes-and-mt-cholatse-adobe-stock-4058.jpg"
+        image="gokyo-lakes-and-mt-cholatse-adobe-stock-4058-opt.webp"
         height="min-h-screen"
-        topContent={<ReviewBadge />}
+        topContent={<Suspense fallback={<div className="h-10" />}><ReviewBadge /></Suspense>}
       >
         <div className="max-w-2xl mx-auto mb-8 text-center">
           <p className="text-stone-200 text-lg md:text-xl leading-relaxed text-balance font-medium drop-shadow-md">
@@ -68,12 +85,14 @@ export default function Home() {
           </p>
         </div>
 
-        <UserProofBadge />
+        <Suspense fallback={<div className="h-12" />}>
+          <UserProofBadge />
+        </Suspense>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <Link
             to="/trek"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Explore Trek
           </Link>
@@ -107,14 +126,14 @@ export default function Home() {
               
               <div className="flex justify-center">
                 <div className="bg-brand-50 p-3 rounded-2xl group-hover:bg-brand-600 transition-colors duration-300">
-                  <stat.icon className="w-6 h-6 text-brand-600 group-hover:text-white transition-colors duration-300" />
+                  <stat.icon className="w-6 h-6 text-brand-800 group-hover:text-white transition-colors duration-300" />
                 </div>
               </div>
               
               <div className="space-y-1 relative z-10">
-                <span className="text-brand-600 text-[10px] font-black uppercase tracking-[0.2em] block">{stat.label}</span>
-                <h3 className="text-2xl md:text-3xl font-black text-stone-900 leading-none tracking-tight">{stat.value}</h3>
-                <p className="text-stone-400 text-xs font-bold">{stat.sub}</p>
+                <span className="text-brand-800 text-[10px] font-black uppercase tracking-[0.2em] block">{stat.label}</span>
+                <p className="text-2xl md:text-3xl font-black text-stone-900 leading-none tracking-tight">{stat.value}</p>
+                <p className="text-stone-600 text-xs font-bold">{stat.sub}</p>
               </div>
             </motion.div>
           ))}
@@ -125,27 +144,24 @@ export default function Home() {
       <Section id="introduction" className="py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Centered Text */}
-          <motion.div
-            style={{ y: introY }}
-            className="text-center lg:text-left space-y-6 self-center"
-          >
+          <IntroParallax>
             <div className="space-y-3">
-              <span className="text-brand-600 font-bold uppercase tracking-widest text-sm">The Experience</span>
+              <span className="text-brand-800 font-bold uppercase tracking-widest text-sm">The Experience</span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-stone-900 leading-[1.1]">
                 A Journey Beyond the Ordinary
               </h2>
             </div>
-            <p className="text-stone-600 text-lg leading-relaxed">
+            <p className="text-stone-700 text-lg leading-relaxed">
               The Gokyo Lake Trek is more than just a hike; it's a spiritual journey into the heart of the Himalayas.
               While the Everest Base Camp trek gets the crowds, Gokyo offers a more tranquil, visually stunning alternative.
               Imagine standing beside the turquoise waters of the third lake, with the massive Cho Oyu looming overhead.
             </p>
             <div className="flex justify-center lg:justify-start">
-              <Link to="/gokyo-lake-trek" className="inline-flex items-center gap-2 text-stone-900 font-bold uppercase tracking-widest text-sm group hover:text-brand-600 transition-colors">
+              <Link to="/gokyo-lake-trek" className="inline-flex items-center gap-2 text-stone-900 font-bold uppercase tracking-widest text-sm group hover:text-brand-800 transition-colors">
                 Read Detailed Guide <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
-          </motion.div>
+          </IntroParallax>
 
           {/* Right: Image with floating badge */}
           <motion.div
@@ -157,7 +173,8 @@ export default function Home() {
           >
             <div className="group overflow-hidden rounded-[40px] shadow-2xl relative">
               <img
-                src="Gokyo-Lake-1726987182.jpg"
+                loading="lazy"
+                src="Gokyo-Lake-1726987182-opt.webp"
                 alt="Trekkers on the Gokyo trail"
                 className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105 max-h-[620px]"
               />
@@ -184,9 +201,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <TrustBar />
-
-      
+      <Suspense fallback={<div className="h-20" />}><TrustBar /></Suspense>
 
       {/* Bento Grid: Why Gokyo */}
       <Section title="Why Choose Gokyo?" subtitle="Highlights" className="bg-stone-50 pt-20 pb-16">
@@ -199,11 +214,11 @@ export default function Home() {
         >
           {/* Main Large Card */}
           <motion.div variants={fadeInUp} className="md:col-span-2 relative group overflow-hidden rounded-[40px] shadow-2xl min-h-[350px] md:h-[400px]">
-            <img src="gokyori.png" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Epic views" />
+            <img loading="lazy" src="gokyori.webp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Epic views" />
             <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/20 to-transparent" />
             <div className="absolute bottom-10 left-10 right-10">
               <div className="glass-dark inline-flex p-2 rounded-2xl mb-4 backdrop-blur-md">
-                <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+                <img loading="lazy" src="/logo-opt.webp" alt="Logo" className="w-8 h-8 object-contain" />
               </div>
               <h3 className="text-3xl font-black text-white mb-2 tracking-tight">Epic Panoramas</h3>
               <p className="text-stone-300 text-lg max-w-lg leading-relaxed">See four of the world's highest peaks in one incredible 360-degree sweep from Gokyo Ri.</p>
@@ -212,7 +227,7 @@ export default function Home() {
 
           {/* Small Top Right Card */}
           <motion.div variants={fadeInUp} className="relative group overflow-hidden rounded-[40px] shadow-2xl min-h-[350px] md:h-[400px]">
-            <img src="gikyoremot.png" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Remote Path" />
+            <img loading="lazy" src="gikyoremot.webp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Remote Path" />
             <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/20 to-transparent" />
             <div className="absolute inset-0 p-10 flex flex-col justify-between">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center group-hover:bg-brand-600 transition-colors duration-300">
@@ -256,7 +271,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-40">
-              <img src="https://images.unsplash.com/photo-1520209268518-cd6221f9a24c?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover mix-blend-screen" alt="Background" />
+              <img loading="lazy" src="/HimalayanPanorama-opt.webp" className="w-full h-full object-cover mix-blend-screen" alt="Background" />
               <div className="absolute inset-0 bg-gradient-to-r from-stone-950 to-transparent" />
             </div>
           </motion.div>
@@ -264,29 +279,23 @@ export default function Home() {
       </Section>
 
       {/* Safety Section */}
-      <SafetySection title="Your Peace of Mind" subtitle="Safety First" className="bg-stone-900 dark py-24" />
+      <Suspense fallback={<div className="h-96" />}><SafetySection title="Your Peace of Mind" subtitle="Safety First" className="bg-stone-900 dark py-24" /></Suspense>
 
       {/* Places Section */}
-      <PlacesSection title="The Golden Path" subtitle="Iconic Villages & Viewpoints" limit={6} className="bg-stone-100 py-24" />
+      <Suspense fallback={<div className="h-96" />}><PlacesSection title="The Golden Path" subtitle="Iconic Villages & Viewpoints" limit={6} className="bg-stone-100 py-24" /></Suspense>
 
 
       {/* Planning Section */}
-      <PlanningSection title="Prepare for the Trail" subtitle="Essential Logistics" limit={3} className="py-24" />
+      <Suspense fallback={<div className="h-96" />}><PlanningSection title="Prepare for the Trail" subtitle="Essential Logistics" limit={3} className="py-24" /></Suspense>
 
       {/* Gallery Section */}
-      <GallerySection />
+      <Suspense fallback={<div className="h-96" />}><GallerySection /></Suspense>
 
       {/* Itineraries Section */}
-      <ItinerariesSection title="Trek Itineraries" subtitle="Choose Your Adventure" limit={6} />
-
-
+      <Suspense fallback={<div className="h-96" />}><ItinerariesSection title="Trek Itineraries" subtitle="Choose Your Adventure" limit={6} /></Suspense>
 
       {/* Gear Section */}
-      <GearSection title="Pack Like a Pro" subtitle="Gear Essentials" className="py-24" />
-
-
-
-
+      <Suspense fallback={<div className="h-96" />}><GearSection title="Pack Like a Pro" subtitle="Gear Essentials" className="py-24" /></Suspense>
 
       {/* Blog Section */}
       <Section title="Latest from the Trail" subtitle="Journal" className="py-24 bg-stone-50">
@@ -313,7 +322,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-3 px-8">
                   <span className="text-stone-400 text-[11px] font-bold uppercase tracking-widest">{post.date}</span>
-                  <h3 className="text-2xl font-bold text-stone-900 group-hover:text-brand-600 transition-colors leading-tight">{post.title}</h3>
+                  <h3 className="text-2xl font-bold text-stone-900 group-hover:text-brand-800 transition-colors leading-tight">{post.title}</h3>
                   <p className="text-stone-500 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
                 </div>
               </Link>
@@ -329,12 +338,12 @@ export default function Home() {
           className="mt-12 text-center"
         >
           <Link to="/blog" className="inline-flex items-center gap-2 px-10 py-5 bg-white border border-stone-200 text-stone-900 font-bold uppercase tracking-widest rounded-full hover:bg-stone-50 transition-all shadow-sm">
-            View All Stories <ArrowRight className="w-4 h-4 text-brand-600" />
+            View All Stories <ArrowRight className="w-4 h-4 text-brand-800" />
           </Link>
         </motion.div>
       </Section>
 
-      <CustomTripBanner />
+      <Suspense fallback={<div className="h-64" />}><CustomTripBanner /></Suspense>
 
       {/* Testimonials */}
       <Section title="Voices from the Trail" subtitle="Testimonials" className="py-24 bg-stone-50">
@@ -343,19 +352,19 @@ export default function Home() {
             {
               name: "Sarah Jenkins",
               role: "Photographer",
-              image: "/avatar-marcus.png",
+              image: "/avatar-marcus.webp",
               text: "The sheer color of the Gokyo lakes defies imagination. Waking up to see the reflection of Cho Oyu on the water was the highlight of my trekking life. The guides were simply phenomenal."
             },
             {
               name: "Marcus V.",
               role: "Adventure Enthusiast",
-              image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
+              image: "/avatar-marcus.webp",
               text: "I did EBC three years ago, but Gokyo felt much more intimate and wild. The ascent to Gokyo Ri was tough, but standing at the top alone with my group was an unmatched feeling."
             },
             {
               name: "Elena Rodriguez",
               role: "First-time Trekker",
-              image: "/avatar-sarah.png",
+              image: "/avatar-sarah.webp",
               text: "I was extremely nervous about the altitude, but the acclimatization schedule built into our itinerary was perfect. I felt strong the entire time thanks to the incredible support team."
             }
           ].map((review, i) => (
@@ -385,7 +394,7 @@ export default function Home() {
               <div className="flex items-center gap-4 pt-6 border-t border-stone-100 w-full">
                 <img src={review.image} className="w-16 h-16 rounded-full object-cover ring-4 ring-stone-50" alt={review.name} />
                 <div>
-                  <h4 className="text-stone-900 font-black text-base tracking-tight">{review.name}</h4>
+                  <p className="text-stone-900 font-black text-base tracking-tight">{review.name}</p>
                   <span className="text-stone-400 text-xs font-bold uppercase tracking-widest">{review.role}</span>
                 </div>
               </div>
@@ -395,9 +404,9 @@ export default function Home() {
       </Section>
 
       {/* General FAQ Section with Tabs */}
-      <FAQSection className="bg-stone-100 py-24" />
-<PressAwardsBanner />
-      <MainCTA />
+      <Suspense fallback={<div className="h-96" />}><FAQSection className="bg-stone-100 py-24" /></Suspense>
+      <Suspense fallback={<div className="h-40" />}><PressAwardsBanner /></Suspense>
+      <Suspense fallback={<div className="h-80" />}><MainCTA /></Suspense>
       
     </main>
   );

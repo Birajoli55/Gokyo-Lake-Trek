@@ -106,7 +106,7 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
         </div>
         <button 
           onClick={() => setStep('details')}
-          className="text-brand-600 font-bold uppercase tracking-widest text-sm hover:text-brand-700 transition-colors"
+          className="text-brand-800 font-bold uppercase tracking-widest text-sm hover:text-brand-700 transition-colors"
         >
           Send Another Request
         </button>
@@ -133,10 +133,13 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
               <input 
                 required
                 type="text" 
+                id="name"
+                name="name"
                 value={formData.name}
                 onChange={e => setFormData({...formData, name: e.target.value})}
                 placeholder="John Doe" 
                 className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition-all text-stone-900 placeholder:text-stone-300 shadow-sm"
+                autoComplete="name"
               />
             </div>
             <div className="space-y-2">
@@ -144,10 +147,13 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
               <input 
                 required
                 type="email" 
+                id="email"
+                name="email"
                 value={formData.email}
                 onChange={e => setFormData({...formData, email: e.target.value})}
                 placeholder="john@example.com" 
                 className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition-all text-stone-900 placeholder:text-stone-300 shadow-sm"
+                autoComplete="email"
               />
             </div>
           </div>
@@ -157,10 +163,13 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
               <label className="text-stone-400 text-[10px] font-black uppercase tracking-[0.2em]">Phone Number</label>
               <input 
                 type="tel" 
+                id="phone"
+                name="phone"
                 value={formData.phone}
                 onChange={e => setFormData({...formData, phone: e.target.value})}
                 placeholder="+1 234 567 890" 
                 className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition-all text-stone-900 placeholder:text-stone-300 shadow-sm"
+                autoComplete="tel"
               />
             </div>
             <div className="space-y-2">
@@ -168,6 +177,8 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
               <div className="relative">
                 <select 
                   required
+                  id="trek"
+                  name="trek"
                   value={formData.trek}
                   onChange={e => setFormData({...formData, trek: e.target.value})}
                   className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition-all appearance-none text-stone-900 shadow-sm"
@@ -189,6 +200,8 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
               <div className="relative">
                 <input 
                   type="date" 
+                  id="date"
+                  name="date"
                   value={formData.date}
                   onChange={e => setFormData({...formData, date: e.target.value})}
                   className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 transition-all text-stone-900 shadow-sm"
@@ -201,6 +214,8 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
               <div className="relative">
                 <input 
                   type="number" 
+                  id="people"
+                  name="people"
                   min="1" 
                   max="20"
                   value={formData.people}
@@ -215,6 +230,8 @@ export default function BookingForm({ defaultTrek, onCancel }: BookingFormProps)
           <div className="space-y-2">
             <label className="text-stone-400 text-[10px] font-black uppercase tracking-[0.2em]">Additional Message</label>
             <textarea 
+              id="message"
+              name="message"
               rows={4} 
               value={formData.message}
               onChange={e => setFormData({...formData, message: e.target.value})}

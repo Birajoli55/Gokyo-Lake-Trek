@@ -12,7 +12,7 @@ export default function SafetyHub() {
       <Hero 
         title="Safety & Health" 
         subtitle="Your Well-being is Our Priority"
-        image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
+        image="/safety.webp"
       />
 
       <SafetySection />

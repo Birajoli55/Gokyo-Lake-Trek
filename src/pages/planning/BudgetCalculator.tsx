@@ -42,7 +42,7 @@ export default function BudgetCalculator() {
       <Hero 
         title="Budget Calculator" 
         subtitle="Estimate Your Gokyo Lakes Trek Expenses"
-        image="/phortse.jpg"
+        image="/phortse.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -66,7 +66,7 @@ export default function BudgetCalculator() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#calculator"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Start Calculating
           </a>
@@ -88,7 +88,7 @@ export default function BudgetCalculator() {
               {/* Duration */}
               <div className="space-y-6">
                 <label className="flex items-center gap-3 text-stone-900 font-bold text-lg">
-                  <Calendar className="w-6 h-6 text-brand-600" /> Trek Duration
+                  <Calendar className="w-6 h-6 text-brand-800" /> Trek Duration
                 </label>
                 <div className="space-y-4">
                   <input 
@@ -101,7 +101,7 @@ export default function BudgetCalculator() {
                   />
                   <div className="flex justify-between text-stone-500 font-medium">
                     <span>7 Days</span>
-                    <span className="text-brand-600 font-bold text-xl">{days} Days</span>
+                    <span className="text-brand-800 font-bold text-xl">{days} Days</span>
                     <span>20 Days</span>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export default function BudgetCalculator() {
               {/* Group Size */}
               <div className="space-y-6">
                 <label className="flex items-center gap-3 text-stone-900 font-bold text-lg">
-                  <Users className="w-6 h-6 text-brand-600" /> Group Size
+                  <Users className="w-6 h-6 text-brand-800" /> Group Size
                 </label>
                 <div className="flex gap-4">
                   {[1, 2, 3, 4, 5].map((num) => (
@@ -133,7 +133,7 @@ export default function BudgetCalculator() {
             {/* Luxury Level */}
             <div className="space-y-6 pt-8 border-t border-stone-50">
               <label className="flex items-center gap-3 text-stone-900 font-bold text-lg">
-                <Star className="w-6 h-6 text-brand-600" /> Comfort Level
+                <Star className="w-6 h-6 text-brand-800" /> Comfort Level
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {LUXURY_LEVELS.map((level) => (
@@ -146,11 +146,11 @@ export default function BudgetCalculator() {
                       : 'border-stone-100 bg-white hover:border-stone-200'
                     }`}
                   >
-                    <h4 className={`font-bold mb-2 ${luxury === level.id ? 'text-brand-600' : 'text-stone-900'}`}>
+                    <h4 className={`font-bold mb-2 ${luxury === level.id ? 'text-brand-800' : 'text-stone-900'}`}>
                       {level.name}
                     </h4>
                     <p className="text-stone-500 text-xs leading-relaxed">{level.desc}</p>
-                    <div className="mt-4 text-brand-600 font-bold">
+                    <div className="mt-4 text-brand-800 font-bold">
                       ${level.daily}<span className="text-[10px] text-stone-400 font-normal">/day</span>
                     </div>
                   </button>
@@ -213,7 +213,7 @@ export default function BudgetCalculator() {
                 </div>
               </div>
 
-              <button className="w-full py-6 bg-brand-600 hover:bg-brand-500 text-white rounded-3xl font-black text-lg transition-all flex items-center justify-center gap-3 group">
+              <button className="w-full py-6 bg-brand-600 hover:bg-brand-800 text-white rounded-3xl font-black text-lg transition-all flex items-center justify-center gap-3 group">
                 Book Your Trek <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </button>
             </div>
@@ -253,7 +253,7 @@ export default function BudgetCalculator() {
           ].map((item) => (
             <div key={item.title} className="space-y-4">
               <div className="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center">
-                <item.icon className="w-6 h-6 text-brand-600" />
+                <item.icon className="w-6 h-6 text-brand-800" />
               </div>
               <h4 className="text-xl font-bold text-stone-900">{item.title}</h4>
               <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>

@@ -79,7 +79,7 @@ export default function Trek9Days() {
       <Hero
         title="9-Day Gokyo Lakes Trek"
         subtitle="The Balanced Route — Full Experience, Smart Pace"
-        image="/9day.jpg"
+        image="/9day.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -103,7 +103,7 @@ export default function Trek9Days() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <button
             onClick={() => openBooking('Short & Intense Gokyo (9 Days)')}
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Book This Trip
           </button>
@@ -127,7 +127,7 @@ export default function Trek9Days() {
                   <Star className="w-3 h-3 fill-brand-600" /> Efficient Choice
                 </div>
                 <h2 className="text-4xl md:text-5xl font-black text-stone-900 leading-tight">
-                  The Smart <span className="text-brand-600 italic">Himalayan Balance</span>
+                  The Smart <span className="text-brand-800 italic">Himalayan Balance</span>
                 </h2>
                 <p className="text-xl text-stone-600 leading-relaxed font-medium italic border-l-4 border-brand-600 pl-6">
                   Our 9-day itinerary is the "sweet spot" of Himalayan trekking. It's
@@ -144,7 +144,7 @@ export default function Trek9Days() {
                   { label: 'Success Rate', value: '95%', icon: ShieldCheck },
                 ].map((stat) => (
                   <div key={stat.label} className="p-6 bg-white rounded-[32px] border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
-                    <stat.icon className="w-6 h-6 text-brand-600 mx-auto mb-3" />
+                    <stat.icon className="w-6 h-6 text-brand-800 mx-auto mb-3" />
                     <p className="text-[10px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">{stat.label}</p>
                     <p className="text-sm font-black text-stone-900 text-center">{stat.value}</p>
                   </div>
@@ -156,7 +156,7 @@ export default function Trek9Days() {
               <div className="absolute inset-0 bg-brand-600/5 rounded-[40px] transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500" />
               <div className="relative">
                 <img
-                  src="/day9.jpg"
+                  src="/day9.webp"
                   alt="Gokyo Lakes Panorama"
                   className="w-full aspect-[4/5] object-cover rounded-[40px] shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]"
                 />
@@ -195,7 +195,7 @@ export default function Trek9Days() {
                 className="flex items-start gap-4 p-6 bg-white rounded-3xl border border-stone-200/50"
               >
                 <div className="w-10 h-10 bg-brand-50 rounded-2xl flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-6 h-6 text-brand-600" />
+                  <CheckCircle2 className="w-6 h-6 text-brand-800" />
                 </div>
                 <p className="text-stone-700 font-bold leading-snug">{highlight}</p>
               </motion.div>
@@ -373,10 +373,10 @@ export default function Trek9Days() {
             ].map((card) => (
               <a key={card.title} href={card.link} className="p-8 bg-white rounded-[40px] border border-stone-100 shadow-sm hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
-                  <card.icon className="w-6 h-6 text-brand-600 group-hover:text-white" />
+                  <card.icon className="w-6 h-6 text-brand-800 group-hover:text-white" />
                 </div>
                 <p className="text-[10px] text-stone-400 font-bold uppercase tracking-widest mb-1">{card.label}</p>
-                <h4 className="text-lg font-black text-stone-900 flex items-center gap-2 group-hover:text-brand-600">
+                <h4 className="text-lg font-black text-stone-900 flex items-center gap-2 group-hover:text-brand-800">
                   {card.title} <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                 </h4>
               </a>

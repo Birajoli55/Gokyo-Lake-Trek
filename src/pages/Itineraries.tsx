@@ -19,7 +19,7 @@ export default function Itineraries() {
       <Hero 
         title="Trek Itineraries" 
         subtitle="The Path Ahead"
-        image="/itineraries.png"
+        image="/itineraries.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -43,7 +43,7 @@ export default function Itineraries() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#classic-route"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Classic Itinerary
           </a>
@@ -69,7 +69,7 @@ export default function Itineraries() {
               <div className="space-y-4 pt-4">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-stone-100 rounded-xl">
-                    <Clock className="w-5 h-5 text-brand-600" />
+                    <Clock className="w-5 h-5 text-brand-800" />
                   </div>
                   <div>
                     <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">Duration</p>
@@ -78,7 +78,7 @@ export default function Itineraries() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-stone-100 rounded-xl">
-                    <Mountain className="w-5 h-5 text-brand-600" />
+                    <Mountain className="w-5 h-5 text-brand-800" />
                   </div>
                   <div>
                     <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">Difficulty</p>
@@ -108,7 +108,7 @@ export default function Itineraries() {
                 
                 <div className="space-y-4">
                   <div className="flex flex-wrap items-center gap-4">
-                    <span className="px-3 py-1 bg-stone-100 text-brand-600 text-[10px] font-bold uppercase tracking-widest rounded-full">
+                    <span className="px-3 py-1 bg-stone-100 text-brand-800 text-[10px] font-bold uppercase tracking-widest rounded-full">
                       Day {day.day < 10 ? `0${day.day}` : day.day}
                     </span>
                     <h4 className="text-2xl font-bold text-stone-900">{day.title}</h4>
@@ -148,13 +148,13 @@ export default function Itineraries() {
               title: 'Gokyo & Everest Base Camp', 
               duration: '18 Days', 
               desc: 'The ultimate Everest experience, crossing the challenging Cho La Pass (5,420m).',
-              image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop'
+              image: '/day18-opt.webp'
             },
             { 
               title: 'Renjo La Pass Loop', 
               duration: '14 Days', 
               desc: 'A stunning loop that adds the Renjo La Pass (5,360m) for even more spectacular views.',
-              image: 'https://images.unsplash.com/photo-1505410603994-c3ac6269711f?q=80&w=800&auto=format&fit=crop'
+              image: '/RenjoLaPass.webp'
             }
           ].map((route) => (
             <div key={route.title} className="group glass-dark overflow-hidden rounded-[40px] flex flex-col md:flex-row">

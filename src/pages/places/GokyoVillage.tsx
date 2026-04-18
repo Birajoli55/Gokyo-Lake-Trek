@@ -22,7 +22,7 @@ export default function GokyoVillage() {
       <Hero
         title="Gokyo Village"
         subtitle="A Serene Settlement at 4,750m"
-        image="/GokyoVillageh.jpg"
+        image="/GokyoVillageh.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -46,7 +46,7 @@ export default function GokyoVillage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#discover"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Discover Lake Life
           </a>
@@ -73,7 +73,7 @@ export default function GokyoVillage() {
                 {HIGHLIGHTS.map((item) => (
                   <div key={item.title} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-4">
                     <div className="p-3 bg-stone-50 rounded-xl w-fit">
-                      <item.icon className="w-6 h-6 text-brand-600" />
+                      <item.icon className="w-6 h-6 text-brand-800" />
                     </div>
                     <h4 className="text-xl font-bold text-stone-900">{item.title}</h4>
                     <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>
@@ -111,7 +111,7 @@ export default function GokyoVillage() {
               </div>
               <div className="relative aspect-video bg-stone-100 rounded-[32px] overflow-hidden border border-stone-200">
                 <img
-                  src="/GokyoVillagei.jpg"
+                  src="/GokyoVillagei.webp"
                   alt="Gokyo View"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

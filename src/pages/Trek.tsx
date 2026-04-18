@@ -32,7 +32,7 @@ const PACKAGES = [
     price: '$980',
     highlights: ['Lukla to Gokyo direct route', 'Gokyo Ri summit (5,357m)', 'Minimal acclimatization days'],
     icon: Zap,
-    image: '/machhermo.jpg',
+    image: '/machhermo-opt.webp',
     link: '/trek/7-days',
     featured: false,
   },
@@ -47,7 +47,7 @@ const PACKAGES = [
     price: '$1,150',
     highlights: ['Extra acclimatization in Namche', 'Gokyo Ri & Ngozumpa Glacier', 'Five Sacred Lakes visit'],
     icon: TrendingUp,
-    image: '/bento-view.png',
+    image: '/bento-view.webp',
     link: '/trek/9-days',
     featured: false,
   },
@@ -67,7 +67,7 @@ const PACKAGES = [
       'Most recommended for first-timers',
     ],
     icon: Star,
-    image: '/besttime.jpg',
+    image: '/besttime.webp',
     link: '/trek/12-days',
     featured: true,
   },
@@ -86,7 +86,7 @@ const PACKAGES = [
       'Deeper teahouse cultural immersion',
     ],
     icon: Shield,
-    image: 'Gokyo-Lake-1726987182.jpg',
+    image: 'Gokyo-Lake-1726987182-opt.webp',
     link: '/trek/15-days',
     featured: false,
   },
@@ -106,7 +106,7 @@ const PACKAGES = [
       'Full Khumbu grand circuit',
     ],
     icon: Flame,
-    image: '/18day.png',
+    image: '/18day.webp',
     link: '/trek/18-days',
     featured: false,
   },
@@ -126,7 +126,7 @@ const PACKAGES = [
       'Tengboche Monastery cultural visit',
     ],
     icon: Map,
-    image: '/RenjoLaPass.jpg',
+    image: '/RenjoLaPass.webp',
     link: '/trek/20-days',
     featured: false,
   },
@@ -150,7 +150,7 @@ export default function Trek() {
       <Hero
         title="Gokyo Lake Trek"
         subtitle="Choose Your Adventure"
-        image="/trek.jpg"
+        image="/trek.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -174,7 +174,7 @@ export default function Trek() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#packages"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Explore Packages
           </a>
@@ -269,7 +269,7 @@ export default function Trek() {
                     </div>
                     <div className="text-right shrink-0 ml-4">
                       <p className="text-stone-400 text-xs font-bold uppercase tracking-widest">From</p>
-                      <p className="text-3xl font-black text-brand-600">{pkg.price}</p>
+                      <p className="text-3xl font-black text-brand-800">{pkg.price}</p>
                     </div>
                   </div>
 
@@ -287,7 +287,7 @@ export default function Trek() {
                   <Link
                     to={pkg.link}
                     className={`w-full flex items-center justify-center gap-2 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${pkg.featured
-                      ? 'bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-600/30'
+                      ? 'bg-brand-600 text-white hover:bg-brand-800 shadow-lg shadow-brand-600/30'
                       : 'bg-stone-100 text-stone-900 hover:bg-brand-600 hover:text-white'
                       }`}
                   >
@@ -330,7 +330,7 @@ export default function Trek() {
                   {row.values.map((val, j) => (
                     <td
                       key={j}
-                      className={`py-4 px-4 text-center text-sm font-bold ${PACKAGES[j].featured ? 'text-brand-600' : 'text-stone-700'
+                      className={`py-4 px-4 text-center text-sm font-bold ${PACKAGES[j].featured ? 'text-brand-800' : 'text-stone-700'
                         }`}
                     >
                       {val}
@@ -350,7 +350,7 @@ export default function Trek() {
       {/* Final CTA */}
       <section className="bg-brand-600 text-white text-center py-28 px-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img src="https://images.unsplash.com/photo-1520209268518-cd6221f9a24c?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" alt="" />
+          <img src="/HimalayanPanorama-opt.webp" className="w-full h-full object-cover" alt="" />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

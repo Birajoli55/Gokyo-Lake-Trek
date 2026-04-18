@@ -35,11 +35,11 @@ export default function PlanningSection({
               className="p-10 bg-white rounded-[32px] border border-stone-100 shadow-sm hover:shadow-xl transition-all group block h-full"
             >
               <div className="p-4 bg-stone-50 rounded-2xl w-fit mb-6 group-hover:bg-brand-50 transition-colors">
-                <item.icon className="w-8 h-8 text-brand-600" />
+                <item.icon className="w-8 h-8 text-brand-800" />
               </div>
               <h3 className="text-2xl font-bold text-stone-900 mb-4">{item.title}</h3>
               <p className="text-stone-500 leading-relaxed mb-6">{item.desc}</p>
-              <span className="text-brand-600 font-bold flex items-center gap-2">
+              <span className="text-brand-800 font-bold flex items-center gap-2">
                 Explore <ArrowRight className="w-4 h-4" />
               </span>
             </Link>

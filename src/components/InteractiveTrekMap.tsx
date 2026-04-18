@@ -134,13 +134,13 @@ export default function InteractiveTrekMap({ duration, price, startPoint, endPoi
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer name="Terrain">
               <TileLayer
-                url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+                url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.webp"
                 attribution='&copy; OpenTopoMap'
               />
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer name="Standard">
               <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.webp"
                 attribution='&copy; OpenStreetMap'
               />
             </LayersControl.BaseLayer>

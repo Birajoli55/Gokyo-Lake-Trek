@@ -43,6 +43,7 @@ export const AdminLogin: React.FC = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="admin@gokyolake.com"
                             required
+                            autoComplete="username"
                         />
                     </div>
 
@@ -55,6 +56,7 @@ export const AdminLogin: React.FC = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="••••••••"
                             required
+                            autoComplete="current-password"
                         />
                     </div>
 

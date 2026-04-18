@@ -39,7 +39,7 @@ export default function SafetySection({
               </div>
               
               <div className="space-y-4 relative z-10">
-                <h3 className="text-3xl font-black text-stone-900 tracking-tight group-hover:text-brand-600 transition-colors">
+                <h3 className="text-3xl font-black text-stone-900 tracking-tight group-hover:text-brand-800 transition-colors">
                   {topic.title}
                 </h3>
                 <p className="text-stone-500 text-base leading-relaxed">
@@ -47,7 +47,7 @@ export default function SafetySection({
                 </p>
               </div>
 
-              <div className="mt-auto pt-6 flex items-center gap-2 text-brand-600 font-black text-xs uppercase tracking-widest relative z-10">
+              <div className="mt-auto pt-6 flex items-center gap-2 text-brand-800 font-black text-xs uppercase tracking-widest relative z-10">
                 Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
               </div>
 

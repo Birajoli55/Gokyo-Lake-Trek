@@ -20,7 +20,7 @@ export default function EmergencyContacts() {
       <Hero
         title="Emergency Contacts"
         subtitle="Crucial Information for Your Safety"
-        image="/emcall.png"
+        image="/emcall.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -44,7 +44,7 @@ export default function EmergencyContacts() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#contacts"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Emergency Numbers
           </a>
@@ -71,7 +71,7 @@ export default function EmergencyContacts() {
               {CONTACTS.map((group) => (
                 <div key={group.category} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-6">
                   <div className="p-3 bg-stone-50 rounded-xl w-fit">
-                    <Phone className="w-6 h-6 text-brand-600" />
+                    <Phone className="w-6 h-6 text-brand-800" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-900">{group.category}</h4>
                   <ul className="space-y-4">

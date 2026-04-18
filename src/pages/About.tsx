@@ -7,6 +7,7 @@ import Hero from '../components/Hero';
 import ReviewBadge from '../components/ReviewBadge';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import TrustBar from '../components/TrustBar';
 import PressAwardsBanner from '../components/PressAwardsBanner';
 import UserProofBadge from '../components/UserProofBadge';
@@ -18,21 +19,21 @@ const team = [
     role: "Founder & Head Guide",
     experience: "25+ Years",
     bio: "Born in the shadow of Everest, Tuphan has summited Gokyo Ri over 200 times and is dedicated to preserving Sherpa culture.",
-    image: "/tuphanSherpa.png"
+    image: "/tuphanSherpa.webp"
   },
   {
     name: "Rita Sharma",
     role: "Senior safety Officer",
     experience: "15+ Years",
     bio: "A certified Wilderness First Responder, Rita ensure every trek meets the highest global safety standards.",
-    image: "/Ritasharma.png"
+    image: "/Ritasharma.webp"
   },
   {
     name: "Pasang Lhamu",
     role: "Community Liaison",
     experience: "10+ Years",
     bio: "Pasang manages our local impact projects, ensuring our treks directly benefit Himalayan schools and cooperatives.",
-    image: "/PasangLhamu.png"
+    image: "/PasangLhamu.webp"
   }
 ];
 
@@ -48,10 +49,14 @@ export default function About() {
 
   return (
     <main className="bg-stone-50 min-h-screen">
+      <SEO 
+        title="About Us | Expert Himalayan Sherpa Guides" 
+        description="Learn about Gokyo Explorer's mission to provide sustainable, safe, and culturally immersive trekking experiences in the Everest region." 
+      />
       <Hero
         title="Deep Roots. High Peaks."
         subtitle="Our Legacy"
-        image="/gokyori.png"
+        image="/gokyori.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -73,7 +78,7 @@ export default function About() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <Link
             to="/trek"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Explore Trek
           </Link>
@@ -97,12 +102,12 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center gap-2 text-brand-600 font-bold uppercase tracking-[0.2em] text-xs mb-4">
+              <div className="flex items-center gap-2 text-brand-800 font-bold uppercase tracking-[0.2em] text-xs mb-4">
                 <History className="w-4 h-4" />
                 Our Story
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-8 leading-tight">
-                From a single yak to a <span className="text-brand-600">Himalayan Legacy.</span>
+                From a single yak to a <span className="text-brand-800">Himalayan Legacy.</span>
               </h2>
               <div className="space-y-6 text-stone-600 text-lg leading-relaxed">
                 <p>
@@ -135,7 +140,7 @@ export default function About() {
             >
               <div className="aspect-[4/5] rounded-[48px] overflow-hidden shadow-2xl relative z-10">
                 <img
-                  src="/tuphanSherpa.png"
+                  src="/tuphanSherpa.webp"
                   alt="Tuphan Sherpa in the mountains"
                   className="w-full h-full object-cover"
                 />
@@ -203,9 +208,9 @@ export default function About() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
             <div className="max-w-2xl">
-              <div className="text-brand-600 font-bold uppercase tracking-[0.2em] text-xs mb-4">Our People</div>
+              <div className="text-brand-800 font-bold uppercase tracking-[0.2em] text-xs mb-4">Our People</div>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
-                Meet the Guardians of <span className="text-brand-600">the Lakes.</span>
+                Meet the Guardians of <span className="text-brand-800">the Lakes.</span>
               </h2>
             </div>
             <p className="text-stone-500 text-lg md:max-w-xs leading-relaxed">
@@ -234,7 +239,7 @@ export default function About() {
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold text-stone-900 mb-1">{member.name}</h3>
-                <div className="text-brand-600 font-bold text-sm uppercase tracking-widest mb-4">{member.role}</div>
+                <div className="text-brand-800 font-bold text-sm uppercase tracking-widest mb-4">{member.role}</div>
                 <p className="text-stone-500 leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
@@ -253,19 +258,19 @@ export default function About() {
               {
                 name: "Sarah Jenkins",
                 role: "Photographer",
-                image: "/avatar-marcus.png",
+                image: "/avatar-marcus.webp",
                 text: "The sheer color of the Gokyo lakes defies imagination. Waking up to see the reflection of Cho Oyu on the water was the highlight of my trekking life. The guides were simply phenomenal."
               },
               {
                 name: "Marcus V.",
                 role: "Adventure Enthusiast",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
+                image: "/avatar-marcus.webp",
                 text: "I did EBC three years ago, but Gokyo felt much more intimate and wild. The ascent to Gokyo Ri was tough, but standing at the top alone with my group was an unmatched feeling."
               },
               {
                 name: "Elena Rodriguez",
                 role: "First-time Trekker",
-                image: "/avatar-sarah.png",
+                image: "/avatar-sarah.webp",
                 text: "I was extremely nervous about the altitude, but the acclimatization schedule built into our itinerary was perfect. I felt strong the entire time thanks to the incredible support team."
               }
             ].map((review, i) => (
@@ -295,7 +300,7 @@ export default function About() {
                 <div className="flex items-center gap-4 pt-6 border-t border-stone-100 w-full">
                   <img src={review.image} className="w-16 h-16 rounded-full object-cover ring-4 ring-stone-50" alt={review.name} />
                   <div>
-                    <h4 className="text-stone-900 font-black text-base tracking-tight">{review.name}</h4>
+                    <p className="text-stone-900 font-black text-base tracking-tight">{review.name}</p>
                     <span className="text-stone-400 text-xs font-bold uppercase tracking-widest">{review.role}</span>
                   </div>
                 </div>

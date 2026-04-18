@@ -20,7 +20,7 @@ export default function AltitudeSickness() {
       <Hero
         title="Altitude Sickness (AMS)"
         subtitle="Understanding and Preventing AMS"
-        image="/ams.png"
+        image="/ams.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -44,7 +44,7 @@ export default function AltitudeSickness() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#what-is-ams"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Symptom Guide
           </a>

@@ -33,7 +33,7 @@ export default function GearSection({
             <div className="glass p-10 rounded-[40px] space-y-8 h-full">
               <div className="flex items-center gap-4">
                 <div className="p-4 bg-stone-100 rounded-2xl">
-                  <ShoppingBag className="w-6 h-6 text-brand-600" />
+                  <ShoppingBag className="w-6 h-6 text-brand-800" />
                 </div>
                 <h3 className="text-2xl font-bold text-stone-900">{category.category}</h3>
               </div>
@@ -57,7 +57,7 @@ export default function GearSection({
           to="/gear" 
           className="inline-flex items-center gap-2 px-10 py-5 bg-white border border-stone-200 text-stone-900 font-bold uppercase tracking-widest rounded-full hover:bg-stone-50 transition-all shadow-sm"
         >
-          View Complete Gear Guide <ArrowRight className="w-4 h-4 text-brand-600" />
+          View Complete Gear Guide <ArrowRight className="w-4 h-4 text-brand-800" />
         </Link>
       </div>
     </Section>

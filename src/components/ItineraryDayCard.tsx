@@ -30,10 +30,10 @@ export default function ItineraryDayCard({ day, isFirst = false }: ItineraryDayC
           className="flex flex-wrap items-center gap-4 cursor-pointer group"
           onClick={() => setExpanded(!expanded)}
         >
-          <span className="text-brand-600 font-black text-xs uppercase tracking-[0.2em] bg-brand-50 px-3 py-1 rounded-full group-hover:bg-brand-100 transition-colors">
+          <span className="text-brand-800 font-black text-xs uppercase tracking-[0.2em] bg-brand-50 px-3 py-1 rounded-full group-hover:bg-brand-100 transition-colors">
             Day {day.day}
           </span>
-          <h3 className="text-3xl font-black text-stone-900 uppercase tracking-tighter group-hover:text-brand-600 transition-colors">
+          <h3 className="text-3xl font-black text-stone-900 uppercase tracking-tighter group-hover:text-brand-800 transition-colors">
             {day.title}
           </h3>
           <div className="ml-auto">
@@ -70,13 +70,13 @@ export default function ItineraryDayCard({ day, isFirst = false }: ItineraryDayC
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                   <div className="p-6 bg-stone-100/50 rounded-3xl border border-stone-200/50">
                     <div className="flex items-center gap-2 mb-3">
-                      <Star className="w-4 h-4 text-brand-600" />
+                      <Star className="w-4 h-4 text-brand-800" />
                       <h4 className="text-sm font-black text-stone-900 uppercase tracking-widest">Highlights</h4>
                     </div>
                     <ul className="space-y-2">
                       {day.highlights.map((h, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-stone-600 text-sm">
-                          <span className="text-brand-600 mt-1">•</span> {h}
+                          <span className="text-brand-800 mt-1">•</span> {h}
                         </li>
                       ))}
                     </ul>
@@ -90,7 +90,7 @@ export default function ItineraryDayCard({ day, isFirst = false }: ItineraryDayC
                     </div>
                     <div className="flex justify-between items-center border-b border-stone-200 pb-2">
                       <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-stone-400">
-                        <Utensils className="w-3 h-3 text-brand-600" /> Meals
+                        <Utensils className="w-3 h-3 text-brand-800" /> Meals
                       </div>
                       <span className="text-stone-900 font-bold text-sm">{day.meals}</span>
                     </div>

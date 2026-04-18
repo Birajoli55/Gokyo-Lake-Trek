@@ -36,6 +36,7 @@ export default function PlacesSection({
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img 
+                  loading="lazy"
                   src={place.image} 
                   alt={place.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
@@ -46,22 +47,22 @@ export default function PlacesSection({
                 </div>
               </div>
               <div className="p-10 space-y-4 flex-grow">
-                <h3 className="text-3xl font-black text-stone-900 tracking-tight group-hover:text-brand-600 transition-colors">
+                <h3 className="text-3xl font-black text-stone-900 tracking-tight group-hover:text-brand-800 transition-colors">
                   {place.name}
                 </h3>
                 <p className="text-stone-500 text-base leading-relaxed line-clamp-2">
                   {place.description}
                 </p>
                 <div className="pt-6 flex items-center justify-between border-t border-stone-50">
-                  <span className="text-brand-600 font-black text-xs uppercase tracking-widest flex items-center gap-2">
+                  <span className="text-brand-800 font-black text-xs uppercase tracking-widest flex items-center gap-2">
                     View Details <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                   </span>
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-lg bg-stone-50 flex items-center justify-center group-hover:bg-brand-50 transition-colors">
-                      <Camera className="w-4 h-4 text-stone-400 group-hover:text-brand-600" />
+                      <Camera className="w-4 h-4 text-stone-400 group-hover:text-brand-800" />
                     </div>
                     <div className="w-8 h-8 rounded-lg bg-stone-50 flex items-center justify-center group-hover:bg-brand-50 transition-colors">
-                      <Home className="w-4 h-4 text-stone-400 group-hover:text-brand-600" />
+                      <Home className="w-4 h-4 text-stone-400 group-hover:text-brand-800" />
                     </div>
                   </div>
                 </div>

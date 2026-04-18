@@ -26,7 +26,7 @@ export default function MonthlyHub() {
       <Hero 
         title="Best Time to Visit" 
         subtitle="Monthly Guide to Gokyo Lakes"
-        image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
+        image="/besttime.webp"
       />
 
       <Section title="Seasonal Overview" subtitle="Weather & Conditions">
@@ -40,7 +40,7 @@ export default function MonthlyHub() {
             <div key={season.title} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-4">
               <season.icon className={`w-10 h-10 ${season.color}`} />
               <h3 className="text-2xl font-bold text-stone-900">{season.title}</h3>
-              <p className="text-brand-600 font-bold text-sm uppercase tracking-widest">{season.months}</p>
+              <p className="text-brand-800 font-bold text-sm uppercase tracking-widest">{season.months}</p>
               <p className="text-stone-500 text-sm leading-relaxed">{season.desc}</p>
             </div>
           ))}
@@ -57,7 +57,7 @@ export default function MonthlyHub() {
             >
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-white rounded-xl group-hover:bg-brand-50 transition-colors">
-                  <Calendar className="w-5 h-5 text-stone-400 group-hover:text-brand-600" />
+                  <Calendar className="w-5 h-5 text-stone-400 group-hover:text-brand-800" />
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900">{month.name}</h4>
@@ -73,7 +73,7 @@ export default function MonthlyHub() {
                 }`}>
                   {month.status}
                 </span>
-                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-brand-600 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-brand-800 group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
           ))}

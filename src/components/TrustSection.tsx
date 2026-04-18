@@ -19,13 +19,13 @@ export default function TrustSection({ className = '' }: { className?: string })
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="h-px w-8 bg-brand-600" />
-                <span className="text-brand-600 font-bold uppercase tracking-[0.3em] text-[10px]">Sherpa Heritage & Tradition</span>
+                <span className="text-brand-800 font-bold uppercase tracking-[0.3em] text-[10px]">Sherpa Heritage & Tradition</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-stone-900 leading-[0.9] text-balance">
                 {HERITAGE_STORY.title}
               </h2>
               <div className="relative pt-6">
-                <Quote className="absolute left-0 -top-2 w-16 h-16 text-brand-600/10" />
+                <Quote className="absolute left-0 -top-2 w-16 h-16 text-brand-800/10" />
                 <p className="text-stone-600 text-xl leading-relaxed italic relative z-10 pl-8 border-l-2 border-brand-600/20 font-medium">
                   "{HERITAGE_STORY.description}"
                 </p>
@@ -39,7 +39,7 @@ export default function TrustSection({ className = '' }: { className?: string })
                   {HERITAGE_STORY.signature}
                 </span>
                 <p className="text-stone-400 text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                  <CheckCircle2 className="w-3 h-3 text-brand-600" /> 
+                  <CheckCircle2 className="w-3 h-3 text-brand-800" /> 
                   {HERITAGE_STORY.role}
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default function TrustSection({ className = '' }: { className?: string })
                 className="bg-white p-8 rounded-[40px] border border-stone-200/60 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 relative group overflow-hidden"
               >
                 {/* Vintage ID Overlay */}
-                <div className="absolute right-8 top-8 text-[10px] font-mono text-stone-300 group-hover:text-brand-600/30 transition-colors">
+                <div className="absolute right-8 top-8 text-[10px] font-mono text-stone-300 group-hover:text-brand-800/30 transition-colors">
                   0{i + 1} / GLT_SEC
                 </div>
 

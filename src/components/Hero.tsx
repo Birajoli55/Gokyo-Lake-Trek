@@ -21,17 +21,14 @@ export default function Hero({ title, subtitle, image, height = 'min-h-[90vh]', 
   return (
     <section className={`relative w-full ${height} flex items-center justify-center py-20 overflow-visible`}>
       {/* Parallax Background Image */}
-      <motion.div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat h-full w-full"
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat h-full w-full transition-transform duration-[1500ms] ease-out scale-100"
         style={{ backgroundImage: `url(${image})` }}
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
       >
         {/* Modern dark gradient overlay with more focus on bottom */}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-brand-950/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-stone-950/20" />
-      </motion.div>
+      </div>
 
       {/* Floating Info Cards (Abstract layer) */}
       <div className="absolute inset-0 z-10 pointer-events-none hidden lg:flex justify-center items-center">
@@ -90,15 +87,12 @@ export default function Hero({ title, subtitle, image, height = 'min-h-[90vh]', 
             </motion.span>
           )}
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white leading-[0.95] text-balance break-words w-full">
-            {title.split(' ').map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden pb-2 mr-3 last:mr-0">
-                <motion.span variants={letterVariants} className="inline-block">
-                  {word}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
+          <motion.h1 
+            variants={letterVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white leading-[0.95] text-balance break-words w-full"
+          >
+            {title}
+          </motion.h1>
 
           <motion.div variants={letterVariants} className="pt-8">
             {children}

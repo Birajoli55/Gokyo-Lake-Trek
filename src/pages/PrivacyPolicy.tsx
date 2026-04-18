@@ -37,7 +37,7 @@ function Section({ id, icon, title, children }: SectionProps) {
         aria-expanded={open}
       >
         <div className="flex items-center gap-4">
-          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-50 text-brand-600 shrink-0">
+          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-50 text-brand-800 shrink-0">
             {icon}
           </span>
           <h2 className="text-lg font-bold text-stone-900 group-hover:text-brand-700 transition-colors">
@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
                     <li key={item.id}>
                       <a
                         href={`#${item.id}`}
-                        className="flex items-center gap-2 text-sm text-stone-600 hover:text-brand-600 transition-colors group"
+                        className="flex items-center gap-2 text-sm text-stone-600 hover:text-brand-800 transition-colors group"
                       >
                         <span className="text-xs text-stone-400 group-hover:text-brand-400 font-mono w-5">
                           {String(idx + 1).padStart(2, '0')}
@@ -167,7 +167,7 @@ export default function PrivacyPolicy() {
                 <strong>Gokyo Explorer</strong> ("we", "us", or "our") operates the website{' '}
                 <a
                   href="https://gokyoexplorers.com"
-                  className="underline underline-offset-2 hover:text-brand-600"
+                  className="underline underline-offset-2 hover:text-brand-800"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -349,7 +349,7 @@ export default function PrivacyPolicy() {
                 To exercise any of these rights, contact us at{' '}
                 <a
                   href="mailto:msm47374@gmail.com"
-                  className="text-brand-600 underline underline-offset-2 hover:text-brand-800"
+                  className="text-brand-800 underline underline-offset-2 hover:text-brand-800"
                 >
                   msm47374@gmail.com
                 </a>
@@ -421,7 +421,7 @@ export default function PrivacyPolicy() {
                 contact us immediately at{' '}
                 <a
                   href="mailto:msm47374@gmail.com"
-                  className="text-brand-600 underline underline-offset-2 hover:text-brand-800"
+                  className="text-brand-800 underline underline-offset-2 hover:text-brand-800"
                 >
                   msm47374@gmail.com
                 </a>{' '}

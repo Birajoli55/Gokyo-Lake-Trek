@@ -21,7 +21,7 @@ export default function FoodWater() {
       <Hero 
         title="Food & Water" 
         subtitle="Fueling Your Himalayan Adventure"
-        image="/food.png"
+        image="/food.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -45,7 +45,7 @@ export default function FoodWater() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#nutrition"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Nutrition Guide
           </a>
@@ -71,7 +71,7 @@ export default function FoodWater() {
               {FOOD_ITEMS.map((item) => (
                 <div key={item.title} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-4">
                   <div className="p-3 bg-stone-50 rounded-xl w-fit">
-                    <item.icon className="w-6 h-6 text-brand-600" />
+                    <item.icon className="w-6 h-6 text-brand-800" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-900">{item.title}</h4>
                   <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>
@@ -80,7 +80,7 @@ export default function FoodWater() {
             </div>
             <div className="p-10 bg-brand-50 rounded-[40px] border border-brand-100 space-y-8">
               <div className="flex items-center gap-4">
-                <Droplets className="w-10 h-10 text-brand-600" />
+                <Droplets className="w-10 h-10 text-brand-800" />
                 <h3 className="text-2xl font-bold text-brand-900">Safe Drinking Water</h3>
               </div>
               <p className="text-brand-800 text-lg leading-relaxed">

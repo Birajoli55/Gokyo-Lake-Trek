@@ -9,7 +9,7 @@ export default function CustomTripBanner() {
     <Section className="py-16 md:py-24 !bg-transparent border-t border-stone-200/60 mt-auto">
       <div className="glass-dark border border-white/5 rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10 w-full overflow-hidden group shadow-2xl">
         {/* Background Glows */}
-        <div className="absolute -left-20 -top-20 w-80 h-80 bg-brand-500/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-brand-500/20 transition-colors duration-700" />
+        <div className="absolute -left-20 -top-20 w-80 h-80 bg-brand-500/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-brand-800/20 transition-colors duration-700" />
         <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-emerald-500/20 transition-colors duration-700" />
         
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 relative z-10 text-center md:text-left">
@@ -26,7 +26,7 @@ export default function CustomTripBanner() {
         
         <button 
           onClick={() => openBooking('Custom Itinerary')}
-          className="relative z-10 w-full md:w-auto px-10 py-5 bg-brand-600 text-white font-extrabold rounded-2xl hover:bg-brand-500 transition-all hover:scale-105 active:scale-95 whitespace-nowrap text-center text-sm uppercase tracking-widest shadow-[0_0_20px_rgba(13,148,136,0.3)]"
+          className="relative z-10 w-full md:w-auto px-10 py-5 bg-brand-600 text-white font-extrabold rounded-2xl hover:bg-brand-800 transition-all hover:scale-105 active:scale-95 whitespace-nowrap text-center text-sm uppercase tracking-widest shadow-[0_0_20px_rgba(13,148,136,0.3)]"
         >
           Start Custom Plan
         </button>

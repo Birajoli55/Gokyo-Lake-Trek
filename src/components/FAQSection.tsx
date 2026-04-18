@@ -56,7 +56,7 @@ export default function FAQSection({
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-stone-900"
           >
-            Frequently Asked <span className="text-brand-600">Questions</span>
+            Frequently Asked <span className="text-brand-800">Questions</span>
           </motion.h2>
           
           <motion.p 
@@ -126,13 +126,13 @@ export default function FAQSection({
                     >
                       <div className="flex items-center gap-6">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                          isOpen ? 'bg-brand-50 text-brand-600' : 'bg-brand-50/30 text-brand-500 group-hover:bg-brand-50'
+                          isOpen ? 'bg-brand-50 text-brand-800' : 'bg-brand-50/30 text-brand-500 group-hover:bg-brand-50'
                         }`}>
                           <Icon className="w-5 h-5" />
                         </div>
-                        <h4 className="text-lg md:text-xl font-bold text-stone-900 leading-tight">
+                        <h3 className="text-lg md:text-xl font-bold text-stone-900 leading-tight">
                           {faq.question}
-                        </h4>
+                        </h3>
                       </div>
                       <div className={`p-2 rounded-full transition-all duration-300 ${
                         isOpen ? 'bg-stone-50 text-stone-900 rotate-180' : 'bg-stone-50/50 text-stone-400 group-hover:bg-stone-100'

@@ -20,7 +20,7 @@ export default function FirstAid() {
       <Hero
         title="First Aid & Health"
         subtitle="Staying Healthy on the Gokyo Lakes Trail"
-        image="/fah.png"
+        image="/fah.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -44,7 +44,7 @@ export default function FirstAid() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#health"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Medical Kit Essentials
           </a>
@@ -71,7 +71,7 @@ export default function FirstAid() {
               {MEDICAL_KIT.map((group) => (
                 <div key={group.category} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-6">
                   <div className="p-3 bg-stone-50 rounded-xl w-fit">
-                    <Pill className="w-6 h-6 text-brand-600" />
+                    <Pill className="w-6 h-6 text-brand-800" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-900">{group.category}</h4>
                   <ul className="space-y-4">
@@ -87,7 +87,7 @@ export default function FirstAid() {
             </div>
             <div className="p-10 bg-brand-50 rounded-[40px] border border-brand-100 space-y-8">
               <div className="flex items-center gap-4">
-                <Heart className="w-10 h-10 text-brand-600" />
+                <Heart className="w-10 h-10 text-brand-800" />
                 <h3 className="text-2xl font-bold text-brand-900">Personal Hygiene</h3>
               </div>
               <p className="text-brand-800 text-lg leading-relaxed">

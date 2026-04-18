@@ -35,7 +35,7 @@ export default function ItinerariesHub() {
       <section className="relative h-[72vh] flex flex-col justify-center overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/bento-view.png)', y: heroY, opacity: heroOpacity }}
+          style={{ backgroundImage: 'url(/bento-view.webp)', y: heroY, opacity: heroOpacity }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-stone-900/20" />
         <motion.div
@@ -91,7 +91,7 @@ export default function ItinerariesHub() {
           >
             <div className="overflow-hidden rounded-[40px] shadow-2xl bg-stone-900/50">
               <img
-                src="/gokyoroute.png"
+                src="/gokyoroute.webp"
                 alt="Gokyo Trek Route Map"
                 className="w-full aspect-[4/3] object-contain transition-transform duration-700 group-hover:scale-105"
               />

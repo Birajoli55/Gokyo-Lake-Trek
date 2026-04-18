@@ -99,7 +99,7 @@ export default function PressAwardsBanner() {
 
               {/* Award 2020 */}
               <div className="flex flex-col items-center space-y-1 group">
-                <span className="text-[8px] font-bold text-stone-400">2020</span>
+                <span className="text-[10px] font-bold text-stone-700">2020</span>
                 <div className="flex flex-col items-center text-center">
                   <span className="text-[11px] font-bold text-stone-900 leading-tight">Travelers'</span>
                   <div className="flex items-center">
@@ -117,7 +117,7 @@ export default function PressAwardsBanner() {
               {/* Award 2019 */}
               <div className="flex flex-col items-center space-y-3 group">
                 <div className="w-20 h-20 rounded-full border border-[#00AA6C] flex flex-col items-center justify-center p-2 relative">
-                  <span className="text-[7px] font-bold text-stone-400">2019</span>
+                  <span className="text-[10px] font-bold text-stone-700">2019</span>
                   <div className="flex flex-col items-center leading-none -mt-0.5">
                     <span className="text-[8px] font-black text-stone-900">CERTIFICATE</span>
                     <span className="text-[6px] font-bold text-stone-900 italic">of</span>
@@ -126,7 +126,7 @@ export default function PressAwardsBanner() {
                   <OwlIcon className="w-6 h-6 text-stone-900 mt-1" />
                 </div>
                 <div className="flex items-center justify-center gap-1 -mt-1">
-                  <span className="text-[10px] font-black text-[#00AA6C] tracking-tighter">tripadvisor</span>
+                  <span className="text-[10px] font-black text-[#007a4d] tracking-tighter">tripadvisor</span>
                   <span className="text-[5px] text-stone-400 font-bold">®</span>
                 </div>
               </div>

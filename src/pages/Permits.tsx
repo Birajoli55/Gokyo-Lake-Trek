@@ -16,7 +16,7 @@ export default function Permits() {
       <Hero 
         title="Permits & Costs" 
         subtitle="The Logistics"
-        image="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920&auto=format&fit=crop"
+        image="/RequiredPermits.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -40,7 +40,7 @@ export default function Permits() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#required-permits"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             See Permit Details
           </a>
@@ -80,8 +80,8 @@ export default function Permits() {
               ].map((permit) => (
                 <div key={permit.title} className="glass p-8 rounded-[32px] space-y-4">
                   <div className="flex items-center justify-between">
-                    <FileText className="w-8 h-8 text-brand-600" />
-                    <span className="px-4 py-1 bg-stone-100 text-brand-600 text-[10px] font-bold uppercase tracking-widest rounded-full">
+                    <FileText className="w-8 h-8 text-brand-800" />
+                    <span className="px-4 py-1 bg-stone-100 text-brand-800 text-[10px] font-bold uppercase tracking-widest rounded-full">
                       {permit.cost}
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export default function Permits() {
           <div className="sticky top-32">
             <div className="relative bg-white rounded-[40px] overflow-hidden shadow-xl border border-stone-100">
               <img 
-                src="/RequiredPermits.png" 
+                src="/RequiredPermits.webp" 
                 alt="Gokyo Trek Route Map" 
                 className="w-full h-auto block transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"

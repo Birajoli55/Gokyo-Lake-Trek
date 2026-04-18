@@ -2,10 +2,10 @@ import { Star, Play } from 'lucide-react';
 
 export default function UserProofBadge() {
   const avatars = [
-    'https://i.pravatar.cc/150?u=1',
-    'https://i.pravatar.cc/150?u=2',
-    'https://i.pravatar.cc/150?u=3',
-    'https://i.pravatar.cc/150?u=4',
+    'https://i.pravatar.cc/60?u=1',
+    'https://i.pravatar.cc/60?u=2',
+    'https://i.pravatar.cc/60?u=3',
+    'https://i.pravatar.cc/60?u=4',
   ];
 
   return (
@@ -42,12 +42,12 @@ export default function UserProofBadge() {
       <div className="group relative cursor-pointer hidden sm:block">
         <div className="w-28 h-16 bg-stone-900/60 rounded-2xl overflow-hidden backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-2xl transition-all hover:scale-105 hover:border-brand-400/50">
            <img 
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=200&h=120&auto=format&fit=crop" 
+            src="/cgokyo.webp" 
             className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" 
             alt="Video testimonial"
            />
            <div className="absolute inset-0 bg-gradient-to-tr from-stone-950/20 to-transparent" />
-           <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 relative z-10 transition-all group-hover:bg-brand-500 group-hover:border-brand-400">
+           <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 relative z-10 transition-all group-hover:bg-brand-800 group-hover:border-brand-400">
               <Play className="w-4 h-4 text-white fill-white ml-0.5 transition-transform group-hover:scale-110" />
            </div>
            

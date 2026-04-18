@@ -9,6 +9,7 @@ import ReviewBadge from '../components/ReviewBadge';
 import UserProofBadge from '../components/UserProofBadge';
 import { Link } from 'react-router-dom';
 import { mailService } from '../utils/mailService';
+import SEO from '../components/SEO';
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<'booking' | 'inquiry'>('booking');
@@ -42,10 +43,14 @@ export default function Contact() {
 
   return (
     <main className="bg-stone-50">
+      <SEO 
+        title="Contact Us | Plan Your Gokyo Lake Adventure" 
+        description="Have questions? Get in touch with our Himalayan trekking experts to plan your customized trek, group departure, or private expedition." 
+      />
       <Hero
         title="Get in Touch"
         subtitle="Start Your Adventure Today"
-        image="/cgokyo.jpg"
+        image="/cgokyo.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -69,7 +74,7 @@ export default function Contact() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#interaction-area"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Send Message
           </a>
@@ -94,7 +99,7 @@ export default function Contact() {
               <button
                 onClick={() => setActiveTab('booking')}
                 className={`flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'booking'
-                  ? 'bg-white text-brand-600 shadow-md translate-y-0'
+                  ? 'bg-white text-brand-800 shadow-md translate-y-0'
                   : 'text-stone-500 hover:text-stone-700'
                   }`}
               >
@@ -103,7 +108,7 @@ export default function Contact() {
               <button
                 onClick={() => setActiveTab('inquiry')}
                 className={`flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'inquiry'
-                  ? 'bg-white text-brand-600 shadow-md translate-y-0'
+                  ? 'bg-white text-brand-800 shadow-md translate-y-0'
                   : 'text-stone-500 hover:text-stone-700'
                   }`}
               >
@@ -130,7 +135,7 @@ export default function Contact() {
                 </div>
                 <button 
                   onClick={() => setIsSubmitted(false)}
-                  className="text-brand-600 font-bold uppercase tracking-widest text-sm hover:text-brand-700 transition-colors"
+                  className="text-brand-800 font-bold uppercase tracking-widest text-sm hover:text-brand-700 transition-colors"
                 >
                   Send Another Message
                 </button>
@@ -146,22 +151,30 @@ export default function Contact() {
                     <input 
                       required
                       type="text" 
+                      id="inquiry-name"
+                      name="name"
                       placeholder="Name" 
                       value={inquiryData.name}
                       onChange={e => setInquiryData({...inquiryData, name: e.target.value})}
                       className="bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 shadow-sm" 
+                      autoComplete="name"
                     />
                     <input 
                       required
                       type="email" 
+                      id="inquiry-email"
+                      name="email"
                       placeholder="Email" 
                       value={inquiryData.email}
                       onChange={e => setInquiryData({...inquiryData, email: e.target.value})}
                       className="bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-brand-500 shadow-sm" 
+                      autoComplete="email"
                     />
                   </div>
                   <textarea 
                     required
+                    id="inquiry-message"
+                    name="message"
                     rows={6} 
                     placeholder="How can we help?" 
                     value={inquiryData.message}
@@ -187,7 +200,7 @@ export default function Contact() {
               <div className="space-y-8">
                 <div className="flex gap-5">
                   <div className="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-brand-600" />
+                    <MapPin className="w-6 h-6 text-brand-800" />
                   </div>
                   <div>
                     <h5 className="font-bold text-stone-900 mb-1 text-sm">Kathmandu HQ</h5>
@@ -197,22 +210,22 @@ export default function Contact() {
 
                 <div className="flex gap-5">
                   <div className="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center shrink-0">
-                    <Phone className="w-6 h-6 text-brand-600" />
+                    <Phone className="w-6 h-6 text-brand-800" />
                   </div>
                   <div>
                     <h5 className="font-bold text-stone-900 mb-1 text-sm">Direct Line</h5>
-                    <a href="tel:+9779748343015" className="text-stone-500 text-sm hover:text-brand-600 transition-colors">+977-9748343015</a>
-                    <p className="text-brand-600 text-xs font-bold mt-1 uppercase tracking-widest">Available 24/7</p>
+                    <a href="tel:+9779748343015" className="text-stone-500 text-sm hover:text-brand-800 transition-colors">+977-9748343015</a>
+                    <p className="text-brand-800 text-xs font-bold mt-1 uppercase tracking-widest">Available 24/7</p>
                   </div>
                 </div>
 
                 <div className="flex gap-5">
                   <div className="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-brand-600" />
+                    <Mail className="w-6 h-6 text-brand-800" />
                   </div>
                   <div>
                     <h5 className="font-bold text-stone-900 mb-1 text-sm">Email Support</h5>
-                    <a href="mailto:msm47374@gmail.com" className="text-stone-500 text-sm hover:text-brand-600 transition-colors">msm47374@gmail.com</a>
+                    <a href="mailto:msm47374@gmail.com" className="text-stone-500 text-sm hover:text-brand-800 transition-colors">msm47374@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -224,7 +237,7 @@ export default function Contact() {
                 <div className="flex gap-4">
                   {[Instagram, Twitter, Facebook].map((Icon, i) => (
                     <a key={i} href="#" className="w-10 h-10 bg-white border border-stone-100 rounded-lg flex items-center justify-center hover:bg-brand-50 hover:border-brand-100 transition-all shadow-sm group">
-                      <Icon className="w-5 h-5 text-stone-400 group-hover:text-brand-600" />
+                      <Icon className="w-5 h-5 text-stone-400 group-hover:text-brand-800" />
                     </a>
                   ))}
                 </div>
@@ -238,7 +251,7 @@ export default function Contact() {
                 href="https://wa.me/9779748343015" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white text-brand-600 px-6 py-3 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-stone-50 transition-colors w-fit"
+                className="flex items-center gap-2 bg-white text-brand-800 px-6 py-3 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-stone-50 transition-colors w-fit"
               >
                 WhatsApp Us
               </a>

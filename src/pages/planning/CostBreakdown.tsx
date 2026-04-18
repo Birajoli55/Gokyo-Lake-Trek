@@ -55,7 +55,7 @@ export default function CostBreakdown() {
       <Hero
         title="Cost Breakdown"
         subtitle="Budgeting for Your Adventure"
-        image="/HimalayanPanorama.jpg"
+        image="/HimalayanPanorama-opt.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -79,7 +79,7 @@ export default function CostBreakdown() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#costs"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Detailed Breakdown
           </a>
@@ -106,12 +106,12 @@ export default function CostBreakdown() {
                 {COST_CATEGORIES.map((item) => (
                   <div key={item.title} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm flex items-start gap-6">
                     <div className="p-4 bg-stone-50 rounded-2xl">
-                      <item.icon className="w-6 h-6 text-brand-600" />
+                      <item.icon className="w-6 h-6 text-brand-800" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="text-xl font-bold text-stone-900">{item.title}</h3>
-                        <span className="text-brand-600 font-bold">{item.amount}</span>
+                        <span className="text-brand-800 font-bold">{item.amount}</span>
                       </div>
                       <p className="text-stone-500 text-sm leading-relaxed">{item.details}</p>
                     </div>

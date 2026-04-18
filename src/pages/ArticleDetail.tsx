@@ -107,8 +107,8 @@ export default function ArticleDetail() {
                   A high-altitude guide and passionate storyteller with over 15 years of experience leading treks to the Gokyo Lakes and Everest region.
                 </p>
                 <div className="pt-2 flex justify-center md:justify-start gap-4">
-                   <button className="text-brand-600 font-bold text-sm hover:underline flex items-center gap-1.5"><MessageSquare className="w-4 h-4" /> Contact via WhatsApp</button>
-                   <button className="text-brand-600 font-bold text-sm hover:underline flex items-center gap-1.5"><LinkIcon className="w-4 h-4" /> Author Profile</button>
+                   <button className="text-brand-800 font-bold text-sm hover:underline flex items-center gap-1.5"><MessageSquare className="w-4 h-4" /> Contact via WhatsApp</button>
+                   <button className="text-brand-800 font-bold text-sm hover:underline flex items-center gap-1.5"><LinkIcon className="w-4 h-4" /> Author Profile</button>
                 </div>
               </div>
             </motion.div>
@@ -137,8 +137,8 @@ export default function ArticleDetail() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <span className="text-brand-600 text-xs font-bold uppercase tracking-widest">{related.category}</span>
-                          <h5 className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors leading-tight">{related.title}</h5>
+                          <span className="text-brand-800 text-xs font-bold uppercase tracking-widest">{related.category}</span>
+                          <h5 className="text-lg font-bold text-stone-900 group-hover:text-brand-800 transition-colors leading-tight">{related.title}</h5>
                         </div>
                       </Link>
                     ))}
@@ -153,7 +153,7 @@ export default function ArticleDetail() {
                   Join 2,500+ other trekkers and get the best guides and trail news delivered to your inbox weekly.
                 </p>
                 <div className="space-y-3">
-                  <input type="email" placeholder="email@address.com" className="w-full px-5 py-3.5 bg-white/10 rounded-2xl border border-white/10 text-white placeholder:text-brand-400 focus:outline-none focus:border-brand-400 text-sm" />
+                  <input type="email" id="article-newsletter-email" name="email" placeholder="email@address.com" className="w-full px-5 py-3.5 bg-white/10 rounded-2xl border border-white/10 text-white placeholder:text-brand-400 focus:outline-none focus:border-brand-400 text-sm" />
                   <button className="w-full py-4 bg-brand-500 text-white font-bold rounded-2xl hover:bg-brand-400 transition-colors shadow-lg">Subscribe Now</button>
                 </div>
               </div>

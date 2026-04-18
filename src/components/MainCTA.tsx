@@ -10,7 +10,7 @@ export default function MainCTA() {
       {/* Cinematic Background */}
       <div className="absolute inset-0 opacity-40">
         <img 
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop" 
+          src="/HimalayanPanorama-opt.webp" 
           className="w-full h-full object-cover mix-blend-overlay scale-110" 
           alt="Himalayan mountains" 
         />

@@ -236,7 +236,7 @@ export default function Departures() {
       <Hero
         title="Trek Departures"
         subtitle="Scheduled Group Departures for 2026"
-        image="/GokyoThirdLake.jpg"
+        image="/GokyoThirdLake.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -260,7 +260,7 @@ export default function Departures() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#schedule"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             View Schedule
           </a>
@@ -378,7 +378,7 @@ export default function Departures() {
                           {/* Status & Price */}
                           <div>
                             <p className="text-stone-400 text-xs font-bold uppercase tracking-widest mb-1">Price / Person</p>
-                            <p className="text-brand-600 font-black text-2xl">${dep.price.toLocaleString()}</p>
+                            <p className="text-brand-800 font-black text-2xl">${dep.price.toLocaleString()}</p>
                             <span className={`inline-flex items-center gap-1.5 mt-1 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ${statusStyle.bg} ${statusStyle.text}`}>
                               <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`} />
                               {dep.status}
@@ -398,14 +398,14 @@ export default function Departures() {
                           ) : (
                             <button
                               onClick={() => openBooking(dep.package)}
-                              className="px-6 py-3 bg-brand-600 text-white font-bold text-sm uppercase tracking-widest rounded-2xl hover:bg-brand-500 transition-colors flex items-center gap-2 whitespace-nowrap"
+                              className="px-6 py-3 bg-brand-600 text-white font-bold text-sm uppercase tracking-widest rounded-2xl hover:bg-brand-800 transition-colors flex items-center gap-2 whitespace-nowrap"
                             >
                               Book Now <ArrowRight className="w-4 h-4" />
                             </button>
                           )}
                           <Link
                             to={dep.link}
-                            className="text-brand-600 text-xs font-bold hover:underline underline-offset-2"
+                            className="text-brand-800 text-xs font-bold hover:underline underline-offset-2"
                           >
                             View Itinerary →
                           </Link>
@@ -433,7 +433,7 @@ export default function Departures() {
           className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
           <div className="space-y-6">
-            <span className="text-brand-600 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+            <span className="text-brand-800 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
               <Star className="w-4 h-4 text-amber-500 fill-amber-500" /> Private & Custom Options
             </span>
             <h2 className="text-4xl font-bold text-stone-900 leading-tight">
@@ -459,7 +459,7 @@ export default function Departures() {
             </ul>
             <button
               onClick={() => openBooking()}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors text-sm"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors text-sm"
             >
               Request a Custom Date <ArrowRight className="w-4 h-4" />
             </button>
@@ -468,7 +468,7 @@ export default function Departures() {
           <div className="relative">
             <div className="overflow-hidden rounded-[32px] shadow-xl aspect-[4/3]">
               <img
-                src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
+                src="/cgokyo.webp"
                 alt="Private trek"
                 className="w-full h-full object-cover"
               />
@@ -481,7 +481,7 @@ export default function Departures() {
               className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-stone-100"
             >
               <div className="flex items-center gap-3">
-                <AlertCircle className="w-5 h-5 text-brand-600" />
+                <AlertCircle className="w-5 h-5 text-brand-800" />
                 <div>
                   <p className="font-bold text-stone-900 text-sm">20% Deposit to Reserve</p>
                   <p className="text-stone-500 text-xs">Balance due 30 days before departure</p>

@@ -31,7 +31,7 @@ export default function BestTime() {
       <Hero 
         title="Best Time to Visit" 
         subtitle="Monthly Guide to Gokyo Lakes"
-        image="/besttime.jpg"
+        image="/besttime.webp"
         height="h-[100vh]"
         topContent={<ReviewBadge />}
       >
@@ -55,7 +55,7 @@ export default function BestTime() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
           <a
             href="#seasons"
-            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-500 transition-colors shadow-lg shadow-brand-600/30"
+            className="px-8 py-4 bg-brand-600 text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-brand-800 transition-colors shadow-lg shadow-brand-600/30"
           >
             Seasonal Overview
           </a>
@@ -99,7 +99,7 @@ export default function BestTime() {
           ].map((item) => (
             <div key={item.season} className="p-8 bg-white rounded-[32px] border border-stone-100 shadow-sm space-y-6">
               <div className="p-4 bg-stone-50 rounded-2xl w-fit">
-                <item.icon className="w-8 h-8 text-brand-600" />
+                <item.icon className="w-8 h-8 text-brand-800" />
               </div>
               <div className="space-y-2">
                 <span className="text-stone-500 text-xs font-bold uppercase tracking-widest">{item.months}</span>
@@ -122,7 +122,7 @@ export default function BestTime() {
             >
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-white rounded-xl group-hover:bg-brand-50 transition-colors">
-                  <Calendar className="w-5 h-5 text-stone-400 group-hover:text-brand-600" />
+                  <Calendar className="w-5 h-5 text-stone-400 group-hover:text-brand-800" />
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900">{month.name}</h4>
@@ -138,7 +138,7 @@ export default function BestTime() {
                 }`}>
                   {month.status}
                 </span>
-                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-brand-600 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-brand-800 group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
           ))}

@@ -56,7 +56,7 @@ export default function ItinerariesSection({
               <div className="flex items-center justify-between mb-10 relative z-10">
                 <div className="flex items-center gap-3">
                   <div className="w-16 h-16 bg-stone-50 group-hover:bg-brand-600 rounded-[22px] flex items-center justify-center transition-all duration-500 group-hover:rotate-6">
-                    <Clock className="w-8 h-8 text-brand-600 group-hover:text-white" />
+                    <Clock className="w-8 h-8 text-brand-800 group-hover:text-white" />
                   </div>
                 </div>
                 <span className={`px-4 py-1.5 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-[0.2em] border border-white/50 shadow-sm ${item.difficultyColor}`}>
@@ -67,7 +67,7 @@ export default function ItinerariesSection({
               <div className="relative z-10 flex-grow space-y-6">
                 <div>
                   <h3 className="text-6xl font-black text-stone-900 leading-none tracking-tighter">{item.days}<span className="text-xl text-stone-400 font-bold ml-2 uppercase tracking-widest">Days</span></h3>
-                  <h4 className="text-2xl font-black text-stone-900 mt-3 tracking-tight group-hover:text-brand-600 transition-colors">{item.title}</h4>
+                  <h4 className="text-2xl font-black text-stone-900 mt-3 tracking-tight group-hover:text-brand-800 transition-colors">{item.title}</h4>
                 </div>
                 <p className="text-stone-500 text-base leading-relaxed">{item.desc}</p>
                 <div className="space-y-3 pt-4">
@@ -84,7 +84,7 @@ export default function ItinerariesSection({
               </div>
 
               <div className="mt-10 pt-8 border-t border-stone-100 flex items-center justify-between relative z-10">
-                <span className="text-brand-600 font-black text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                <span className="text-brand-800 font-black text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
                   View Full Plan <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
