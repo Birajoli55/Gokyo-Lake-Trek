@@ -52,6 +52,7 @@ export default function About() {
       <SEO 
         title="About Us | Expert Himalayan Sherpa Guides" 
         description="Learn about Gokyo Explorer's mission to provide sustainable, safe, and culturally immersive trekking experiences in the Everest region." 
+        canonical="/about"
       />
       <Hero
         title="Deep Roots. High Peaks."

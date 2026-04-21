@@ -81,6 +81,7 @@ export default function UltimateGuide() {
       <SEO 
         title="The Ultimate Guide to Gokyo Lakes Trek | 2024 Edition" 
         description="Everything you need to know about the Gokyo Lake Trek: Best time to visit, gear lists, training guides, and essential safety tips for high-altitude trekking." 
+        canonical="/ultimate-guide"
       />
       <Hero
         title="The Ultimate Guide to Gokyo Lakes"
