@@ -7,6 +7,7 @@
     "build": "npm run build --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
     "preview": "npm run preview --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
     "lint": "npm run lint --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
-    "clean": "npm run clean --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek"
+    "clean": "npm run clean --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
+    "sitemap": "npm run sitemap --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek"
   }
 }
