@@ -1,0 +1,12 @@
+{
+  "name": "gokyo-lake-trek-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
+    "build": "npm run build --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
+    "preview": "npm run preview --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
+    "lint": "npm run lint --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek",
+    "clean": "npm run clean --prefix Gokyo-Lake-Trek/Gokyo-Lake-Trek"
+  }
+}
