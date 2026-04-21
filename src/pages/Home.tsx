@@ -60,6 +60,7 @@ export default function Home() {
       <SEO 
         title="Experience the Ultimate Himalayan Adventure" 
         description="Join Gokyo Explorer for an expert-led trek to the turquoise Gokyo Lakes. Discover Sherpa culture, climb Gokyo Ri, and witness Everest panoramas." 
+        canonical="/"
       />
       {/* Hero Section */}
       <Hero

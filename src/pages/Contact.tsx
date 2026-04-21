@@ -46,6 +46,7 @@ export default function Contact() {
       <SEO 
         title="Contact Us | Plan Your Gokyo Lake Adventure" 
         description="Have questions? Get in touch with our Himalayan trekking experts to plan your customized trek, group departure, or private expedition." 
+        canonical="/contact"
       />
       <Hero
         title="Get in Touch"
